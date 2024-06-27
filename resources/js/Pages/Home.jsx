@@ -1,6 +1,7 @@
 import mundo from "../../assets/animations/mundo.json";
 import { useLottie } from "lottie-react";
 import { Link } from "@inertiajs/react";
+import CustomGuestLayout from "@/Layouts/CustomGuestLayout";
 
 const Home = () => {
     // lottie animation configuration
@@ -12,7 +13,7 @@ const Home = () => {
     const { View } = useLottie(options);
 
     return (
-        <>
+        <CustomGuestLayout>
             <div className=" px-2 text-2xl min-h-screen flex flex-col md:flex-row items-center font-nova">
                 <div className="flex my-11 md:w-[40%] justify-center h-full ">
                     {/* lottie animation */}
@@ -38,7 +39,7 @@ const Home = () => {
                     </div>
                 </div>
             </div>
-        </>
+        </CustomGuestLayout>
     );
 };
 export default Home;
