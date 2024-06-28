@@ -25,13 +25,13 @@ const Home = () => {
                     </h2>
                     <div className="flex  my-9 flex-col gap-3 w-full md:w-[70%] text-center ">
                         <Link
-                            href={route("profile.edit")}
+                            href="/choose-language"
                             className="bg-[#60AC90] shadow-md transition-all duration-300 hover:scale-105 text-white py-2 hover:shadow-xl w-full rounded-lg px-1"
                         >
                             Get started
                         </Link>
                         <Link
-                            href={route("profile.edit")}
+                            href="/login"
                             className="bg-[#052138] shadow-md text-white py-2 transition-all duration-300 hover:scale-105 hover:shadow-xl rounded-lg px-1"
                         >
                             I alredy have an account
