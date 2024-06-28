@@ -14,8 +14,14 @@ class Expression extends Model
         'right_answer',
         'false_answer_one',
         'false_answer_two',
-        'language',
-        'created_by',
+        'expression_language',
+        'answer_language',
+        'user_id',
         'is_validated',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class)->withDefault();
+    }
 }

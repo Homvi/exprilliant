@@ -6,10 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
-    public function up()
+    public function up(): void
     {
         Schema::create('expressions', function (Blueprint $table) {
             $table->id();
@@ -17,16 +14,14 @@ return new class extends Migration
             $table->string('right_answer');
             $table->string('false_answer_one');
             $table->string('false_answer_two');
-            $table->string('language'); // 'spanish' or 'english'
-            $table->string('created_by');
+            $table->string('expression_language'); // Language of the expression
+            $table->string('answer_language'); // Language of the answer
+            $table->foreignId('user_id')->nullable()->constrained()->onDelete('set null');
             $table->timestamps();
             $table->boolean('is_validated')->default(false);
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('expressions');

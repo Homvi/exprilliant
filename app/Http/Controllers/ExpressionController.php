@@ -8,13 +8,30 @@ use Illuminate\Support\Facades\Validator;
 
 class ExpressionController extends Controller
 {
-    public function getRandomExpressions()
+    public function getRandomExpressions(Request $request)
     {
-        $expressions = Expression::where('language', 'english')
-            ->where('is_validated', true)
-            ->inRandomOrder()
-            ->limit(5)
-            ->get();
+        $mode = $request->query('mode');
+
+        if ($mode === 'es-en') {
+            // Fetch Spanish expressions to English
+            $expressions = Expression::where('expression_language', 'es')
+                ->where('answer_language', 'en')
+                ->where('is_validated', true)
+                ->inRandomOrder()
+                ->limit(10)
+                ->get();
+        } elseif ($mode === 'en-es') {
+            // Fetch English expressions to Spanish
+            $expressions = Expression::where('expression_language', 'en')
+                ->where('answer_language', 'es')
+                ->where('is_validated', true)
+                ->inRandomOrder()
+                ->limit(10)
+                ->get();
+        } else {
+            return response()->json(['error' => 'Invalid mode'], 400);
+        }
+
         return response()->json($expressions);
     }
 

@@ -1,10 +1,18 @@
+//resources/js/Pages/ChooseLanguage.jsx
+
 import es from "../../assets/es.svg";
 import en from "../../assets/en.svg";
 import { Link } from "@inertiajs/react";
 import CustomGuestLayout from "../Layouts/CustomGuestLayout";
+import { useGameMode } from "@/contexts/GameModeContext";
 
 const ChooseLanguage = () => {
     const language = "en";
+    const { setGameMode } = useGameMode();
+
+    const handleGameModeSelection = (mode) => {
+        setGameMode(mode);
+    };
 
     const isFontSizeLarge = false;
 
@@ -17,7 +25,7 @@ const ChooseLanguage = () => {
                     <div className="flex flex-wrap justify-center md:justify-start gap-3">
                         <Link
                             href="/game"
-                            onClick={() => changeGameMode("SpanishToEnglish")}
+                            onClick={() => handleGameModeSelection("es-en")}
                         >
                             <div className="border-2 border-[#4c4c4c33] flex w-44 p-5 text-center cursor-pointer rounded-xl flex-col hover:border-white/40 transition-all duration-100 hover:bg-white/10 items-center">
                                 <img
@@ -39,7 +47,7 @@ const ChooseLanguage = () => {
                         {/* English card */}
                         <Link
                             href="/game"
-                            onClick={() => changeGameMode("EnglishToSpanish")}
+                            onClick={() => handleGameModeSelection("en-es")}
                         >
                             <div className="border-2 border-[#4c4c4c33] hover:border-white/40 transition-all duration-100 hover:bg-white/10 flex w-44 p-5 text-center cursor-pointer rounded-xl flex-col items-center">
                                 <img

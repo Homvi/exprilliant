@@ -25,7 +25,7 @@ const Home = () => {
                     </h2>
                     <div className="flex  my-9 flex-col gap-3 w-full md:w-[70%] text-center ">
                         <Link
-                            href="/choose-language"
+                            href="/choose-game-mode"
                             className="bg-[#60AC90] shadow-md transition-all duration-300 hover:scale-105 text-white py-2 hover:shadow-xl w-full rounded-lg px-1"
                         >
                             Get started

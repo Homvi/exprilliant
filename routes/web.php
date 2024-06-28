@@ -21,8 +21,8 @@ Route::get('/', function () {
     return Inertia::render('Home');
 });
 
-Route::get('/choose-language', function () {
-    return Inertia::render('ChooseLanguage');
+Route::get('/choose-game-mode', function () {
+    return Inertia::render('ChooseGameMode');
 });
 
 Route::get('/game', function () {
