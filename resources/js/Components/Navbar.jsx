@@ -34,7 +34,7 @@ const Navbar = () => {
         <div className="navbar bg-base-100 font-nova border-b-[1px] py-4 border-[#05213819] relative top-0 z-40 hidden md:flex">
             <div className="flex-1">
                 <Link
-                    to="/"
+                    href="/"
                     className={`btn btn-ghost ${
                         isFontSizeLarge ? "text-3xl" : "text-xl"
                     }`}
@@ -116,12 +116,12 @@ const Navbar = () => {
                     </li>
                     {!loggedInUser.firstName && (
                         <li>
-                            <Link to="/register">Register</Link>
+                            <Link href="/register">Register</Link>
                         </li>
                     )}
                     {!loggedInUser.firstName && (
                         <li>
-                            <Link to="/login">Login</Link>
+                            <Link href="/login">Login</Link>
                         </li>
                     )}
                     {loggedInUser.firstName && (
