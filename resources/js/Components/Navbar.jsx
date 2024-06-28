@@ -1,15 +1,13 @@
-import { Link } from "@inertiajs/react";
+import { Link, usePage } from "@inertiajs/react";
 import logo from "../../assets/exprilliant-with-text.webp";
 import { useRef } from "react";
 
 const Navbar = () => {
-    // TODO: BE - Handle user dynamically
-    const loggedInUser = {
-        firstName: null,
-    };
+    const { auth } = usePage().props;
 
-    const handleLogout = () => {
-        // TODO: BE - Handle logout
+    const handleLogout = async () => {
+        await axios.post("/logout");
+        window.location.reload();
     };
 
     const languageSettingsDrawerRef = useRef(null);
@@ -22,8 +20,6 @@ const Navbar = () => {
         ) {
             languageSettingsDrawerRef.current.open = false;
             fontSizeSettingsDrawerRef.current.open = false;
-        } else {
-            return;
         }
     }
 
@@ -48,13 +44,6 @@ const Navbar = () => {
                         isFontSizeLarge ? "text-xl" : ""
                     }`}
                 >
-                    {loggedInUser.firstName && (
-                        <li>
-                            <Link to="/requestExpression">
-                                Request new expression
-                            </Link>
-                        </li>
-                    )}
                     <li>
                         <details ref={languageSettingsDrawerRef}>
                             <summary className="text-gray-400">
@@ -118,19 +107,26 @@ const Navbar = () => {
                             </ul>
                         </details>
                     </li>
-                    {!loggedInUser.firstName && (
-                        <li>
-                            <Link href="/register">Register</Link>
-                        </li>
+                    {!auth.user && (
+                        <>
+                            <li>
+                                <Link href="/register">Register</Link>
+                            </li>
+                            <li>
+                                <Link href="/login">Login</Link>
+                            </li>
+                        </>
                     )}
-                    {!loggedInUser.firstName && (
-                        <li>
-                            <Link href="/login">Login</Link>
-                        </li>
-                    )}
-                    {loggedInUser.firstName && (
+                    {auth.user && (
                         <li onClick={handleLogout}>
                             <a href="#">Logout</a>
+                        </li>
+                    )}
+                    {auth.user && (
+                        <li>
+                            <Link href="/requestExpression">
+                                Request new expression
+                            </Link>
                         </li>
                     )}
                 </ul>
