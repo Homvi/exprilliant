@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import Score from "../Components/Score";
 import ProgressBar from "../Components/ProgressBar";
 import Choice from "../Components/Choice.jsx";
+import CustomGuestLayout from "../Layouts/CustomGuestLayout"
 
 const Game = () => {
     // TODO: handle status in redux
@@ -65,6 +66,7 @@ const Game = () => {
     // get expressions, shuffle them and set as a state
     useEffect(() => {
         fetchRandomExpressions();
+        console.log(expressions);
     }, [isGameFinished]);
 
     function resetGame() {
@@ -96,7 +98,7 @@ const Game = () => {
     const activeExpression = expressions[activeExpressionIndex];
 
     function handleChoice(answerChosen) {
-        const isCorrect = answerChosen === activeExpression?.rightAnswer;
+        const isCorrect = answerChosen === activeExpression?.right_answer;
         setIsClickable(false);
         highlightChoices(answerChosen);
         console.log(
@@ -114,19 +116,19 @@ const Game = () => {
 
         const activeExpressionChoices = [
             {
-                answer: activeExpression?.rightAnswer,
+                answer: activeExpression?.right_answer,
                 order: shuffledOrders[0],
                 correct: true,
                 highlight: false,
             },
             {
-                answer: activeExpression?.falseAnswerOne,
+                answer: activeExpression?.false_answer_one,
                 order: shuffledOrders[1],
                 correct: false,
                 highlight: false,
             },
             {
-                answer: activeExpression?.falseAnswerTwo,
+                answer: activeExpression?.false_answer_two,
                 order: shuffledOrders[2],
                 correct: false,
                 highlight: false,
@@ -163,6 +165,8 @@ const Game = () => {
     }
 
     return (
+        <CustomGuestLayout>
+
         <div className="h-full relative flex justify-start items-center flex-col gap-3 font-nova overflow-x-hidden mt-3  mx-3">
             {loading && <p>Loading...</p>}
             {loading && (
@@ -210,6 +214,7 @@ const Game = () => {
                 <Score score={score.current} resetGame={resetGame} />
             )}
         </div>
+        </CustomGuestLayout>
     );
 };
 

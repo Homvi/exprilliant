@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ExpressionController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -27,6 +28,8 @@ Route::get('/choose-language', function () {
 Route::get('/game', function () {
     return Inertia::render('Game');
 });
+
+Route::get('/random-expressions', [ExpressionController::class, 'getRandomExpressions']);
 
 
 Route::get('/dashboard', function () {
