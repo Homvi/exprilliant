@@ -57,7 +57,9 @@ const Navbar = () => {
                     )}
                     <li>
                         <details ref={languageSettingsDrawerRef}>
-                            <summary>Change language</summary>
+                            <summary className="text-gray-400">
+                                Change language
+                            </summary>
                             <ul className="flex">
                                 <div className="form-control">
                                     <label className="label cursor-pointer">
@@ -94,11 +96,13 @@ const Navbar = () => {
                     </li>
                     <li>
                         <details ref={fontSizeSettingsDrawerRef}>
-                            <summary>Accessibility</summary>
+                            <summary className="text-gray-400">
+                                Accessibility
+                            </summary>
                             <ul className="flex">
                                 <div className="form-control">
                                     <label className="label cursor-pointer">
-                                        <span className="label-text">
+                                        <span className="label-text ">
                                             Change font size
                                         </span>
                                         <input
