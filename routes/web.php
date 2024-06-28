@@ -20,6 +20,10 @@ Route::get('/', function () {
     return Inertia::render('Home');
 });
 
+Route::get('/choose-language', function () {
+    return Inertia::render('ChooseLanguage');
+});
+
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
