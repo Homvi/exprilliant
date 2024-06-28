@@ -16,7 +16,7 @@ const ChooseLanguage = () => {
                     {/* spanish card */}
                     <div className="flex flex-wrap justify-center md:justify-start gap-3">
                         <Link
-                            to="/game"
+                            href="/game"
                             onClick={() => changeGameMode("SpanishToEnglish")}
                         >
                             <div className="border-2 border-[#4c4c4c33] flex w-44 p-5 text-center cursor-pointer rounded-xl flex-col hover:border-white/40 transition-all duration-100 hover:bg-white/10 items-center">
@@ -38,7 +38,7 @@ const ChooseLanguage = () => {
                         </Link>
                         {/* English card */}
                         <Link
-                            to="/game"
+                            href="/game"
                             onClick={() => changeGameMode("EnglishToSpanish")}
                         >
                             <div className="border-2 border-[#4c4c4c33] hover:border-white/40 transition-all duration-100 hover:bg-white/10 flex w-44 p-5 text-center cursor-pointer rounded-xl flex-col items-center">

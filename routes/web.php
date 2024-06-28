@@ -24,6 +24,10 @@ Route::get('/choose-language', function () {
     return Inertia::render('ChooseLanguage');
 });
 
+Route::get('/game', function () {
+    return Inertia::render('Game');
+});
+
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
