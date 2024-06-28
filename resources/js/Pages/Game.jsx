@@ -6,6 +6,7 @@ import ProgressBar from "../Components/ProgressBar";
 import Choice from "../Components/Choice.jsx";
 import CustomGuestLayout from "../Layouts/CustomGuestLayout";
 import { useGameMode } from "@/contexts/GameModeContext";
+import { Head } from "@inertiajs/react";
 
 const Game = () => {
     // TODO: handle status in redux
@@ -59,7 +60,9 @@ const Game = () => {
 
     const fetchRandomExpressions = async () => {
         try {
-            const response = await axios.get(`/random-expressions?mode=${gameMode}`);
+            const response = await axios.get(
+                `/random-expressions?mode=${gameMode}`
+            );
             setExpressions(response.data);
             setLoading(false);
         } catch (error) {
@@ -169,55 +172,63 @@ const Game = () => {
     }
 
     return (
-        <CustomGuestLayout>
-            <div className="h-full relative flex justify-start items-center flex-col gap-3 font-nova overflow-x-hidden mt-3  mx-3">
-                {loading && <p>Loading...</p>}
-                {loading && (
-                    <span className="loading loading-infinity loading-lg"></span>
-                )}
-                {!loading && !isGameFinished && (
-                    <>
-                        <ProgressBar progress={progress} />
-                        <div
-                            id="expressionsContainer"
-                            className={`flex flex-col text-center justify-center w-full md:max-w-xl items-center gap-3 transition-all duration-300 ${
-                                fadeIn
-                                    ? "opacity-0 translate-x-full"
-                                    : "opacity-100 translate-x-0"
-                            }`}
-                        >
-                            <h2
-                                className={
-                                    isFontSizeLarge
-                                        ? "text-4xl my-6"
-                                        : "text-2xl my-6"
-                                }
+        <>
+            <Head title="Game" />
+            <CustomGuestLayout>
+                <div className="h-full relative flex justify-start items-center flex-col gap-3 font-nova overflow-x-hidden mt-3  mx-3">
+                    {loading && <p>Loading...</p>}
+                    {loading && (
+                        <span className="loading loading-infinity loading-lg"></span>
+                    )}
+                    {!loading && !isGameFinished && (
+                        <>
+                            <ProgressBar progress={progress} />
+                            <div
+                                id="expressionsContainer"
+                                className={`flex flex-col text-center justify-center w-full md:max-w-xl items-center gap-3 transition-all duration-300 ${
+                                    fadeIn
+                                        ? "opacity-0 translate-x-full"
+                                        : "opacity-100 translate-x-0"
+                                }`}
                             >
-                                {expressions[activeExpressionIndex]?.expression}
-                            </h2>
-                            <div className="flex flex-col gap-3 w-full overflow-hidden">
-                                {activeExpressionChoices.map((choice, id) => (
-                                    <Choice
-                                        key={`${choice.answer}-choice-${id}`}
-                                        order={choice.order}
-                                        isHighlighted={choice.highlight}
-                                        isCorrect={choice.correct}
-                                        handleChoice={handleChoice}
-                                        handleKeyPress={handleKeyPress}
-                                        isClickable={isClickable}
-                                        content={choice.answer}
-                                    />
-                                ))}
+                                <h2
+                                    className={
+                                        isFontSizeLarge
+                                            ? "text-4xl my-6"
+                                            : "text-2xl my-6"
+                                    }
+                                >
+                                    {
+                                        expressions[activeExpressionIndex]
+                                            ?.expression
+                                    }
+                                </h2>
+                                <div className="flex flex-col gap-3 w-full overflow-hidden">
+                                    {activeExpressionChoices.map(
+                                        (choice, id) => (
+                                            <Choice
+                                                key={`${choice.answer}-choice-${id}`}
+                                                order={choice.order}
+                                                isHighlighted={choice.highlight}
+                                                isCorrect={choice.correct}
+                                                handleChoice={handleChoice}
+                                                handleKeyPress={handleKeyPress}
+                                                isClickable={isClickable}
+                                                content={choice.answer}
+                                            />
+                                        )
+                                    )}
+                                </div>
                             </div>
-                        </div>
-                    </>
-                )}
-                {/* show score */}
-                {isGameFinished && (
-                    <Score score={score.current} resetGame={resetGame} />
-                )}
-            </div>
-        </CustomGuestLayout>
+                        </>
+                    )}
+                    {/* show score */}
+                    {isGameFinished && (
+                        <Score score={score.current} resetGame={resetGame} />
+                    )}
+                </div>
+            </CustomGuestLayout>
+        </>
     );
 };
 
