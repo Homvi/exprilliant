@@ -69,7 +69,7 @@ class ExpressionController extends Controller
     // Display unvalidated expressions
     public function adminIndex()
     {
-        $expressions = Expression::where('is_validated', false)->get();
+        $expressions = Expression::with('user')->where('is_validated', false)->get();
         return inertia('Admin/UnvalidatedExpressions', ['expressions' => $expressions]);
     }
 
