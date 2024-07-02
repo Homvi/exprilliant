@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Expression;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 class ExpressionController extends Controller
@@ -35,32 +36,34 @@ class ExpressionController extends Controller
         return response()->json($expressions);
     }
 
+    // Display the form
+    public function create()
+    {
+        return inertia('RequestNewExpression');
+    }
+
     public function store(Request $request)
     {
-        $validator = Validator::make($request->all(), [
+        $request->validate([
             'expression' => 'required|string|max:255',
             'right_answer' => 'required|string|max:255',
             'false_answer_one' => 'required|string|max:255',
             'false_answer_two' => 'required|string|max:255',
-            'language' => 'required|string|in:spanish,english',
-            'created_by' => 'required|string|max:255',
-            'is_validated' => 'prohibited', // This line ensures that the is_validated field is not allowed in the request
+            'expression_language' => 'required|string|in:en,es,hu',
+            'answer_language' => 'required|string|in:en,es,hu',
         ]);
 
-        if ($validator->fails()) {
-            return response()->json(['errors' => $validator->errors()], 422);
-        }
-
-        $expression = Expression::create([
-            'expression' => $request->input('expression'),
-            'right_answer' => $request->input('right_answer'),
-            'false_answer_one' => $request->input('false_answer_one'),
-            'false_answer_two' => $request->input('false_answer_two'),
-            'language' => $request->input('language'),
-            'created_by' => $request->input('created_by'),
-            'is_validated' => false, // Default to false
+        Expression::create([
+            'expression' => $request->expression,
+            'right_answer' => $request->right_answer,
+            'false_answer_one' => $request->false_answer_one,
+            'false_answer_two' => $request->false_answer_two,
+            'expression_language' => $request->expression_language,
+            'answer_language' => $request->answer_language,
+            'user_id' => Auth::id(),
+            'is_validated' => false,
         ]);
 
-        return response()->json($expression, 201);
+        return redirect()->back()->with('message', 'Expression submitted successfully!');
     }
 }
