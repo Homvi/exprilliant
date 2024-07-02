@@ -66,4 +66,24 @@ class ExpressionController extends Controller
 
         return redirect()->back()->with('message', 'Expression submitted successfully!');
     }
+    // Display unvalidated expressions
+    public function adminIndex()
+    {
+        $expressions = Expression::where('is_validated', false)->get();
+        return inertia('Admin/UnvalidatedExpressions', ['expressions' => $expressions]);
+    }
+
+    // Validate expression
+    public function validateExpression(Expression $expression)
+    {
+        $expression->update(['is_validated' => true]);
+        return redirect()->route('admin.expressions')->with('message', 'Expression validated successfully!');
+    }
+
+    // Delete expression
+    public function destroy(Expression $expression)
+    {
+        $expression->delete();
+        return redirect()->route('admin.expressions')->with('message', 'Expression deleted successfully!');
+    }
 }
