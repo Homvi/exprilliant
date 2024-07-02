@@ -46,4 +46,11 @@ Route::middleware('auth', 'verified')->group(function () {
     Route::post('/expressions', [ExpressionController::class, 'store'])->name('expressions.store');
 });
 
+// admin routes
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::get('/admin/unvalidated-expressions', [ExpressionController::class, 'adminIndex'])->name('admin.expressions');
+    Route::post('/admin/expressions/{expression}/validate', [ExpressionController::class, 'validateExpression'])->name('admin.expressions.validate');
+    Route::delete('/admin/expressions/{expression}', [ExpressionController::class, 'destroy'])->name('admin.expressions.destroy');
+});
+
 require __DIR__ . '/auth.php';
