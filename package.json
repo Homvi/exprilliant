@@ -21,6 +21,7 @@
         "vite": "^5.0.0"
     },
     "dependencies": {
-        "lottie-react": "^2.4.0"
+        "lottie-react": "^2.4.0",
+        "react-toastify": "^10.0.5"
     }
 }
