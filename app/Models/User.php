@@ -25,6 +25,8 @@ class User extends Authenticatable implements MustVerifyEmail
         'password',
     ];
 
+
+
     /**
      * The attributes that should be hidden for serialization.
      *
@@ -44,4 +46,9 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function isAdmin()
+    {
+        return $this->email === 'adam.honvedo@gmail.com'; // Replace with your admin email
+    }
 }
