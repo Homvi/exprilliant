@@ -73,7 +73,6 @@ const Game = () => {
     // get expressions, shuffle them and set as a state
     useEffect(() => {
         fetchRandomExpressions();
-        console.log(expressions);
     }, [isGameFinished]);
 
     function resetGame() {
@@ -108,9 +107,6 @@ const Game = () => {
         const isCorrect = answerChosen === activeExpression?.right_answer;
         setIsClickable(false);
         highlightChoices(answerChosen);
-        console.log(
-            isCorrect ? "The correct answer has been chosen" : "Incorrect"
-        );
         setTimeout(() => {
             if (isCorrect) score.current++;
             handleActiveExpressionIncrement();
