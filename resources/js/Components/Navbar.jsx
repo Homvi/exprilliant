@@ -124,7 +124,7 @@ const Navbar = () => {
                     )}
                     {auth.user && (
                         <li>
-                            <Link href="/requestExpression">
+                            <Link href="/request-new-expression">
                                 Request new expression
                             </Link>
                         </li>
