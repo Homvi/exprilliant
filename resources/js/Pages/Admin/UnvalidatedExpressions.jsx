@@ -11,7 +11,7 @@ const getBorderColor = (language) => {
         case "en":
             return "border-blue-500"; // English - Blue
         case "es":
-            return "border-red-500"; // Spanish - Red
+            return "border-yellow-500"; // Spanish - Red
         case "hu":
             return "border-green-500"; // Hungarian - Green
         default:
