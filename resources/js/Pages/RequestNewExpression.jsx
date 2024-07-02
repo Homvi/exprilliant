@@ -6,6 +6,8 @@ import PrimaryButton from "@/Components/PrimaryButton";
 import TextInput from "@/Components/TextInput";
 import { Head, useForm } from "@inertiajs/react";
 import CustomGuestLayout from "../Layouts/CustomGuestLayout";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function RequestNewExpression() {
     const { data, setData, post, processing, errors, reset } = useForm({
@@ -33,13 +35,23 @@ export default function RequestNewExpression() {
     const submit = (e) => {
         e.preventDefault();
 
-        post(route("expressions.store"));
+        post(route("expressions.store"), {
+            onSuccess: () => {
+                toast.success("Expression submitted successfully!");
+                reset();
+            },
+            onError: () => {
+                toast.error("There was an error submitting the expression.");
+            },
+        });
     };
 
     return (
         <CustomGuestLayout>
             <GuestLayout>
                 <Head title="Request New Expression" />
+
+                <ToastContainer />
 
                 <form onSubmit={submit}>
                     <div>
