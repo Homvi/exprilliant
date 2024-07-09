@@ -42,22 +42,22 @@ const MobileNavbar = () => {
                     <ul className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
                         {!loggedInUser.firstName && (
                             <li>
-                                <Link to="/register">Register</Link>
+                                <Link href="/register">Register</Link>
                             </li>
                         )}
                         {!loggedInUser.firstName && (
                             <li>
-                                <Link to="/login">Login</Link>
+                                <Link href="/login">Login</Link>
                             </li>
                         )}
                         {loggedInUser.firstName && (
                             <li onClick={handleLogout}>
-                                <a href="#">Logout</a>
+                                <Link href="#">Logout</Link>
                             </li>
                         )}
                         {loggedInUser.firstName && (
                             <li>
-                                <Link to="/requestExpression">
+                                <Link href="/requestExpression">
                                     Request expression
                                 </Link>
                             </li>
@@ -128,7 +128,7 @@ const MobileNavbar = () => {
                 </div>
             </div>
             <div className="navbar-center">
-                <Link to="/" className="btn btn-ghost text-xl">
+                <Link href="/" className="btn btn-ghost text-xl">
                     <img src={logo} alt="Exprilliant" className="h-8" />
                 </Link>
             </div>
