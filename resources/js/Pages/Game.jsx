@@ -9,7 +9,6 @@ import { useGameMode } from "@/contexts/GameModeContext";
 import { Head } from "@inertiajs/react";
 
 const Game = () => {
-    // TODO: handle status in redux
     const [loading, setLoading] = useState(true);
     const [isGameFinished, setIsGameFinished] = useState(false);
     const [fadeIn, setFadeIn] = useState(false);
