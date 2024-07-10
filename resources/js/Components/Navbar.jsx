@@ -83,7 +83,7 @@ const Navbar = () => {
                             </ul>
                         </details>
                     </li>
-                    <li>
+                    {/* <li>
                         <details ref={fontSizeSettingsDrawerRef}>
                             <summary className="text-gray-400">
                                 Accessibility
@@ -106,7 +106,7 @@ const Navbar = () => {
                                 </div>
                             </ul>
                         </details>
-                    </li>
+                    </li> */}
                     {!auth.user && (
                         <>
                             <li>
