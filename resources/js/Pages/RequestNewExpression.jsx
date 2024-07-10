@@ -4,7 +4,7 @@ import InputError from "@/Components/InputError";
 import InputLabel from "@/Components/InputLabel";
 import PrimaryButton from "@/Components/PrimaryButton";
 import TextInput from "@/Components/TextInput";
-import { Head, useForm } from "@inertiajs/react";
+import { Head, useForm, usePage } from "@inertiajs/react";
 import CustomGuestLayout from "../Layouts/CustomGuestLayout";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -18,6 +18,9 @@ export default function RequestNewExpression() {
         expression_language: "en",
         answer_language: "en",
     });
+
+    const { localeData } = usePage().props;
+    const { request_new_expression_page } = localeData.data;
 
     useEffect(() => {
         return () => {
@@ -37,11 +40,11 @@ export default function RequestNewExpression() {
 
         post(route("expressions.store"), {
             onSuccess: () => {
-                toast.success("Expression submitted successfully!");
+                toast.success(request_new_expression_page.success_message);
                 reset();
             },
             onError: () => {
-                toast.error("There was an error submitting the expression.");
+                toast.error(request_new_expression_page.error_message);
             },
         });
     };
@@ -49,13 +52,13 @@ export default function RequestNewExpression() {
     return (
         <CustomGuestLayout>
             <GuestLayout>
-                <Head title="Request New Expression" />
+                <Head title={request_new_expression_page.title} />
 
                 <ToastContainer />
 
                 <form onSubmit={submit}>
                     <div>
-                        <InputLabel htmlFor="expression" value="Expression" />
+                        <InputLabel htmlFor="expression" value={request_new_expression_page.expression_label} />
 
                         <TextInput
                             id="expression"
@@ -77,7 +80,7 @@ export default function RequestNewExpression() {
                     <div className="mt-4">
                         <InputLabel
                             htmlFor="right_answer"
-                            value="Right Answer"
+                            value={request_new_expression_page.right_answer_label}
                         />
 
                         <TextInput
@@ -100,7 +103,7 @@ export default function RequestNewExpression() {
                     <div className="mt-4">
                         <InputLabel
                             htmlFor="false_answer_one"
-                            value="False Answer One"
+                            value={request_new_expression_page.false_answer_one_label}
                         />
 
                         <TextInput
@@ -123,7 +126,7 @@ export default function RequestNewExpression() {
                     <div className="mt-4">
                         <InputLabel
                             htmlFor="false_answer_two"
-                            value="False Answer Two"
+                            value={request_new_expression_page.false_answer_two_label}
                         />
 
                         <TextInput
@@ -146,7 +149,7 @@ export default function RequestNewExpression() {
                     <div className="mt-4">
                         <InputLabel
                             htmlFor="expression_language"
-                            value="Expression Language"
+                            value={request_new_expression_page.expression_language_label}
                         />
 
                         <select
@@ -173,7 +176,7 @@ export default function RequestNewExpression() {
                     <div className="mt-4">
                         <InputLabel
                             htmlFor="answer_language"
-                            value="Answer Language"
+                            value={request_new_expression_page.answer_language_label}
                         />
 
                         <select
@@ -199,7 +202,7 @@ export default function RequestNewExpression() {
 
                     <div className="flex items-center justify-end mt-4">
                         <PrimaryButton className="ms-4" disabled={processing}>
-                            Submit
+                            {request_new_expression_page.submit_button}
                         </PrimaryButton>
                     </div>
                 </form>

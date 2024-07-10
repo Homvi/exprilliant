@@ -21,5 +21,59 @@
         "excellent_job": "Excellent Job!",
         "go_to_main_page": "Go to main page",
         "give_me_more": "Give me 5 more"
+    },
+    "login_page": {
+        "title": "Log in",
+        "email_label": "Email",
+        "password_label": "Password",
+        "remember_me": "Remember me",
+        "forgot_password": "Forgot your password?",
+        "login_button": "Log in"
+    },
+    "register_page": {
+        "title": "Register",
+        "name_label": "Name",
+        "email_label": "Email",
+        "password_label": "Password",
+        "confirm_password_label": "Confirm Password",
+        "already_registered": "Already registered?",
+        "register_button": "Register"
+    },
+    "request_new_expression_page": {
+        "title": "Request New Expression",
+        "expression_label": "Expression",
+        "right_answer_label": "Right Answer",
+        "false_answer_one_label": "False Answer One",
+        "false_answer_two_label": "False Answer Two",
+        "expression_language_label": "Expression Language",
+        "answer_language_label": "Answer Language",
+        "submit_button": "Submit",
+        "success_message": "Expression submitted successfully!",
+        "error_message": "There was an error submitting the expression."
+    },
+    "confirm_password_page": {
+        "title": "Confirm Password",
+        "description": "This is a secure area of the application. Please confirm your password before continuing.",
+        "password_label": "Password",
+        "confirm_button": "Confirm"
+    },
+    "forgot_password_page": {
+        "title": "Forgot Password",
+        "description": "Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.",
+        "submit_button": "Email Password Reset Link"
+    },
+    "reset_password_page": {
+        "title": "Reset Password",
+        "email_label": "Email",
+        "password_label": "Password",
+        "confirm_password_label": "Confirm Password",
+        "submit_button": "Reset Password"
+    },
+    "verify_email_page": {
+        "title": "Email Verification",
+        "description": "Thanks for signing up! Before getting started, could you verify your email address by clicking on the link we just emailed to you? If you didn't receive the email, we will gladly send you another.",
+        "verification_link_sent": "A new verification link has been sent to the email address you provided during registration.",
+        "resend_button": "Resend Verification Email",
+        "logout_button": "Log Out"
     }
 }

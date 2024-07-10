@@ -21,5 +21,59 @@
         "excellent_job": "¡Trabajo excelente!",
         "go_to_main_page": "Ir a la página principal",
         "give_me_more": "Dame 5 más"
+    },
+    "login_page": {
+        "title": "Iniciar sesión",
+        "email_label": "Correo electrónico",
+        "password_label": "Contraseña",
+        "remember_me": "Recuérdame",
+        "forgot_password": "¿Olvidaste tu contraseña?",
+        "login_button": "Iniciar sesión"
+    },
+    "register_page": {
+        "title": "Registrarse",
+        "name_label": "Nombre",
+        "email_label": "Correo electrónico",
+        "password_label": "Contraseña",
+        "confirm_password_label": "Confirmar Contraseña",
+        "already_registered": "¿Ya estás registrado?",
+        "register_button": "Registrarse"
+    },
+    "request_new_expression_page": {
+        "title": "Solicitar Nueva Expresión",
+        "expression_label": "Expresión",
+        "right_answer_label": "Respuesta Correcta",
+        "false_answer_one_label": "Respuesta Falsa Uno",
+        "false_answer_two_label": "Respuesta Falsa Dos",
+        "expression_language_label": "Idioma de la Expresión",
+        "answer_language_label": "Idioma de la Respuesta",
+        "submit_button": "Enviar",
+        "success_message": "¡Expresión enviada con éxito!",
+        "error_message": "Hubo un error al enviar la expresión."
+    },
+    "confirm_password_page": {
+        "title": "Confirmar Contraseña",
+        "description": "Esta es una área segura de la aplicación. Por favor confirma tu contraseña antes de continuar.",
+        "password_label": "Contraseña",
+        "confirm_button": "Confirmar"
+    },
+    "forgot_password_page": {
+        "title": "Olvidó su Contraseña",
+        "description": "¿Olvidó su contraseña? No hay problema. Solo háganos saber su dirección de correo electrónico y le enviaremos un enlace para restablecer su contraseña que le permitirá elegir una nueva.",
+        "submit_button": "Enviar Enlace de Restablecimiento de Contraseña"
+    },
+    "reset_password_page": {
+        "title": "Restablecer Contraseña",
+        "email_label": "Correo Electrónico",
+        "password_label": "Contraseña",
+        "confirm_password_label": "Confirmar Contraseña",
+        "submit_button": "Restablecer Contraseña"
+    },
+    "verify_email_page": {
+        "title": "Verificación de Correo Electrónico",
+        "description": "¡Gracias por registrarte! Antes de comenzar, ¿podrías verificar tu dirección de correo electrónico haciendo clic en el enlace que te acabamos de enviar? Si no recibiste el correo electrónico, con gusto te enviaremos otro.",
+        "verification_link_sent": "Se ha enviado un nuevo enlace de verificación a la dirección de correo electrónico que proporcionaste durante el registro.",
+        "resend_button": "Reenviar Correo de Verificación",
+        "logout_button": "Cerrar Sesión"
     }
 }
