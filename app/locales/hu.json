@@ -1,0 +1,80 @@
+{
+    "home_page": {
+         "title": "Az ingyenes, szórakoztató és hatékony módja a kifejezések megtanulásának!",
+         "get_started": "Kezdjük el",
+         "login": "Már van fiókom"
+     },
+     "choose_game_mode_page" : {
+         "choose_language_title": "Szeretnék tanulni...",
+         "spanish_to_english": "Spanyol kifejezések",
+         "english_to_spanish": "Angol kifejezések"
+     },
+     "navbar" : {
+         "register": "Regisztráció",
+         "login_nav": "Bejelentkezés",
+         "logout": "Kijelentkezés",
+         "request_new_expression": "Új kifejezés kérése"
+     },
+     "score_page": {
+         "your_score": "Az Ön pontszáma",
+         "good_job": "Szép munka!",
+         "excellent_job": "Kiváló munka!",
+         "go_to_main_page": "Vissza a főoldalra",
+         "give_me_more": "Adj még 5-öt"
+     },
+     "login_page": {
+         "title": "Bejelentkezés",
+         "email_label": "E-mail",
+         "password_label": "Jelszó",
+         "remember_me": "Emlékezz rám",
+         "forgot_password": "Elfelejtette a jelszavát?",
+         "login_button": "Bejelentkezés"
+     },
+     "register_page": {
+         "title": "Regisztráció",
+         "name_label": "Név",
+         "email_label": "E-mail",
+         "password_label": "Jelszó",
+         "confirm_password_label": "Jelszó megerősítése",
+         "already_registered": "Már regisztrált?",
+         "register_button": "Regisztráció"
+     },
+     "request_new_expression_page": {
+         "title": "Új kifejezés kérése",
+         "expression_label": "Kifejezés",
+         "right_answer_label": "Helyes válasz",
+         "false_answer_one_label": "Hibás válasz egy",
+         "false_answer_two_label": "Hibás válasz kettő",
+         "expression_language_label": "Kifejezés nyelve",
+         "answer_language_label": "Válasz nyelve",
+         "submit_button": "Beküldés",
+         "success_message": "A kifejezést sikeresen beküldtük!",
+         "error_message": "Hiba történt a kifejezés beküldése közben."
+     },
+     "confirm_password_page": {
+         "title": "Jelszó megerősítése",
+         "description": "Ez az alkalmazás biztonságos területe. Kérjük, erősítse meg jelszavát a folytatáshoz.",
+         "password_label": "Jelszó",
+         "confirm_button": "Megerősítés"
+     },
+     "forgot_password_page": {
+         "title": "Elfelejtett jelszó",
+         "description": "Elfelejtette a jelszavát? Semmi gond. Csak adja meg e-mail címét, és küldünk egy jelszó-visszaállító linket, amely lehetővé teszi egy új jelszó megadását.",
+         "submit_button": "Jelszó-visszaállító link küldése"
+     },
+     "reset_password_page": {
+         "title": "Jelszó visszaállítása",
+         "email_label": "E-mail",
+         "password_label": "Jelszó",
+         "confirm_password_label": "Jelszó megerősítése",
+         "submit_button": "Jelszó visszaállítása"
+     },
+     "verify_email_page": {
+         "title": "E-mail megerősítés",
+         "description": "Köszönjük, hogy regisztrált! Mielőtt elkezdené, kérjük, erősítse meg e-mail címét az általunk küldött linkre kattintva. Ha nem kapta meg az e-mailt, szívesen küldünk egy újat.",
+         "verification_link_sent": "Új megerősítő linket küldtünk a regisztráció során megadott e-mail címére.",
+         "resend_button": "Megerősítő e-mail újraküldése",
+         "logout_button": "Kijelentkezés"
+     }
+ }
+ 
