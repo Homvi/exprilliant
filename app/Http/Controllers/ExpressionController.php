@@ -13,33 +13,18 @@ class ExpressionController extends Controller
     {
         $mode = $request->query('mode');
 
-        if ($mode === 'es-en') {
-            // Fetch Spanish expressions to English
-            $expressions = Expression::where('expression_language', 'es')
-                ->where('answer_language', 'en')
-                ->where('is_validated', true)
-                ->inRandomOrder()
-                ->limit(5)
-                ->get();
-        } elseif ($mode === 'en-es') {
-            // Fetch English expressions to Spanish
-            $expressions = Expression::where('expression_language', 'en')
-                ->where('answer_language', 'es')
-                ->where('is_validated', true)
-                ->inRandomOrder()
-                ->limit(5)
-                ->get();
-        } elseif ($mode === 'en-hu') {
-            // Fetch English expressions to Spanish
-            $expressions = Expression::where('expression_language', 'en')
-                ->where('answer_language', 'hu')
-                ->where('is_validated', true)
-                ->inRandomOrder()
-                ->limit(5)
-                ->get();
-        } else {
+        if (!$mode || !str_contains($mode, '-')) {
             return response()->json(['error' => 'Invalid mode'], 400);
         }
+
+        [$expressionLanguage, $answerLanguage] = explode('-', $mode);
+
+        $expressions = Expression::where('expression_language', $expressionLanguage)
+            ->where('answer_language', $answerLanguage)
+            ->where('is_validated', true)
+            ->inRandomOrder()
+            ->limit(5)
+            ->get();
 
         return response()->json($expressions);
     }
