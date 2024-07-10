@@ -24,7 +24,6 @@ const Navbar = () => {
     }
 
     const isFontSizeLarge = false;
-    const language = "en";
 
     return (
         <div className="navbar bg-base-100 font-nova border-b-[1px] py-4 border-[#05213819] relative top-0 z-40 hidden md:flex">
@@ -44,7 +43,7 @@ const Navbar = () => {
                         isFontSizeLarge ? "text-xl" : ""
                     }`}
                 >
-                    <li>
+                    {/* <li>
                         <details ref={languageSettingsDrawerRef}>
                             <summary className="text-gray-400">
                                 Change language
@@ -82,7 +81,7 @@ const Navbar = () => {
                                 </div>
                             </ul>
                         </details>
-                    </li>
+                    </li> */}
                     {/* <li>
                         <details ref={fontSizeSettingsDrawerRef}>
                             <summary className="text-gray-400">
