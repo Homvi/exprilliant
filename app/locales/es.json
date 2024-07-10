@@ -1,17 +1,25 @@
 {
-    "title": "¡La forma libre, divertida y efectiva de aprender expresiones!",
-    "get_started": "Comenzar",
-    "login": "Ya tengo una cuenta",
-    "choose_language_title": "Quiero aprender...",
-    "spanish_to_english": "Expresiones en español",
-    "english_to_spanish": "Expresiones en inglés",
-    "register": "Registrarse",
-    "login_nav": "Iniciar sesión",
-    "logout": "Cerrar sesión",
-    "request_new_expression": "Solicitar nueva expresión",
-    "your_score": "Tu puntuación",
-    "good_job": "¡Buen trabajo!",
-    "excellent_job": "¡Trabajo excelente!",
-    "go_to_main_page": "Ir a la página principal",
-    "give_me_more": "Dame 5 más"
+    "home_page": {
+        "title": "¡La forma libre, divertida y efectiva de aprender expresiones!",
+        "get_started": "Comenzar",
+        "login": "Ya tengo una cuenta"
+    },
+    "choose_game_mode_page" : {
+        "choose_language_title": "Quiero aprender...",
+        "spanish_to_english": "Expresiones en español",
+        "english_to_spanish": "Expresiones en inglés"
+    },
+    "navbar" : {
+        "register": "Registrarse",
+        "login_nav": "Iniciar sesión",
+        "logout": "Cerrar sesión",
+        "request_new_expression": "Solicitar nueva expresión"
+    },
+    "score_page": {
+        "your_score": "Tu puntuación",
+        "good_job": "¡Buen trabajo!",
+        "excellent_job": "¡Trabajo excelente!",
+        "go_to_main_page": "Ir a la página principal",
+        "give_me_more": "Dame 5 más"
+    }
 }

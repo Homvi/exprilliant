@@ -4,7 +4,7 @@ import { useRef } from "react";
 
 const Navbar = () => {
     const { auth, localeData } = usePage().props;
-    const { data } = localeData;
+    const { navbar } = localeData.data;
 
     const handleLogout = async () => {
         await axios.post("/logout");
@@ -110,22 +110,22 @@ const Navbar = () => {
                     {!auth.user && (
                         <>
                             <li>
-                                <Link href="/register">{data["register"]}</Link>
+                                <Link href="/register">{navbar.register}</Link>
                             </li>
                             <li>
-                                <Link href="/login">{data["login_nav"]}</Link>
+                                <Link href="/login">{navbar.login_nav}</Link>
                             </li>
                         </>
                     )}
                     {auth.user && (
                         <li onClick={handleLogout}>
-                            <a href="#">{data["logout"]}</a>
+                            <a href="#">{navbar.logout}</a>
                         </li>
                     )}
                     {auth.user && (
                         <li>
                             <Link href="/request-new-expression">
-                                {data["request_new_expression"]}
+                                {navbar.request_new_expression}
                             </Link>
                         </li>
                     )}

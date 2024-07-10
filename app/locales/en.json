@@ -1,17 +1,25 @@
 {
-    "title": "The free, fun, and effective way to learn expressions!",
-    "get_started": "Get started",
-    "login": "I already have an account",
-    "choose_language_title": "I want to learn...",
-    "spanish_to_english": "Spanish expressions",
-    "english_to_spanish": "English expressions",
-    "register": "Register",
-    "login_nav": "Login",
-    "logout": "Logout",
-    "request_new_expression": "Request new expression",
-    "your_score": "Your score",
-    "good_job": "Good Job!",
-    "excellent_job": "Excellent Job!",
-    "go_to_main_page": "Go to main page",
-    "give_me_more": "Give me 5 more"
+   "home_page": {
+        "title": "The free, fun, and effective way to learn expressions!",
+        "get_started": "Get started",
+        "login": "I already have an account"
+    },
+    "choose_game_mode_page" : {
+        "choose_language_title": "I want to learn...",
+        "spanish_to_english": "Spanish expressions",
+        "english_to_spanish": "English expressions"
+    },
+    "navbar" : {
+        "register": "Register",
+        "login_nav": "Login",
+        "logout": "Logout",
+        "request_new_expression": "Request new expression"
+    },
+    "score_page": {
+        "your_score": "Your score",
+        "good_job": "Good Job!",
+        "excellent_job": "Excellent Job!",
+        "go_to_main_page": "Go to main page",
+        "give_me_more": "Give me 5 more"
+    }
 }

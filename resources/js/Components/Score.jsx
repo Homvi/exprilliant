@@ -2,12 +2,13 @@ import React, { useState, useEffect } from "react";
 import { useLottie } from "lottie-react";
 import check from "../../assets/animations/check.json";
 import fireworks from "../../assets/animations/fireworks.json";
-import { Link } from "@inertiajs/react";
+import { Link, usePage } from "@inertiajs/react";
 
 const Score = ({ score, resetGame }) => {
     const [animatedScore, setAnimatedScore] = useState(0);
 
-    const language = "en";
+    const { localeData } = usePage().props;
+    const { score_page } = localeData.data;
 
     const animation = score > 4 ? fireworks : check;
     const hasToLoop = score > 4 ? true : false;
@@ -44,7 +45,7 @@ const Score = ({ score, resetGame }) => {
         <div className="flex justify-start flex-col items-center gap-6 w-full my-5">
             <div className="w-56 sm:max-w-2xl">{View}</div>
             <h2 className="text-[#052138a4] text-2xl">
-                Your score:{" "}
+                {score_page.your_score}:{" "}
                 <span
                     className={
                         score > 4
@@ -57,12 +58,12 @@ const Score = ({ score, resetGame }) => {
             </h2>
             {score <= 4 && (
                 <h3 className="text-[#052138a4] text-xl tracking-widest">
-                    Good Job!
+                    {score_page.good_job}
                 </h3>
             )}
             {score > 4 && (
                 <h3 className="text-[#a39301] text-xl tracking-widest">
-                    Excellent Job!
+                    {score_page.excellent_job}
                 </h3>
             )}
             <div className="flex gap-6 justify-center w-full text-center">
@@ -70,13 +71,13 @@ const Score = ({ score, resetGame }) => {
                     className="bg-[#052138] whitespace-nowrap shadow-md text-white py-2 transition-all duration-300 hover:scale-105 w-[40%] rounded-lg px-1 max-w-[200px]"
                     href="/"
                 >
-                    Go to main page
+                    {score_page.go_to_main_page}
                 </Link>
                 <button
                     onClick={resetGame}
                     className="bg-[#60AC90] whitespace-nowrap shadow-md text-white py-2 transition-all duration-300 hover:scale-105 w-[40%] rounded-lg px-1 max-w-[200px]"
                 >
-                    Give me 5 more
+                    {score_page.give_me_more}
                 </button>
             </div>
         </div>

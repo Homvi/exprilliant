@@ -6,7 +6,7 @@ import { useGameMode } from "@/contexts/GameModeContext";
 
 const ChooseLanguage = () => {
     const { localeData } = usePage().props;
-    const { data } = localeData;
+    const { choose_game_mode_page } = localeData.data;
 
     const { setGameMode } = useGameMode();
 
@@ -22,7 +22,9 @@ const ChooseLanguage = () => {
             <CustomGuestLayout>
                 <div className={isFontSizeLarge ? "text-3xl" : "text-2xl"}>
                     <div className="min-h-screen font-nova bg-[#052138] text-white p-3 flex flex-col">
-                        <h1 className="text-center my-6">{data["choose_language_title"]}</h1>
+                        <h1 className="text-center my-6">
+                            {choose_game_mode_page.choose_language_title}
+                        </h1>
                         {/* Language cards */}
                         <div className="flex flex-wrap justify-center md:justify-start gap-3">
                             <Link
@@ -59,7 +61,7 @@ const ChooseLanguage = () => {
                                                 : "mt-3 text-xl"
                                         }
                                     >
-                                        {data["spanish_to_english"]}
+                                        {choose_game_mode_page.spanish_to_english}
                                     </h3>
                                 </div>
                             </Link>
@@ -98,7 +100,7 @@ const ChooseLanguage = () => {
                                                 : "mt-3 text-xl"
                                         }
                                     >
-                                        {data["english_to_spanish"]}
+                                        {choose_game_mode_page.english_to_spanish}
                                     </h3>
                                 </div>
                             </Link>
