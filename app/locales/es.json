@@ -4,5 +4,9 @@
     "login": "Ya tengo una cuenta",
     "choose_language_title": "Quiero aprender...",
     "spanish_to_english": "Expresiones en español",
-    "english_to_spanish": "Expresiones en inglés"
+    "english_to_spanish": "Expresiones en inglés",
+    "register": "Registrarse",
+    "login_nav": "Iniciar sesión",
+    "logout": "Cerrar sesión",
+    "request_new_expression": "Solicitar nueva expresión"
 }

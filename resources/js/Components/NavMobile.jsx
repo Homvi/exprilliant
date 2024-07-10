@@ -2,7 +2,8 @@ import { Link, usePage } from "@inertiajs/react";
 import logo from "../../assets/exprilliant-with-text.webp";
 
 const MobileNavbar = () => {
-    const { auth } = usePage().props;
+    const { auth, localeData } = usePage().props;
+    const { data } = localeData;
 
     const handleLogout = async () => {
         await axios.post("/logout");
@@ -39,23 +40,23 @@ const MobileNavbar = () => {
                     >
                         {!auth.user && (
                             <li>
-                                <Link href="/register">Register</Link>
+                                <Link href="/register">{data["register"]}</Link>
                             </li>
                         )}
                         {!auth.user && (
                             <li>
-                                <Link href="/login">Login</Link>
+                                <Link href="/login">{data["login_nav"]}</Link>
                             </li>
                         )}
                         {auth.user && (
                             <li onClick={handleLogout}>
-                                <Link href="#">Logout</Link>
+                                <Link href="#">{data["logout"]}</Link>
                             </li>
                         )}
                         {auth.user && (
                             <li>
                                 <Link href="/request-new-expression">
-                                    Request expression
+                                    {data["request_new_expression"]}
                                 </Link>
                             </li>
                         )}
