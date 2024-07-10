@@ -1,5 +1,6 @@
 import es from "../../assets/es.svg";
 import en from "../../assets/en.svg";
+import hu from "../../assets/hu.svg"; // Hungarian flag
 import { Head, Link, usePage } from "@inertiajs/react";
 import CustomGuestLayout from "../Layouts/CustomGuestLayout";
 import { useGameMode } from "@/contexts/GameModeContext";
@@ -65,7 +66,7 @@ const ChooseLanguage = () => {
                                     </h3>
                                 </div>
                             </Link>
-                            {/* English card */}
+                            {/* English to Spanish card */}
                             <Link
                                 href="/game"
                                 onClick={() => handleGameModeSelection("en-es")}
@@ -101,6 +102,45 @@ const ChooseLanguage = () => {
                                         }
                                     >
                                         {choose_game_mode_page.english_to_spanish}
+                                    </h3>
+                                </div>
+                            </Link>
+                            {/* English to Hungarian card */}
+                            <Link
+                                href="/game"
+                                onClick={() => handleGameModeSelection("en-hu")}
+                            >
+                                <div className="border-2 border-[#4c4c4c33] hover:border-white/40 transition-all duration-100 hover:bg-white/10 flex w-44 p-5 text-center cursor-pointer rounded-xl flex-col items-center">
+                                    <img
+                                        src={en}
+                                        alt="English flag"
+                                        className="w-full mb-2"
+                                    />
+                                    <div className="flex justify-center space-x-1">
+                                        <img
+                                            src={hu}
+                                            alt="Hungarian flag"
+                                            className="w-8 h-8"
+                                        />
+                                        <img
+                                            src={hu}
+                                            alt="Hungarian flag"
+                                            className="w-8 h-8"
+                                        />
+                                        <img
+                                            src={hu}
+                                            alt="Hungarian flag"
+                                            className="w-8 h-8"
+                                        />
+                                    </div>
+                                    <h3
+                                        className={
+                                            isFontSizeLarge
+                                                ? "mt-3"
+                                                : "mt-3 text-xl"
+                                        }
+                                    >
+                                        {choose_game_mode_page.english_to_hungarian}
                                     </h3>
                                 </div>
                             </Link>
