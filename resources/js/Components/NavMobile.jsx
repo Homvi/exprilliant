@@ -61,68 +61,6 @@ const MobileNavbar = () => {
                                 </Link>
                             </li>
                         )}
-                        {/* <li>
-                            {" "}
-                            <details>
-                                <summary>Change language</summary>
-                                <ul className="flex">
-                                    <div className="form-control">
-                                        <label className="label cursor-pointer">
-                                            <ul>
-                                                <li
-                                                    onClick={() => {
-                                                        changeLanguage("es");
-                                                    }}
-                                                >
-                                                    <button
-                                                        disabled={
-                                                            language === "es"
-                                                        }
-                                                        className="btn mb-2"
-                                                    >
-                                                        Español
-                                                    </button>
-                                                </li>
-                                                <li>
-                                                    <button
-                                                        className="btn"
-                                                        disabled={
-                                                            language === "en"
-                                                        }
-                                                        onClick={() =>
-                                                            changeLanguage("en")
-                                                        }
-                                                    >
-                                                        English
-                                                    </button>
-                                                </li>
-                                            </ul>
-                                        </label>
-                                    </div>
-                                </ul>
-                            </details>
-                        </li> */}
-                        {/* <li>
-                            {" "}
-                            <details>
-                                <summary>Accessibility</summary>
-                                <ul className="flex justify-start ">
-                                    <div className="form-control flex flex-wrap  w-full">
-                                        <span className="label-text w-fit">
-                                            Change font size
-                                        </span>
-                                        <input
-                                            type="checkbox"
-                                            className="toggle mt-1"
-                                            onChange={() =>
-                                                dispatch(changeFontSize())
-                                            }
-                                            checked={isFontSizeLarge}
-                                        />
-                                    </div>
-                                </ul>
-                            </details>
-                        </li> */}
                     </ul>
                 </div>
             </div>
