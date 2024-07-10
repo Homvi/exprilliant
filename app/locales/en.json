@@ -7,7 +7,8 @@
     "choose_game_mode_page" : {
         "choose_language_title": "I want to learn...",
         "spanish_to_english": "Spanish expressions",
-        "english_to_spanish": "English expressions"
+        "english_to_spanish": "English expressions",
+        "english_to_hungarian": "English expressions"
     },
     "navbar" : {
         "register": "Register",

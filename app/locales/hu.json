@@ -7,7 +7,8 @@
      "choose_game_mode_page" : {
          "choose_language_title": "Szeretnék tanulni...",
          "spanish_to_english": "Spanyol kifejezések",
-         "english_to_spanish": "Angol kifejezések"
+         "english_to_spanish": "Angol kifejezések",
+         "english_to_hungarian": "Angol kifejezések"
      },
      "navbar" : {
          "register": "Regisztráció",
