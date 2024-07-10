@@ -8,5 +8,10 @@
     "register": "Registrarse",
     "login_nav": "Iniciar sesión",
     "logout": "Cerrar sesión",
-    "request_new_expression": "Solicitar nueva expresión"
+    "request_new_expression": "Solicitar nueva expresión",
+    "your_score": "Tu puntuación",
+    "good_job": "¡Buen trabajo!",
+    "excellent_job": "¡Trabajo excelente!",
+    "go_to_main_page": "Ir a la página principal",
+    "give_me_more": "Dame 5 más"
 }
