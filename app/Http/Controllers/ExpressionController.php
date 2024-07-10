@@ -29,6 +29,14 @@ class ExpressionController extends Controller
                 ->inRandomOrder()
                 ->limit(5)
                 ->get();
+        } elseif ($mode === 'en-hu') {
+            // Fetch English expressions to Spanish
+            $expressions = Expression::where('expression_language', 'en')
+                ->where('answer_language', 'hu')
+                ->where('is_validated', true)
+                ->inRandomOrder()
+                ->limit(5)
+                ->get();
         } else {
             return response()->json(['error' => 'Invalid mode'], 400);
         }
