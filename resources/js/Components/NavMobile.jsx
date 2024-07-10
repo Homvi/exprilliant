@@ -35,16 +35,16 @@ const MobileNavbar = () => {
                             />
                         </svg>
                     </div>
-                    <ul className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+                    <ul className="menu menu-sm dropdown-content mt-3 z-[1000] p-2 shadow bg-base-100 rounded-box w-52">
                         {!auth.user && (
-                            <li>
-                                <Link href="/register">Register</Link>
-                            </li>
+                            <Link className="ml-3" href="/register">
+                                Register
+                            </Link>
                         )}
                         {!auth.user && (
-                            <li>
-                                <Link href="/login">Login</Link>
-                            </li>
+                            <Link className="ml-3" href="/login">
+                                Login
+                            </Link>
                         )}
                         {auth.user && (
                             <li onClick={handleLogout}>
