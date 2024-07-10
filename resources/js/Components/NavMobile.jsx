@@ -1,18 +1,14 @@
-import { Link } from "@inertiajs/react";
+import { Link, usePage } from "@inertiajs/react";
 import logo from "../../assets/exprilliant-with-text.webp";
 
 const MobileNavbar = () => {
-    const handleLogout = () => {
-        // TODO: BE - Handle logout
-        //navigate user to welcome page
+    const { auth } = usePage().props;
+
+    const handleLogout = async () => {
+        await axios.post("/logout");
+        window.location.reload();
     };
 
-    // TODO: BE - Handle user dynamically
-    const loggedInUser = {
-        firstName: null,
-    };
-
-    const isFontSizeLarge = false;
     const language = "en";
 
     return (
@@ -40,24 +36,24 @@ const MobileNavbar = () => {
                         </svg>
                     </div>
                     <ul className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
-                        {!loggedInUser.firstName && (
+                        {!auth.user && (
                             <li>
                                 <Link href="/register">Register</Link>
                             </li>
                         )}
-                        {!loggedInUser.firstName && (
+                        {!auth.user && (
                             <li>
                                 <Link href="/login">Login</Link>
                             </li>
                         )}
-                        {loggedInUser.firstName && (
+                        {auth.user && (
                             <li onClick={handleLogout}>
                                 <Link href="#">Logout</Link>
                             </li>
                         )}
-                        {loggedInUser.firstName && (
+                        {auth.user && (
                             <li>
-                                <Link href="/requestExpression">
+                                <Link href="/request-new-expression">
                                     Request expression
                                 </Link>
                             </li>
@@ -103,7 +99,7 @@ const MobileNavbar = () => {
                                 </ul>
                             </details>
                         </li>
-                        <li>
+                        {/* <li>
                             {" "}
                             <details>
                                 <summary>Accessibility</summary>
@@ -123,7 +119,7 @@ const MobileNavbar = () => {
                                     </div>
                                 </ul>
                             </details>
-                        </li>
+                        </li> */}
                     </ul>
                 </div>
             </div>
