@@ -9,8 +9,6 @@ const MobileNavbar = () => {
         window.location.reload();
     };
 
-    const language = "en";
-
     return (
         <div className="navbar bg-base-100 md:hidden">
             <div className="navbar-start">
