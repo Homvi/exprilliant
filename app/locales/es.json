@@ -1,5 +1,8 @@
 {
     "title": "¡La forma libre, divertida y efectiva de aprender expresiones!",
     "get_started": "Comenzar",
-    "login": "Ya tengo una cuenta"
+    "login": "Ya tengo una cuenta",
+    "choose_language_title": "Quiero aprender...",
+    "spanish_to_english": "Expresiones en español",
+    "english_to_spanish": "Expresiones en inglés"
 }
