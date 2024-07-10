@@ -1,13 +1,13 @@
-//resources/js/Pages/ChooseLanguage.jsx
-
 import es from "../../assets/es.svg";
 import en from "../../assets/en.svg";
-import { Head, Link } from "@inertiajs/react";
+import { Head, Link, usePage } from "@inertiajs/react";
 import CustomGuestLayout from "../Layouts/CustomGuestLayout";
 import { useGameMode } from "@/contexts/GameModeContext";
 
 const ChooseLanguage = () => {
-    const language = "en";
+    const { localeData } = usePage().props;
+    const { data } = localeData;
+
     const { setGameMode } = useGameMode();
 
     const handleGameModeSelection = (mode) => {
@@ -22,8 +22,8 @@ const ChooseLanguage = () => {
             <CustomGuestLayout>
                 <div className={isFontSizeLarge ? "text-3xl" : "text-2xl"}>
                     <div className="min-h-screen font-nova bg-[#052138] text-white p-3 flex flex-col">
-                        <h1 className="text-center my-6">I want to learn...</h1>
-                        {/* spanish card */}
+                        <h1 className="text-center my-6">{data["choose_language_title"]}</h1>
+                        {/* Language cards */}
                         <div className="flex flex-wrap justify-center md:justify-start gap-3">
                             <Link
                                 href="/game"
@@ -33,8 +33,25 @@ const ChooseLanguage = () => {
                                     <img
                                         src={es}
                                         alt="Spanish flag"
-                                        className="w-full"
+                                        className="w-full mb-2"
                                     />
+                                    <div className="flex justify-center space-x-1">
+                                        <img
+                                            src={en}
+                                            alt="English flag"
+                                            className="w-8 h-8"
+                                        />
+                                        <img
+                                            src={en}
+                                            alt="English flag"
+                                            className="w-8 h-8"
+                                        />
+                                        <img
+                                            src={en}
+                                            alt="English flag"
+                                            className="w-8 h-8"
+                                        />
+                                    </div>
                                     <h3
                                         className={
                                             isFontSizeLarge
@@ -42,7 +59,7 @@ const ChooseLanguage = () => {
                                                 : "mt-3 text-xl"
                                         }
                                     >
-                                        Spanish expressions
+                                        {data["spanish_to_english"]}
                                     </h3>
                                 </div>
                             </Link>
@@ -55,8 +72,25 @@ const ChooseLanguage = () => {
                                     <img
                                         src={en}
                                         alt="English flag"
-                                        className="w-full"
+                                        className="w-full mb-2"
                                     />
+                                    <div className="flex justify-center space-x-1">
+                                        <img
+                                            src={es}
+                                            alt="Spanish flag"
+                                            className="w-8 h-8"
+                                        />
+                                        <img
+                                            src={es}
+                                            alt="Spanish flag"
+                                            className="w-8 h-8"
+                                        />
+                                        <img
+                                            src={es}
+                                            alt="Spanish flag"
+                                            className="w-8 h-8"
+                                        />
+                                    </div>
                                     <h3
                                         className={
                                             isFontSizeLarge
@@ -64,7 +98,7 @@ const ChooseLanguage = () => {
                                                 : "mt-3 text-xl"
                                         }
                                     >
-                                        English Expressions
+                                        {data["english_to_spanish"]}
                                     </h3>
                                 </div>
                             </Link>
