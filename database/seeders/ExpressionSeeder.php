@@ -3,9 +3,9 @@
 namespace Database\Seeders;
 
 use App\Models\User;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
 
 class ExpressionSeeder extends Seeder
 {
@@ -14,345 +14,27 @@ class ExpressionSeeder extends Seeder
      */
     public function run(): void
     {
+        // Truncate the expressions table to avoid duplicates
         DB::table('expressions')->truncate();
 
+        // Fetch the first user
         $user = User::first();
 
         if ($user) {
-            DB::table('expressions')->insert([
-                // Spanish to English
-                [
-                    'expression' => 'Meter la pata',
-                    'right_answer' => 'To make a mistake',
-                    'false_answer_one' => 'To have good luck',
-                    'false_answer_two' => 'To be angry',
-                    'expression_language' => 'es',
-                    'answer_language' => 'en',
-                    'user_id' => $user->id,
-                    'is_validated' => true,
-                    'created_at' => now(),
-                ],
-                [
-                    'expression' => 'Estar en las nubes',
-                    'right_answer' => 'Daydreaming or thinking about something unrelated to reality',
-                    'false_answer_one' => 'Being very focused on a task',
-                    'false_answer_two' => 'Feeling light and happy',
-                    'expression_language' => 'es',
-                    'answer_language' => 'en',
-                    'user_id' => $user->id,
-                    'is_validated' => true,
-                    'created_at' => now(),
-                ],
-                [
-                    'expression' => 'Dar en el clavo',
-                    'right_answer' => 'To find the right solution',
-                    'false_answer_one' => 'To accidentally hit something with a nail',
-                    'false_answer_two' => 'To make a mistake while attempting something',
-                    'expression_language' => 'es',
-                    'answer_language' => 'en',
-                    'user_id' => $user->id,
-                    'is_validated' => true,
-                    'created_at' => now(),
-                ],
-                [
-                    'expression' => 'Salirse con la suya',
-                    'right_answer' => 'To achieve your goal, against the wishes of others',
-                    'false_answer_one' => 'To abandon a project before completing it',
-                    'false_answer_two' => 'To face the consequences of an action',
-                    'expression_language' => 'es',
-                    'answer_language' => 'en',
-                    'user_id' => $user->id,
-                    'is_validated' => true,
-                    'created_at' => now(),
-                ],
-                [
-                    'expression' => 'Costar un ojo de la cara / Costar un riñón',
-                    'right_answer' => 'To be very expensive',
-                    'false_answer_one' => 'To experience great physical effort',
-                    'false_answer_two' => 'To have a high sentimental value',
-                    'expression_language' => 'es',
-                    'answer_language' => 'en',
-                    'user_id' => $user->id,
-                    'is_validated' => true,
-                    'created_at' => now(),
-                ],
-                [
-                    'expression' => 'Hablar por los codos',
-                    'right_answer' => 'To talk a lot or non-stop',
-                    'false_answer_one' => 'To speak through your elbows',
-                    'false_answer_two' => 'To communicate using gestures',
-                    'expression_language' => 'es',
-                    'answer_language' => 'en',
-                    'user_id' => $user->id,
-                    'is_validated' => true,
-                    'created_at' => now(),
-                ],
-                [
-                    'expression' => 'Tomar el pelo',
-                    'right_answer' => 'To tease or make fun of someone',
-                    'false_answer_one' => 'To brush your hair',
-                    'false_answer_two' => 'To help someone',
-                    'expression_language' => 'es',
-                    'answer_language' => 'en',
-                    'user_id' => $user->id,
-                    'is_validated' => true,
-                    'created_at' => now(),
-                ],
-                [
-                    'expression' => 'Eso es pan comido',
-                    'right_answer' => 'That is an easy task',
-                    'false_answer_one' => 'That is eaten bread',
-                    'false_answer_two' => 'That is a difficult task',
-                    'expression_language' => 'es',
-                    'answer_language' => 'en',
-                    'user_id' => $user->id,
-                    'is_validated' => true,
-                    'created_at' => now(),
-                ],
-                [
-                    'expression' => 'Tener algo en la punta de la lengua',
-                    'right_answer' => "When we know something but it doesn't come to us right away",
-                    'false_answer_one' => 'To be an eloquent speaker',
-                    'false_answer_two' => 'To remember something suddenly',
-                    'expression_language' => 'es',
-                    'answer_language' => 'en',
-                    'user_id' => $user->id,
-                    'is_validated' => true,
-                    'created_at' => now(),
-                ],
-                [
-                    'expression' => 'De tal palo, tal astilla',
-                    'right_answer' => 'To be similar to your parents',
-                    'false_answer_one' => 'To be a family of carpenters',
-                    'false_answer_two' => 'To have a good relation with your family',
-                    'expression_language' => 'es',
-                    'answer_language' => 'en',
-                    'user_id' => $user->id,
-                    'is_validated' => true,
-                    'created_at' => now(),
-                ],
-                // English to Spanish
-                [
-                    'expression' => 'Piece of cake',
-                    'right_answer' => 'Algo fácil de hacer',
-                    'false_answer_one' => 'Ser un trozo de tarta',
-                    'false_answer_two' => 'Algo complicado de hacer',
-                    'expression_language' => 'en',
-                    'answer_language' => 'es',
-                    'user_id' => $user->id,
-                    'is_validated' => true,
-                    'created_at' => now(),
-                ],
-                [
-                    'expression' => 'Cut to the chase',
-                    'right_answer' => 'Ir a lo importante',
-                    'false_answer_one' => 'Hacer una pausa',
-                    'false_answer_two' => 'Dejar de correr',
-                    'expression_language' => 'en',
-                    'answer_language' => 'es',
-                    'user_id' => $user->id,
-                    'is_validated' => true,
-                    'created_at' => now(),
-                ],
-                [
-                    'expression' => 'To cost an arm and a leg',
-                    'right_answer' => 'Cuando algo es muy caro',
-                    'false_answer_one' => 'Cuando algo te cuesta un brazo y una pierna',
-                    'false_answer_two' => 'Cuando algo necesita un esfuerzo físico',
-                    'expression_language' => 'en',
-                    'answer_language' => 'es',
-                    'user_id' => $user->id,
-                    'is_validated' => true,
-                    'created_at' => now(),
-                ],
-                [
-                    'expression' => 'To miss the boat',
-                    'right_answer' => 'Perder la oportunidad',
-                    'false_answer_one' => 'Perder el barco',
-                    'false_answer_two' => 'Perder el rumbo de la conversación',
-                    'expression_language' => 'en',
-                    'answer_language' => 'es',
-                    'user_id' => $user->id,
-                    'is_validated' => true,
-                    'created_at' => now(),
-                ],
-                [
-                    'expression' => 'Once in a blue moon',
-                    'right_answer' => 'Muy raramente',
-                    'false_answer_one' => 'Cada vez que la luna es azul',
-                    'false_answer_two' => 'Con mucha frecuencia',
-                    'expression_language' => 'en',
-                    'answer_language' => 'es',
-                    'user_id' => $user->id,
-                    'is_validated' => true,
-                    'created_at' => now(),
-                ],
-                [
-                    'expression' => 'To give someone the cold shoulder',
-                    'right_answer' => 'Ignorar a alguien',
-                    'false_answer_one' => 'Darle a alguien con el hombro frío',
-                    'false_answer_two' => 'Darle especial importancia a alguien',
-                    'expression_language' => 'en',
-                    'answer_language' => 'es',
-                    'user_id' => $user->id,
-                    'is_validated' => true,
-                    'created_at' => now(),
-                ],
-                [
-                    'expression' => 'To feel blue',
-                    'right_answer' => 'Estar triste',
-                    'false_answer_one' => 'Ser azul',
-                    'false_answer_two' => 'Estar eufórico',
-                    'expression_language' => 'en',
-                    'answer_language' => 'es',
-                    'user_id' => $user->id,
-                    'is_validated' => true,
-                    'created_at' => now(),
-                ],
-                [
-                    'expression' => 'Speak of the devil',
-                    'right_answer' => 'Cuando hablas de alguien y aparece',
-                    'false_answer_one' => 'Cuando hablas del diablo',
-                    'false_answer_two' => 'Cuando te pasa algo malo',
-                    'expression_language' => 'en',
-                    'answer_language' => 'es',
-                    'user_id' => $user->id,
-                    'is_validated' => true,
-                    'created_at' => now(),
-                ],
-                [
-                    'expression' => 'To not be rocket science',
-                    'right_answer' => 'Cuando una tarea no es difícil',
-                    'false_answer_one' => 'Cuando algo no es científico',
-                    'false_answer_two' => 'Cuando alguien no tiene un buen físico',
-                    'expression_language' => 'en',
-                    'answer_language' => 'es',
-                    'user_id' => $user->id,
-                    'is_validated' => true,
-                    'created_at' => now(),
-                ],
-                [
-                    'expression' => 'Break a leg!',
-                    'right_answer' => 'Se utiliza para desear suerte',
-                    'false_answer_one' => 'Cuando alguien se rompe una pierna',
-                    'false_answer_two' => 'Cuando pasa algo malo',
-                    'expression_language' => 'en',
-                    'answer_language' => 'es',
-                    'user_id' => $user->id,
-                    'is_validated' => true,
-                    'created_at' => now(),
-                ],
-                [
-                    'expression' => 'Bite the bullet',
-                    'right_answer' => 'Elviselni valami kellemetlen dolgot',
-                    'false_answer_one' => 'Amikor valaki golyót harap',
-                    'false_answer_two' => 'Amikor valaki golyót kap',
-                    'expression_language' => 'en',
-                    'answer_language' => 'hu',
-                    'user_id' => $user->id,
-                    'is_validated' => true,
-                    'created_at' => now(),
-                ],
-                [
-                    'expression' => 'Let the cat out of the bag',
-                    'right_answer' => 'Elárulni egy titkot',
-                    'false_answer_one' => 'Amikor kiengeded a macskát a táskából',
-                    'false_answer_two' => 'Amikor a macska kiszökik a házból',
-                    'expression_language' => 'en',
-                    'answer_language' => 'hu',
-                    'user_id' => $user->id,
-                    'is_validated' => true,
-                    'created_at' => now(),
-                ],
-                [
-                    'expression' => 'Hit the nail on the head',
-                    'right_answer' => 'Pontosan eltalálni valamit',
-                    'false_answer_one' => 'Amikor kalapáccsal eltalálod a szöget',
-                    'false_answer_two' => 'Amikor valaki fejbe üt egy szöget',
-                    'expression_language' => 'en',
-                    'answer_language' => 'hu',
-                    'user_id' => $user->id,
-                    'is_validated' => true,
-                    'created_at' => now(),
-                ],
-                [
-                    'expression' => 'Kick the bucket',
-                    'right_answer' => 'Meghalni',
-                    'false_answer_one' => 'Amikor valaki megrúgja a vödröt',
-                    'false_answer_two' => 'Amikor valaki elrúgja a vödröt',
-                    'expression_language' => 'en',
-                    'answer_language' => 'hu',
-                    'user_id' => $user->id,
-                    'is_validated' => true,
-                    'created_at' => now(),
-                ],
-                [
-                    'expression' => 'Under the weather',
-                    'right_answer' => 'Rosszul érzi magát',
-                    'false_answer_one' => 'Amikor az időjárás alatt van',
-                    'false_answer_two' => 'Amikor valaki az esőben van',
-                    'expression_language' => 'en',
-                    'answer_language' => 'hu',
-                    'user_id' => $user->id,
-                    'is_validated' => true,
-                    'created_at' => now(),
-                ],
-                [
-                    'expression' => 'Piece of cake',
-                    'right_answer' => 'Nagyon könnyű feladat',
-                    'false_answer_one' => 'Egy szelet sütemény',
-                    'false_answer_two' => 'Amikor valaki tortát eszik',
-                    'expression_language' => 'en',
-                    'answer_language' => 'hu',
-                    'user_id' => $user->id,
-                    'is_validated' => true,
-                    'created_at' => now(),
-                ],
-                [
-                    'expression' => 'Cost an arm and a leg',
-                    'right_answer' => 'Nagyon drága',
-                    'false_answer_one' => 'Amikor valaki elveszíti a karját és a lábát',
-                    'false_answer_two' => 'Amikor valami testrészekbe kerül',
-                    'expression_language' => 'en',
-                    'answer_language' => 'hu',
-                    'user_id' => $user->id,
-                    'is_validated' => true,
-                    'created_at' => now(),
-                ],
-                [
-                    'expression' => 'Spill the beans',
-                    'right_answer' => 'Elárulni egy titkot',
-                    'false_answer_one' => 'Amikor valaki kilöttyenti a babot',
-                    'false_answer_two' => 'Amikor valaki kilöttyent valamit',
-                    'expression_language' => 'en',
-                    'answer_language' => 'hu',
-                    'user_id' => $user->id,
-                    'is_validated' => true,
-                    'created_at' => now(),
-                ],
-                [
-                    'expression' => 'Break the ice',
-                    'right_answer' => 'Megkezdeni a beszélgetést',
-                    'false_answer_one' => 'Amikor valaki megtöri a jeget',
-                    'false_answer_two' => 'Amikor valaki jégre esik',
-                    'expression_language' => 'en',
-                    'answer_language' => 'hu',
-                    'user_id' => $user->id,
-                    'is_validated' => true,
-                    'created_at' => now(),
-                ],
-                [
-                    'expression' => 'Butterflies in your stomach',
-                    'right_answer' => 'Idegesnek lenni',
-                    'false_answer_one' => 'Amikor pillangók vannak a hasadban',
-                    'false_answer_two' => 'Amikor valaki pillangókat eszik',
-                    'expression_language' => 'en',
-                    'answer_language' => 'hu',
-                    'user_id' => $user->id,
-                    'is_validated' => true,
-                    'created_at' => now(),
-                ]
-            ]);
+            // Load and decode the JSON file
+            $jsonFilePath = database_path('data/expressions.json');
+            $expressions = json_decode(File::get($jsonFilePath), true);
+
+            // Map through the expressions and add the user_id and created_at fields
+            $expressions = array_map(function ($expression) use ($user) {
+                $expression['user_id'] = $user->id;
+                $expression['created_at'] = now();
+                $expression['updated_at'] = $expression['updated_at'] ?? null; // Set to null if not present
+                return $expression;
+            }, $expressions);
+
+            // Insert the expressions into the database
+            DB::table('expressions')->insert($expressions);
         }
     }
 }
