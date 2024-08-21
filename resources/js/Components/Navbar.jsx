@@ -44,69 +44,6 @@ const Navbar = () => {
                         isFontSizeLarge ? "text-xl" : ""
                     }`}
                 >
-                    {/* <li>
-                        <details ref={languageSettingsDrawerRef}>
-                            <summary className="text-gray-400">
-                                Change language
-                            </summary>
-                            <ul className="flex">
-                                <div className="form-control">
-                                    <label className="label cursor-pointer">
-                                        <ul>
-                                            <li
-                                                onClick={() => {
-                                                    closeMenu();
-                                                }}
-                                            >
-                                                <button
-                                                    disabled={language === "es"}
-                                                    className="btn mb-2 z-50"
-                                                >
-                                                    Español
-                                                </button>
-                                            </li>
-                                            <li
-                                                onClick={() => {
-                                                    closeMenu();
-                                                }}
-                                            >
-                                                <button
-                                                    disabled={language === "en"}
-                                                    className="btn z-50"
-                                                >
-                                                    English
-                                                </button>
-                                            </li>
-                                        </ul>
-                                    </label>
-                                </div>
-                            </ul>
-                        </details>
-                    </li> */}
-                    {/* <li>
-                        <details ref={fontSizeSettingsDrawerRef}>
-                            <summary className="text-gray-400">
-                                Accessibility
-                            </summary>
-                            <ul className="flex">
-                                <div className="form-control">
-                                    <label className="label cursor-pointer">
-                                        <span className="label-text ">
-                                            Change font size
-                                        </span>
-                                        <input
-                                            type="checkbox"
-                                            className="toggle ml-3"
-                                            onChange={() => {
-                                                closeMenu();
-                                            }}
-                                            checked={isFontSizeLarge}
-                                        />
-                                    </label>
-                                </div>
-                            </ul>
-                        </details>
-                    </li> */}
                     {!auth.user && (
                         <>
                             <li>
@@ -126,6 +63,13 @@ const Navbar = () => {
                         <li>
                             <Link href="/request-new-expression">
                                 {navbar.request_new_expression}
+                            </Link>
+                        </li>
+                    )}
+                    {auth.user?.email === "adam.honvedo@gmail.com" && (
+                        <li>
+                            <Link href="/admin/unvalidated-expressions">
+                                Validate expressions
                             </Link>
                         </li>
                     )}

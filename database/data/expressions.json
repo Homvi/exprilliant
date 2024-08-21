@@ -1,6 +1,6 @@
 [
   {
-    "id": 1,
+    
     "expression": "Meter la pata",
     "right_answer": "To make a mistake",
     "false_answer_one": "To have good luck",
@@ -13,7 +13,7 @@
     "is_validated": true
   },
   {
-    "id": 2,
+    
     "expression": "Estar en las nubes",
     "right_answer": "Daydreaming or thinking about something unrelated to reality",
     "false_answer_one": "Being very focused on a task",
@@ -26,7 +26,7 @@
     "is_validated": true
   },
   {
-    "id": 3,
+    
     "expression": "Dar en el clavo",
     "right_answer": "To find the right solution",
     "false_answer_one": "To accidentally hit something with a nail",
@@ -39,7 +39,7 @@
     "is_validated": true
   },
   {
-    "id": 4,
+    
     "expression": "Salirse con la suya",
     "right_answer": "To achieve your goal, against the wishes of others",
     "false_answer_one": "To abandon a project before completing it",
@@ -52,7 +52,7 @@
     "is_validated": true
   },
   {
-    "id": 5,
+    
     "expression": "Costar un ojo de la cara / Costar un riñón",
     "right_answer": "To be very expensive",
     "false_answer_one": "To experience great physical effort",
@@ -65,7 +65,7 @@
     "is_validated": true
   },
   {
-    "id": 6,
+    
     "expression": "Hablar por los codos",
     "right_answer": "To talk a lot or non-stop",
     "false_answer_one": "To speak through your elbows",
@@ -78,7 +78,7 @@
     "is_validated": true
   },
   {
-    "id": 7,
+    
     "expression": "Tomar el pelo",
     "right_answer": "To tease or make fun of someone",
     "false_answer_one": "To brush your hair",
@@ -91,7 +91,7 @@
     "is_validated": true
   },
   {
-    "id": 8,
+    
     "expression": "Eso es pan comido",
     "right_answer": "That is an easy task",
     "false_answer_one": "That is eaten bread",
@@ -104,7 +104,7 @@
     "is_validated": true
   },
   {
-    "id": 9,
+    
     "expression": "Tener algo en la punta de la lengua",
     "right_answer": "When we know something but it doesn''t come to us right away",
     "false_answer_one": "To be an eloquent speaker",
@@ -117,7 +117,7 @@
     "is_validated": true
   },
   {
-    "id": 10,
+    
     "expression": "De tal palo, tal astilla",
     "right_answer": "To be similar to your parents",
     "false_answer_one": "To be a family of carpenters",
@@ -130,7 +130,7 @@
     "is_validated": true
   },
   {
-    "id": 11,
+    
     "expression": "Piece of cake",
     "right_answer": "Algo fácil de hacer",
     "false_answer_one": "Ser un trozo de tarta",
@@ -143,7 +143,7 @@
     "is_validated": true
   },
   {
-    "id": 12,
+    
     "expression": "Cut to the chase",
     "right_answer": "Ir a lo importante",
     "false_answer_one": "Hacer una pausa",
@@ -156,7 +156,7 @@
     "is_validated": true
   },
   {
-    "id": 13,
+    
     "expression": "To cost an arm and a leg",
     "right_answer": "Cuando algo es muy caro",
     "false_answer_one": "Cuando algo te cuesta un brazo y una pierna",
@@ -169,7 +169,7 @@
     "is_validated": true
   },
   {
-    "id": 14,
+    
     "expression": "To miss the boat",
     "right_answer": "Perder la oportunidad",
     "false_answer_one": "Perder el barco",
@@ -182,7 +182,7 @@
     "is_validated": true
   },
   {
-    "id": 15,
+    
     "expression": "Once in a blue moon",
     "right_answer": "Muy raramente",
     "false_answer_one": "Cada vez que la luna es azul",
@@ -195,7 +195,7 @@
     "is_validated": true
   },
   {
-    "id": 16,
+    
     "expression": "To give someone the cold shoulder",
     "right_answer": "Ignorar a alguien",
     "false_answer_one": "Darle a alguien con el hombro frío",
@@ -208,7 +208,7 @@
     "is_validated": true
   },
   {
-    "id": 17,
+    
     "expression": "To feel blue",
     "right_answer": "Estar triste",
     "false_answer_one": "Ser azul",
@@ -221,7 +221,7 @@
     "is_validated": true
   },
   {
-    "id": 18,
+    
     "expression": "Speak of the devil",
     "right_answer": "Cuando hablas de alguien y aparece",
     "false_answer_one": "Cuando hablas del diablo",
@@ -234,7 +234,7 @@
     "is_validated": true
   },
   {
-    "id": 19,
+    
     "expression": "To not be rocket science",
     "right_answer": "Cuando una tarea no es difícil",
     "false_answer_one": "Cuando algo no es científico",
@@ -247,7 +247,7 @@
     "is_validated": true
   },
   {
-    "id": 20,
+    
     "expression": "Break a leg!",
     "right_answer": "Se utiliza para desear suerte",
     "false_answer_one": "Cuando alguien se rompe una pierna",
@@ -260,7 +260,7 @@
     "is_validated": true
   },
   {
-    "id": 21,
+    
     "expression": "Buscar la quinta pata al gato",
     "right_answer": "To make something way more complicated than it is",
     "false_answer_one": "To try and find a hidden talent in someone",
@@ -273,7 +273,7 @@
     "is_validated": true
   },
   {
-    "id": 22,
+    
     "expression": "Bite the bullet",
     "right_answer": "Elviselni valami kellemetlen dolgot",
     "false_answer_one": "Amikor valaki golyót kap",
@@ -286,7 +286,7 @@
     "is_validated": true
   },
   {
-    "id": 23,
+    
     "expression": "Let the cat out of the bag",
     "right_answer": "Elárulni egy titkot",
     "false_answer_one": "Szabadon engedni valakit",
@@ -299,7 +299,7 @@
     "is_validated": true
   },
   {
-    "id": 24,
+    
     "expression": "Hit the nail on the head",
     "right_answer": "Pontosan eltalálni valamit",
     "false_answer_one": "Fájdalmat okozni valakinek",
@@ -312,7 +312,7 @@
     "is_validated": true
   },
   {
-    "id": 25,
+    
     "expression": "Kick the bucket",
     "right_answer": "Meghalni",
     "false_answer_one": "Amikor valaki mérges",
@@ -325,7 +325,7 @@
     "is_validated": true
   },
   {
-    "id": 26,
+    
     "expression": "Piece of cake",
     "right_answer": "Nagyon könnyű feladat",
     "false_answer_one": "Amikor valaki nagyon nyugodt",
@@ -338,7 +338,7 @@
     "is_validated": true
   },
   {
-    "id": 27,
+    
     "expression": "Más vale pájaro en mano que ciento volando",
     "right_answer": "Better to have something secure than another better but insecure option",
     "false_answer_one": "Hold a bird in your hand",
@@ -351,7 +351,7 @@
     "is_validated": true
   },
   {
-    "id": 28,
+    
     "expression": "Tener la negra",
     "right_answer": "To have bad luck",
     "false_answer_one": "To be in a serious mood",
@@ -364,7 +364,7 @@
     "is_validated": true
   },
   {
-    "id": 29,
+    
     "expression": "Tener memoria de pez",
     "right_answer": "To have a bad memory",
     "false_answer_one": "To be a fish enthusiast",
@@ -377,7 +377,7 @@
     "is_validated": true
   },
   {
-    "id": 30,
+    
     "expression": "Ser un gallina",
     "right_answer": "To be a coward",
     "false_answer_one": "To collect chicken eggs",
@@ -390,7 +390,7 @@
     "is_validated": true
   },
   {
-    "id": 31,
+    
     "expression": "Ser un bombón",
     "right_answer": "To be very good looking",
     "false_answer_one": "To be very popular",
@@ -403,7 +403,7 @@
     "is_validated": true
   },
   {
-    "id": 32,
+    
     "expression": "Ser del año de la pera",
     "right_answer": "To be very very old",
     "false_answer_one": "To be as sweet as a pear",
@@ -416,7 +416,7 @@
     "is_validated": true
   },
   {
-    "id": 33,
+    
     "expression": "Dar la vuelta a la tortilla",
     "right_answer": "To turn the situation around",
     "false_answer_one": "To flip a pancake",
@@ -429,7 +429,7 @@
     "is_validated": true
   },
   {
-    "id": 34,
+    
     "expression": "Call a spade a spade",
     "right_answer": "Decir la verdad sin rodeos",
     "false_answer_one": "Mentir",
@@ -442,7 +442,7 @@
     "is_validated": true
   },
   {
-    "id": 35,
+    
     "expression": "Call it a day",
     "right_answer": "Terminar por hoy",
     "false_answer_one": "Empezar algo nuevo",
@@ -455,7 +455,7 @@
     "is_validated": true
   },
   {
-    "id": 36,
+    
     "expression": "Couch potato",
     "right_answer": "Sedentario",
     "false_answer_one": "Agricultor",

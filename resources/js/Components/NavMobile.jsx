@@ -60,6 +60,13 @@ const MobileNavbar = () => {
                                 </Link>
                             </li>
                         )}
+                        {auth.user?.email === "adam.honvedo@gmail.com" && (
+                            <li>
+                                <Link href="/admin/unvalidated-expressions">
+                                    Validate expressions
+                                </Link>
+                            </li>
+                        )}
                     </ul>
                 </div>
             </div>

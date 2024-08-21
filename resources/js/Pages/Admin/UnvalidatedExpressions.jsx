@@ -6,18 +6,6 @@ import DangerButton from "@/Components/DangerButton";
 import SecondaryButton from "@/Components/SecondaryButton";
 import PrimaryButton from "@/Components/PrimaryButton";
 
-const getBorderColor = (language) => {
-    switch (language) {
-        case "en":
-            return "border-blue-500"; // English - Blue
-        case "es":
-            return "border-yellow-500"; // Spanish - Red
-        case "hu":
-            return "border-green-500"; // Hungarian - Green
-        default:
-            return "border-gray-500"; // Default - Gray
-    }
-};
 
 const UnvalidatedExpressions = ({ expressions }) => {
     const [confirmingDeletion, setConfirmingDeletion] = useState(false);
@@ -63,69 +51,58 @@ const UnvalidatedExpressions = ({ expressions }) => {
 
     return (
         <CustomGuestLayout>
-            <div className="p-3 bg-[#eff0f7] text-[#171923]">
+            <div className="p-3 bg-[#eff0f7] text-[#171923] min-h-screen">
                 <Head title="Unvalidated Expressions" />
 
                 <h1 className="text-2xl font-bold mb-4">
                     Unvalidated Expressions
                 </h1>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     {expressions.length === 0 && (
                         <p>No unvalidated expressions found.</p>
                     )}
                     {expressions.map((expression) => (
                         <div
                             key={expression.id}
-                            className={`border-t-4 ${getBorderColor(
-                                expression.expression_language
-                            )} rounded-lg shadow-lg p-6 bg-[#171923] text-red-600`}
+                            className={`border-t-4 rounded-lg shadow-lg p-6 bg-white text-neutral-800`}
                         >
                             <div className="flex justify-between items-center">
-                                <h2 className="text-xl font-semibold">
-                                    {expression.expression}
-                                </h2>
                                 <div>
-                                    <button
-                                        className="bg-white text-[#171923] py-1 px-4 rounded mr-2"
-                                        onClick={() =>
-                                            handleValidate(expression.id)
-                                        }
-                                        disabled={processing}
-                                    >
-                                        Validate
-                                    </button>
-                                    <button
-                                        className="bg-red-600 text-white py-1 px-4 rounded"
-                                        onClick={() =>
-                                            handleDelete(expression.id)
-                                        }
-                                        disabled={processing}
-                                    >
-                                        Delete
-                                    </button>
+                                    <div>
+                                        {expression.expression_language}-
+                                        {expression.answer_language}
+                                    </div>
+                                    <h2 className="text-2xl font-semibold">
+                                        {expression.expression}
+                                    </h2>
                                 </div>
                             </div>
                             <div className="mt-4">
-                                <p>
-                                    <strong>Right Answer:</strong>{" "}
+                                <p className="bg-green-200 mb-3 p-1">
+                                    <strong>Right Answer:</strong> <br />
                                     {expression.right_answer}
                                 </p>
-                                <p>
-                                    <strong>False Answer 1:</strong>{" "}
+                                <p className="bg-red-200 mb-3 p-1">
+                                    <strong>False Answer 1:</strong> <br />
                                     {expression.false_answer_one}
                                 </p>
-                                <p>
-                                    <strong>False Answer 2:</strong>{" "}
+                                <p className="bg-red-200 mb-3 p-1">
+                                    <strong>False Answer 2:</strong> <br />
                                     {expression.false_answer_two}
                                 </p>
                                 <p>
-                                    <strong>Expression Language:</strong>{" "}
-                                    {expression.expression_language}
+                                    Expression Language:{" "}
+                                    <strong>
+                                        {" "}
+                                        {expression.expression_language}
+                                    </strong>
                                 </p>
                                 <p>
-                                    <strong>Answer Language:</strong>{" "}
-                                    {expression.answer_language}
+                                    Answer Language:{" "}
+                                    <strong>
+                                        {expression.answer_language}
+                                    </strong>
                                 </p>
                                 <p>
                                     <strong>Submitted by:</strong>{" "}
@@ -138,6 +115,24 @@ const UnvalidatedExpressions = ({ expressions }) => {
                                         ? expression.user.email
                                         : "Unknown"}
                                 </p>
+                            </div>
+                            <div className="mt-5">
+                                <button
+                                    className="bg-green-600 text-white py-1 px-4 rounded mr-2"
+                                    onClick={() =>
+                                        handleValidate(expression.id)
+                                    }
+                                    disabled={processing}
+                                >
+                                    Validate
+                                </button>
+                                <button
+                                    className="bg-red-600 text-white py-1 px-4 rounded"
+                                    onClick={() => handleDelete(expression.id)}
+                                    disabled={processing}
+                                >
+                                    Delete
+                                </button>
                             </div>
                         </div>
                     ))}
