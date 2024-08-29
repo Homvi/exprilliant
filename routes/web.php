@@ -1,57 +1,44 @@
 <?php
 
+use App\Http\Controllers\ChooseGameModeController;
 use App\Http\Controllers\ExpressionController;
+use App\Http\Controllers\GameController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Middleware\InjectLocaleData;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+/* Web Routes */
 
-Route::get('/', function () {
-    return Inertia::render('Home');
-})->middleware(InjectLocaleData::class);
-
-
-
-Route::get('/choose-game-mode', function () {
-    return Inertia::render('ChooseGameMode');
+// Public Routes
+Route::middleware([InjectLocaleData::class])->group(function () {
+    Route::get('/', HomeController::class)->name('home');
+    Route::get('/game', GameController::class)->name('game');
+    Route::get('/choose-game-mode', ChooseGameModeController::class)->name('choose-game-mode');
+    Route::get('/random-expressions', [ExpressionController::class, 'getRandomExpressions'])->name('expressions.random');
 });
 
-Route::get('/game', function () {
-    return Inertia::render('Game');
-});
-
-Route::get('/random-expressions', [ExpressionController::class, 'getRandomExpressions']);
-
-
-Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
-Route::middleware('auth', 'verified')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+// Registered User Routes
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::prefix('profile')->name('profile.')->group(function () {
+        Route::get('/', [ProfileController::class, 'edit'])->name('edit');
+        Route::patch('/', [ProfileController::class, 'update'])->name('update');
+        Route::delete('/', [ProfileController::class, 'destroy'])->name('destroy');
+    });
 
     Route::get('/request-new-expression', [ExpressionController::class, 'create'])->name('expressions.create');
     Route::post('/expressions', [ExpressionController::class, 'store'])->name('expressions.store');
+
+    Route::get('/dashboard', fn() => Inertia::render('Dashboard'))->name('dashboard');
 });
 
-// admin routes
-Route::middleware(['auth', 'admin'])->group(function () {
-    Route::get('/admin/unvalidated-expressions', [ExpressionController::class, 'adminIndex'])->name('admin.expressions');
-    Route::post('/admin/expressions/{expression}/validate', [ExpressionController::class, 'validateExpression'])->name('admin.expressions.validate');
-    Route::delete('/admin/expressions/{expression}', [ExpressionController::class, 'destroy'])->name('admin.expressions.destroy');
+// Admin Routes
+Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
+    Route::get('/unvalidated-expressions', [ExpressionController::class, 'adminIndex'])->name('expressions.index');
+    Route::post('/expressions/{expression}/validate', [ExpressionController::class, 'validateExpression'])->name('expressions.validate');
+    Route::delete('/expressions/{expression}', [ExpressionController::class, 'destroy'])->name('expressions.destroy');
 });
 
+// Authentication Routes
 require __DIR__ . '/auth.php';
