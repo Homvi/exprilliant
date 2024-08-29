@@ -1,6 +1,6 @@
 import es from "../../assets/es.svg";
 import en from "../../assets/en.svg";
-import hu from "../../assets/hu.svg"; // Hungarian flag
+import hu from "../../assets/hu.svg";
 import { Head, Link, usePage } from "@inertiajs/react";
 import CustomGuestLayout from "../Layouts/CustomGuestLayout";
 import LanguageCard from "@/Components/LanguageCard";
