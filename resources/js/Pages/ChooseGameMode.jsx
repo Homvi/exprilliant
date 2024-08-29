@@ -3,152 +3,55 @@ import en from "../../assets/en.svg";
 import hu from "../../assets/hu.svg"; // Hungarian flag
 import { Head, Link, usePage } from "@inertiajs/react";
 import CustomGuestLayout from "../Layouts/CustomGuestLayout";
-import { useGameMode } from "@/contexts/GameModeContext";
+import LanguageCard from "@/Components/LanguageCard";
 
 const ChooseLanguage = () => {
+    // get language content
     const { localeData } = usePage().props;
     const { choose_game_mode_page } = localeData.data;
 
-    const { setGameMode } = useGameMode();
-
-    const handleGameModeSelection = (mode) => {
-        setGameMode(mode);
-    };
-
-    const isFontSizeLarge = false;
+    // TODO: Add dynamic title according to language
 
     return (
-        <>
+        <CustomGuestLayout>
             <Head title="Choose game mode" />
-            <CustomGuestLayout>
-                <div className={isFontSizeLarge ? "text-3xl" : "text-2xl"}>
-                    <div className="min-h-screen font-nova bg-[#052138] text-white p-3 flex flex-col">
-                        <h1 className="text-center my-6">
-                            {choose_game_mode_page.choose_language_title}
-                        </h1>
-                        {/* Language cards */}
-                        <div className="flex flex-wrap justify-center md:justify-start gap-3">
-                            <Link
-                                href="/game"
-                                onClick={() => handleGameModeSelection("es-en")}
-                            >
-                                <div className="border-2 border-[#4c4c4c33] flex w-44 p-5 text-center cursor-pointer rounded-xl flex-col hover:border-white/40 transition-all duration-100 hover:bg-white/10 items-center">
-                                    <img
-                                        src={es}
-                                        alt="Spanish flag"
-                                        className="w-full mb-2"
-                                    />
-                                    <div className="flex justify-center space-x-1">
-                                        <img
-                                            src={en}
-                                            alt="English flag"
-                                            className="w-8 h-8"
-                                        />
-                                        <img
-                                            src={en}
-                                            alt="English flag"
-                                            className="w-8 h-8"
-                                        />
-                                        <img
-                                            src={en}
-                                            alt="English flag"
-                                            className="w-8 h-8"
-                                        />
-                                    </div>
-                                    <h3
-                                        className={
-                                            isFontSizeLarge
-                                                ? "mt-3"
-                                                : "mt-3 text-xl"
-                                        }
-                                    >
-                                        {choose_game_mode_page.spanish_to_english}
-                                    </h3>
-                                </div>
-                            </Link>
-                            {/* English to Spanish card */}
-                            <Link
-                                href="/game"
-                                onClick={() => handleGameModeSelection("en-es")}
-                            >
-                                <div className="border-2 border-[#4c4c4c33] hover:border-white/40 transition-all duration-100 hover:bg-white/10 flex w-44 p-5 text-center cursor-pointer rounded-xl flex-col items-center">
-                                    <img
-                                        src={en}
-                                        alt="English flag"
-                                        className="w-full mb-2"
-                                    />
-                                    <div className="flex justify-center space-x-1">
-                                        <img
-                                            src={es}
-                                            alt="Spanish flag"
-                                            className="w-8 h-8"
-                                        />
-                                        <img
-                                            src={es}
-                                            alt="Spanish flag"
-                                            className="w-8 h-8"
-                                        />
-                                        <img
-                                            src={es}
-                                            alt="Spanish flag"
-                                            className="w-8 h-8"
-                                        />
-                                    </div>
-                                    <h3
-                                        className={
-                                            isFontSizeLarge
-                                                ? "mt-3"
-                                                : "mt-3 text-xl"
-                                        }
-                                    >
-                                        {choose_game_mode_page.english_to_spanish}
-                                    </h3>
-                                </div>
-                            </Link>
-                            {/* English to Hungarian card */}
-                            <Link
-                                href="/game"
-                                onClick={() => handleGameModeSelection("en-hu")}
-                            >
-                                <div className="border-2 border-[#4c4c4c33] hover:border-white/40 transition-all duration-100 hover:bg-white/10 flex w-44 p-5 text-center cursor-pointer rounded-xl flex-col items-center">
-                                    <img
-                                        src={en}
-                                        alt="English flag"
-                                        className="w-full mb-2"
-                                    />
-                                    <div className="flex justify-center space-x-1">
-                                        <img
-                                            src={hu}
-                                            alt="Hungarian flag"
-                                            className="w-8 h-8"
-                                        />
-                                        <img
-                                            src={hu}
-                                            alt="Hungarian flag"
-                                            className="w-8 h-8"
-                                        />
-                                        <img
-                                            src={hu}
-                                            alt="Hungarian flag"
-                                            className="w-8 h-8"
-                                        />
-                                    </div>
-                                    <h3
-                                        className={
-                                            isFontSizeLarge
-                                                ? "mt-3"
-                                                : "mt-3 text-xl"
-                                        }
-                                    >
-                                        {choose_game_mode_page.english_to_hungarian}
-                                    </h3>
-                                </div>
-                            </Link>
-                        </div>
-                    </div>
+
+            <div className="min-h-screen font-nova bg-[#052138] text-white p-3 flex flex-col text-2xl">
+                <div className="text-center my-6">
+                    <h1>{choose_game_mode_page.choose_language_title}</h1>
                 </div>
-            </CustomGuestLayout>
-        </>
+                {/* Language cards */}
+                <div className="flex flex-wrap justify-center md:justify-start gap-3">
+                    {/* Spanish to English card */}
+                    <LanguageCard
+                        questionFlag={es}
+                        answerFlag={en}
+                        gameMode="es-en"
+                        text={choose_game_mode_page.spanish_to_english}
+                        questionFlagAltText="Spanish flag"
+                        answerFlagAltText="English flag"
+                    />
+                    {/* English to Spanish card */}
+                    <LanguageCard
+                        questionFlag={en}
+                        answerFlag={es}
+                        gameMode="en-es"
+                        text={choose_game_mode_page.english_to_spanish}
+                        questionFlagAltText="English flag"
+                        answerFlagAltText="Spanish flag"
+                    />
+                    {/* English to Hungarian card */}
+                    <LanguageCard
+                        questionFlag={en}
+                        answerFlag={hu}
+                        gameMode="en-hu"
+                        text={choose_game_mode_page.english_to_hungarian}
+                        questionFlagAltText="English flag"
+                        answerFlagAltText="Hungarian flag"
+                    />
+                </div>
+            </div>
+        </CustomGuestLayout>
     );
 };
 
