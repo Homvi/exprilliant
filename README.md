@@ -18,6 +18,7 @@ Exprilliant is a web app designed to make learning common expressions and idioms
 - **Notifications:** React Toastify
 - **Build Tool:** Vite
 
+
 ## Installation
 
 To get a local copy of the project up and running, follow these steps:
@@ -109,7 +110,7 @@ Contributions are welcome! If you have suggestions, bug reports, or want to add 
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE](./license.txt) file for details.
 
 ## Live Demo
 
