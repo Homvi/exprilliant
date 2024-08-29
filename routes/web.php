@@ -1,13 +1,13 @@
 <?php
 
 use App\Http\Controllers\ChooseGameModeController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ExpressionController;
 use App\Http\Controllers\GameController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Middleware\InjectLocaleData;
 use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
 
 /* Web Routes */
 
@@ -30,7 +30,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/request-new-expression', [ExpressionController::class, 'create'])->name('expressions.create');
     Route::post('/expressions', [ExpressionController::class, 'store'])->name('expressions.store');
 
-    Route::get('/dashboard', fn() => Inertia::render('Dashboard'))->name('dashboard');
+    Route::get('/dashboard', DashboardController::class)->name('dashboard');
 });
 
 // Admin Routes
