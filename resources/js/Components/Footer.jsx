@@ -5,10 +5,8 @@ import linkedin from "../../assets/linkedin.svg";
 import portfolio from "../../assets/portfolio.svg";
 
 const Footer = () => {
-    const logoHeigth = "20";
-    const logoWidth = logoHeigth;
     return (
-        <footer className="footer footer-center p-10 border-t-[1px] border-midnight/10 md:flex md:flex-row-reverse md:justify-between ">
+        <footer className="footer footer-center p-10 border-t-[1px] border-midnight/5 md:flex md:flex-row-reverse md:justify-between ">
             <nav>
                 <div className="grid grid-flow-col gap-5 md:gap:10 max">
                     <ContactLogo href={"https://github.com/Homvi"}>
