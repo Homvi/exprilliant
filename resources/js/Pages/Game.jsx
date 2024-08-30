@@ -8,6 +8,7 @@ import CustomGuestLayout from "../Layouts/CustomGuestLayout";
 import { useGameMode } from "@/contexts/GameModeContext";
 import { Head } from "@inertiajs/react";
 import { shuffle } from "lodash";
+import ExpressionsContainer from "@/Components/ExpressionsContainer";
 
 const Game = () => {
     const [loading, setLoading] = useState(true);
@@ -20,7 +21,6 @@ const Game = () => {
 
     const score = useRef(0);
     const { gameMode } = useGameMode();
-    const isFontSizeLarge = false;
 
     // if no game mode choosen redirect user
     useEffect(() => {
@@ -76,7 +76,7 @@ const Game = () => {
             setIsGameFinished(true);
         }
     }
-    
+
     useEffect(() => {
         handleFinish();
     }, [activeExpressionIndex]);
@@ -159,21 +159,8 @@ const Game = () => {
                     {!loading && !isGameFinished && (
                         <>
                             <ProgressBar progress={progress} />
-                            <div
-                                id="expressionsContainer"
-                                className={`flex flex-col text-center justify-center w-full md:max-w-xl items-center gap-3 transition-all duration-300 ${
-                                    fadeIn
-                                        ? "opacity-0 translate-x-full"
-                                        : "opacity-100 translate-x-0"
-                                }`}
-                            >
-                                <h2
-                                    className={
-                                        isFontSizeLarge
-                                            ? "text-4xl my-6"
-                                            : "text-2xl my-6"
-                                    }
-                                >
+                            <ExpressionsContainer fadeIn={fadeIn}>
+                                <h2 className="text-2xl my-6">
                                     {
                                         expressions[activeExpressionIndex]
                                             ?.expression
@@ -195,7 +182,7 @@ const Game = () => {
                                         )
                                     )}
                                 </div>
-                            </div>
+                            </ExpressionsContainer>
                         </>
                     )}
                     {/* show score */}
