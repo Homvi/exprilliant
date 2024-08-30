@@ -17,28 +17,28 @@ const LanguageCard = ({
     };
 
     return (
-        <Link href="/game" onClick={() => handleGameModeSelection(gameMode)}>
-            <div className="border-2 border-[#4c4c4c33] flex w-44 p-5 text-center cursor-pointer rounded-xl flex-col hover:border-white/40 transition-all duration-100 hover:bg-white/10 items-center">
+        <Link href="/game" onClick={() => handleGameModeSelection(gameMode)} className="w-full px-5 md:px-0 md:w-fit">
+            <div className="border-[1px] border-white/10 flex w-full p-5 bg-white/5 text-center cursor-pointer rounded-xl flex-col hover:border-white/40 transition-all duration-100 hover:bg-white/10 items-center">
                 <img
                     src={questionFlag}
                     alt={questionFlagAltText}
-                    className="w-full mb-2"
+                    className="w-full max-w-44 mb-2"
                 />
                 <div className="flex justify-center space-x-1">
                     <img
                         src={answerFlag}
                         alt={answerFlagAltText}
-                        className="w-8 h-8"
+                        className="w-12 h-12 md:w-10 md:h-10"
                     />
                     <img
                         src={answerFlag}
                         alt={answerFlagAltText}
-                        className="w-8 h-8"
+                        className="w-12 h-12 md:w-10 md:h-10"
                     />
                     <img
                         src={answerFlag}
                         alt={answerFlagAltText}
-                        className="w-8 h-8"
+                        className="w-12 h-12 md:w-10 md:h-10"
                     />
                 </div>
 
