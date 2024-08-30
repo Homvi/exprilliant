@@ -71,7 +71,7 @@ class ExpressionController extends Controller
     public function validateExpression(Expression $expression)
     {
         $expression->update(['is_validated' => true]);
-        return redirect()->route('admin.expressions')->with('message', 'Expression validated successfully!');
+        return redirect()->route('admin.expressions.index')->with('message', 'Expression validated successfully!');
     }
 
     // Delete expression
