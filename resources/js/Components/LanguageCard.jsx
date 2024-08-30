@@ -8,6 +8,7 @@ const LanguageCard = ({
     gameMode,
     questionFlagAltText,
     answerFlagAltText,
+    count,
 }) => {
     // allow to set game mode with useContext
     const { setGameMode } = useGameMode();
@@ -17,7 +18,11 @@ const LanguageCard = ({
     };
 
     return (
-        <Link href="/game" onClick={() => handleGameModeSelection(gameMode)} className="w-full px-5 md:px-0 md:w-fit">
+        <Link
+            href="/game"
+            onClick={() => handleGameModeSelection(gameMode)}
+            className="w-full px-5 md:px-0 md:w-fit"
+        >
             <div className="border-[1px] border-white/10 flex w-full p-5 bg-white/5 text-center cursor-pointer rounded-xl flex-col hover:border-white/40 transition-all duration-100 hover:bg-white/10 items-center">
                 <img
                     src={questionFlag}
@@ -43,7 +48,9 @@ const LanguageCard = ({
                 </div>
 
                 {/* text content eg.: "Spanish expressions" */}
-                <h3 className="mt-3 text-xl">{text}</h3>
+                <h3 className="mt-3 text-xl">
+                    {text} <span className="opacity-30">({count})</span>{" "}
+                </h3>
             </div>
         </Link>
     );
