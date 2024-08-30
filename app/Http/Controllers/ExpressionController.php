@@ -12,6 +12,7 @@ class ExpressionController extends Controller
     public function getRandomExpressions(Request $request)
     {
         $mode = $request->query('mode');
+        $numberOfRequestedExpressions = $request->query('numberOfExpressions');
 
         if (!$mode || !str_contains($mode, '-')) {
             return response()->json(['error' => 'Invalid mode'], 400);
@@ -23,7 +24,7 @@ class ExpressionController extends Controller
             ->where('answer_language', $answerLanguage)
             ->where('is_validated', true)
             ->inRandomOrder()
-            ->limit(5)
+            ->limit($numberOfRequestedExpressions)
             ->get();
 
         return response()->json($expressions);
