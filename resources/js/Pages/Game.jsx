@@ -9,6 +9,7 @@ import { useGameMode } from "@/contexts/GameModeContext";
 import { Head } from "@inertiajs/react";
 import { shuffle } from "lodash";
 import ExpressionsContainer from "@/Components/ExpressionsContainer";
+import ActiveExpressionHeader from "@/Components/ActiveExpressionHeader";
 
 const Game = () => {
     const [loading, setLoading] = useState(true);
@@ -81,7 +82,7 @@ const Game = () => {
         handleFinish();
     }, [activeExpressionIndex]);
 
-    const activeExpression = expressions[activeExpressionIndex];
+    const activeExpressionWithAnswers = expressions[activeExpressionIndex];
 
     function handleChoice(answerChosen) {
         const isCorrect = answerChosen === activeExpression?.right_answer;
@@ -94,24 +95,24 @@ const Game = () => {
         }, 1000);
     }
 
-    function getChoicesInShuffledOrder(activeExpression) {
+    function getChoicesInShuffledOrder(activeExpressionWithAnswers) {
         const shuffledOrders = shuffle([1, 2, 3]);
 
         const activeExpressionChoices = [
             {
-                answer: activeExpression?.right_answer,
+                answer: activeExpressionWithAnswers?.right_answer,
                 order: shuffledOrders[0],
                 correct: true,
                 highlight: false,
             },
             {
-                answer: activeExpression?.false_answer_one,
+                answer: activeExpressionWithAnswers?.false_answer_one,
                 order: shuffledOrders[1],
                 correct: false,
                 highlight: false,
             },
             {
-                answer: activeExpression?.false_answer_two,
+                answer: activeExpressionWithAnswers?.false_answer_two,
                 order: shuffledOrders[2],
                 correct: false,
                 highlight: false,
@@ -147,6 +148,8 @@ const Game = () => {
         setActiveExpressionIndex((curr) => curr + 1);
     }
 
+    let activeExpression = expressions[activeExpressionIndex]?.expression;
+
     return (
         <>
             <Head title="Game" />
@@ -160,12 +163,9 @@ const Game = () => {
                         <>
                             <ProgressBar progress={progress} />
                             <ExpressionsContainer fadeIn={fadeIn}>
-                                <h2 className="text-2xl my-6">
-                                    {
-                                        expressions[activeExpressionIndex]
-                                            ?.expression
-                                    }
-                                </h2>
+                                <ActiveExpressionHeader>
+                                    {activeExpression}
+                                </ActiveExpressionHeader>
                                 <div className="flex flex-col gap-3 w-full overflow-hidden">
                                     {activeExpressionChoices.map(
                                         (choice, id) => (
