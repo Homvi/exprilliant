@@ -82,8 +82,6 @@ const Game = () => {
         handleFinish();
     }, [activeExpressionIndex]);
 
-    const activeExpressionWithAnswers = expressions[activeExpressionIndex];
-
     function handleChoice(answerChosen) {
         const isCorrect = answerChosen === activeExpression?.right_answer;
         setIsClickable(false);
