@@ -7,7 +7,7 @@ import Choice from "../Components/Choice.jsx";
 import CustomGuestLayout from "../Layouts/CustomGuestLayout";
 import { useGameMode } from "@/contexts/GameModeContext";
 import { Head } from "@inertiajs/react";
-import { shuffleArray } from "@/functions";
+import { shuffle } from "lodash";
 
 const Game = () => {
     const [loading, setLoading] = useState(true);
@@ -51,7 +51,6 @@ const Game = () => {
         }
     };
 
-    // get expressions, shuffle them and set as a state
     useEffect(() => {
         fetchRandomExpressions();
     }, [isGameFinished]);
@@ -72,13 +71,13 @@ const Game = () => {
         return () => clearTimeout(timer);
     }, [activeExpressionIndex]);
 
-    // show score when it is appropriate
-    useEffect(() => {
-        function handleFinish() {
-            if (numberOfExpressions === activeExpressionIndex) {
-                setIsGameFinished(true);
-            }
+    function handleFinish() {
+        if (numberOfExpressions === activeExpressionIndex) {
+            setIsGameFinished(true);
         }
+    }
+    
+    useEffect(() => {
         handleFinish();
     }, [activeExpressionIndex]);
 
@@ -96,7 +95,7 @@ const Game = () => {
     }
 
     function getChoicesInShuffledOrder(activeExpression) {
-        const shuffledOrders = shuffleArray([1, 2, 3]);
+        const shuffledOrders = shuffle([1, 2, 3]);
 
         const activeExpressionChoices = [
             {
