@@ -42,6 +42,9 @@ const Home = () => {
                             >
                                 {home_page.login}
                             </Link>
+                            <span className="text-base text-midnight/30">
+                                {home_page.explanation}
+                            </span>
                         </div>
                     </div>
                 </div>

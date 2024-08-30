@@ -2,7 +2,8 @@
     "home_page": {
         "title": "¡La forma libre, divertida y efectiva de aprender expresiones!",
         "get_started": "Comenzar",
-        "login": "Ya tengo una cuenta"
+        "login": "Iniciar Sesión",
+        "explanation": "* Los usuarios que inicien sesión pueden solicitar nuevas expresiones."
     },
     "choose_game_mode_page" : {
         "choose_language_title": "Quiero aprender...",

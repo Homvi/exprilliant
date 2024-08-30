@@ -2,7 +2,8 @@
     "home_page": {
          "title": "Az ingyenes, szórakoztató és hatékony módja a kifejezések megtanulásának!",
          "get_started": "Kezdjük el",
-         "login": "Már van fiókom"
+         "login": "Bejelentkezés",
+        "explanation": "* A bejelentkezett felhasználók új kifejezéseket küldhetnek be."
      },
      "choose_game_mode_page" : {
          "choose_language_title": "Amit gyakorolni szeretnék...",

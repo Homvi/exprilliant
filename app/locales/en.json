@@ -2,7 +2,8 @@
    "home_page": {
         "title": "The free, fun, and effective way to learn expressions!",
         "get_started": "Get started",
-        "login": "I already have an account"
+        "login": "Login",
+        "explanation": "* Logged in users can request new expressions."
     },
     "choose_game_mode_page" : {
         "choose_language_title": "I want to learn...",
