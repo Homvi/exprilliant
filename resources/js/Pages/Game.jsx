@@ -10,6 +10,7 @@ import { Head } from "@inertiajs/react";
 import { shuffle } from "lodash";
 import ExpressionsContainer from "@/Components/ExpressionsContainer";
 import ActiveExpressionHeader from "@/Components/ActiveExpressionHeader";
+import { numberOfExpressions } from "@/config";
 
 const Game = () => {
     const [loading, setLoading] = useState(true);
@@ -41,12 +42,10 @@ const Game = () => {
         }
     };
 
-    const numberOfExpressions = 5;
-
     const fetchRandomExpressions = async () => {
         try {
             const response = await axios.get(
-                `/random-expressions?mode=${gameMode}`
+                `/random-expressions?mode=${gameMode}&numberOfExpressions=${numberOfExpressions}`
             );
             setExpressions(response.data);
             setLoading(false);
