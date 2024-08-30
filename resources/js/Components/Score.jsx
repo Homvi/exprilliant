@@ -3,6 +3,7 @@ import { useLottie } from "lottie-react";
 import check from "../../assets/animations/check.json";
 import fireworks from "../../assets/animations/fireworks.json";
 import { Link, usePage } from "@inertiajs/react";
+import { numberOfExpressions } from "@/config";
 
 const Score = ({ score, resetGame }) => {
     const [animatedScore, setAnimatedScore] = useState(0);
@@ -10,8 +11,8 @@ const Score = ({ score, resetGame }) => {
     const { localeData } = usePage().props;
     const { score_page } = localeData.data;
 
-    const animation = score > 4 ? fireworks : check;
-    const hasToLoop = score > 4 ? true : false;
+    const animation = score == numberOfExpressions ? fireworks : check;
+    const hasToLoop = score == numberOfExpressions ? true : false;
 
     const options = {
         animationData: animation,
@@ -42,18 +43,18 @@ const Score = ({ score, resetGame }) => {
     }, [score]);
 
     return (
-        <div className="flex justify-start flex-col items-center gap-6 w-full my-5">
+        <div className="flex justify- md:justify-center flex-col items-center gap-6 w-full my-5 md:min-h-[500px]">
             <div className="w-56 sm:max-w-2xl">{View}</div>
             <h2 className="text-[#052138a4] text-2xl">
                 {score_page.your_score}:{" "}
                 <span
                     className={
-                        score > 4
+                        score == numberOfExpressions
                             ? "text-[#a39301] animate-pulse duration-75 transition-all"
                             : "text-[#FF9600]"
                     }
                 >
-                    {Math.round((animatedScore / 5) * 100)}%
+                    {Math.round((animatedScore / numberOfExpressions) * 100)}%
                 </span>
             </h2>
             {score <= 4 && (
@@ -66,18 +67,18 @@ const Score = ({ score, resetGame }) => {
                     {score_page.excellent_job}
                 </h3>
             )}
-            <div className="flex gap-6 justify-center w-full text-center">
+            <div className="flex gap-6 justify-center items-center flex-col md:flex-row w-full text-center ">
                 <Link
-                    className="bg-[#052138] whitespace-nowrap shadow-md text-white py-2 transition-all duration-300 hover:scale-105 w-[40%] rounded-lg px-1 max-w-[200px]"
+                    className="bg-[#052138] w-full whitespace-nowrap shadow-md text-white py-2 transition-all duration-300 hover:scale-105 md:w-[40%] rounded-lg px-1 max-w-[200px]"
                     href="/"
                 >
                     {score_page.go_to_main_page}
                 </Link>
                 <button
                     onClick={resetGame}
-                    className="bg-[#60AC90] whitespace-nowrap shadow-md text-white py-2 transition-all duration-300 hover:scale-105 w-[40%] rounded-lg px-1 max-w-[200px]"
+                    className="bg-[#60AC90] w-full whitespace-nowrap shadow-md text-white py-2 transition-all duration-300 hover:scale-105 md:w-[40%] rounded-lg px-1 max-w-[200px]"
                 >
-                    {score_page.give_me_more}
+                    {score_page.give_me_more} ({numberOfExpressions})
                 </button>
             </div>
         </div>
