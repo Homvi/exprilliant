@@ -23,6 +23,9 @@ const Game = () => {
     const score = useRef(0);
     const { gameMode } = useGameMode();
 
+    let activeExpressionWithAnswers = expressions[activeExpressionIndex];
+    let activeExpression = activeExpressionWithAnswers?.expression;
+
     // if no game mode choosen redirect user
     useEffect(() => {
         if (!gameMode) {
@@ -83,7 +86,8 @@ const Game = () => {
     }, [activeExpressionIndex]);
 
     function handleChoice(answerChosen) {
-        const isCorrect = answerChosen === activeExpression?.right_answer;
+        const isCorrect =
+            answerChosen === activeExpressionWithAnswers?.right_answer;
         setIsClickable(false);
         highlightChoices(answerChosen);
         setTimeout(() => {
@@ -145,8 +149,6 @@ const Game = () => {
     function handleActiveExpressionIncrement() {
         setActiveExpressionIndex((curr) => curr + 1);
     }
-
-    let activeExpression = expressions[activeExpressionIndex]?.expression;
 
     return (
         <>
