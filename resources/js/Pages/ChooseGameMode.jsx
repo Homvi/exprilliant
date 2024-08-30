@@ -7,7 +7,7 @@ import LanguageCard from "@/Components/LanguageCard";
 
 const ChooseLanguage = () => {
     // get language content
-    const { localeData } = usePage().props;
+    const { localeData, expressionCounts } = usePage().props;
     const { choose_game_mode_page } = localeData.data;
 
     // TODO: Add dynamic title according to language
@@ -20,6 +20,7 @@ const ChooseLanguage = () => {
                 <div className="text-center my-6">
                     <h1>{choose_game_mode_page.choose_language_title}</h1>
                 </div>
+
                 {/* Language cards */}
                 <div className="flex flex-wrap justify-center md:justify-start gap-3">
                     {/* Spanish to English card */}
@@ -30,6 +31,7 @@ const ChooseLanguage = () => {
                         text={choose_game_mode_page.spanish_to_english}
                         questionFlagAltText="Spanish flag"
                         answerFlagAltText="English flag"
+                        count={expressionCounts["es-en"]}
                     />
                     {/* English to Spanish card */}
                     <LanguageCard
@@ -39,6 +41,7 @@ const ChooseLanguage = () => {
                         text={choose_game_mode_page.english_to_spanish}
                         questionFlagAltText="English flag"
                         answerFlagAltText="Spanish flag"
+                        count={expressionCounts["en-es"]}
                     />
                     {/* English to Hungarian card */}
                     <LanguageCard
@@ -48,6 +51,7 @@ const ChooseLanguage = () => {
                         text={choose_game_mode_page.english_to_hungarian}
                         questionFlagAltText="English flag"
                         answerFlagAltText="Hungarian flag"
+                        count={expressionCounts["en-hu"]}
                     />
                 </div>
             </div>
