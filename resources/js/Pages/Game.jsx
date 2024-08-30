@@ -7,6 +7,7 @@ import Choice from "../Components/Choice.jsx";
 import CustomGuestLayout from "../Layouts/CustomGuestLayout";
 import { useGameMode } from "@/contexts/GameModeContext";
 import { Head } from "@inertiajs/react";
+import { shuffleArray } from "@/functions";
 
 const Game = () => {
     const [loading, setLoading] = useState(true);
@@ -37,25 +38,6 @@ const Game = () => {
     };
 
     const numberOfExpressions = 5;
-
-    // Extracted logic to get shuffled expressions
-    /*     const fetchExpressions = (data) => {
-        const shuffledExpressions = getACertainNumberOfExpressionsElement(
-            data,
-            numberOfExpressions
-        );
-        setExpressions(shuffledExpressions);
-        setLoading(false);
-    }; */
-
-    const shuffleArray = (array) => {
-        const newArray = array.slice(); // Create a copy to avoid mutating the original array
-        for (let i = newArray.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [newArray[i], newArray[j]] = [newArray[j], newArray[i]]; // Swap elements
-        }
-        return newArray;
-    };
 
     const fetchRandomExpressions = async () => {
         try {
