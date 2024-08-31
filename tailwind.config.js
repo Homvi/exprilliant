@@ -17,6 +17,7 @@ export default {
             },
             colors: {
                 midnight: "#052138",
+                "custom-teal": "#60AC90",
             },
         },
     },
