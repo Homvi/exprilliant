@@ -3,7 +3,8 @@
         "title": "¡La forma libre, divertida y efectiva de aprender expresiones!",
         "get_started": "Comenzar",
         "login": "Iniciar Sesión",
-        "explanation": "* Los usuarios que inicien sesión pueden solicitar nuevas expresiones."
+        "explanation": "* Los usuarios que inicien sesión pueden solicitar nuevas expresiones.",
+         "request_new_expression": "Solicitar nueva expresión"
     },
     "choose_game_mode_page" : {
         "choose_language_title": "Quiero aprender...",

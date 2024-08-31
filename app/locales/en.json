@@ -3,7 +3,8 @@
         "title": "The free, fun, and effective way to learn expressions!",
         "get_started": "Get started",
         "login": "Login",
-        "explanation": "* Logged in users can request new expressions."
+        "explanation": "* Logged in users can request new expressions.",
+        "request_new_expression": "Request new expression"
     },
     "choose_game_mode_page" : {
         "choose_language_title": "I want to learn...",

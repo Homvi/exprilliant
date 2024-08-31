@@ -3,7 +3,8 @@
          "title": "Az ingyenes, szórakoztató és hatékony módja a kifejezések megtanulásának!",
          "get_started": "Kezdjük el",
          "login": "Bejelentkezés",
-        "explanation": "* A bejelentkezett felhasználók új kifejezéseket küldhetnek be."
+        "explanation": "* A bejelentkezett felhasználók új kifejezéseket küldhetnek be.",
+        "request_new_expression": "Új kifejezés beküldése"
      },
      "choose_game_mode_page" : {
          "choose_language_title": "Amit gyakorolni szeretnék...",
@@ -15,7 +16,7 @@
          "register": "Regisztráció",
          "login_nav": "Bejelentkezés",
          "logout": "Kijelentkezés",
-         "request_new_expression": "Új kifejezés kérése"
+         "request_new_expression": "Új kifejezés beküldése"
      },
      "score_page": {
          "your_score": "Az Ön pontszáma",
