@@ -21,7 +21,7 @@ const ChooseLanguage = () => {
                     <h1>{choose_game_mode_page.choose_language_title}</h1>
                 </div>
 
-                {/* Language cards */}
+                {/* Language cards container*/}
                 <div className="flex flex-wrap justify-center md:justify-start gap-3">
                     {/* Spanish to English card */}
                     <LanguageCard
