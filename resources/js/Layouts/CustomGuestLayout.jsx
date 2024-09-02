@@ -1,5 +1,3 @@
-// import { Link } from "@inertiajs/react";
-
 import Footer from "@/Components/Footer";
 import Navbar from "@/Components/Navbar.jsx";
 import NavMobile from "@/Components/NavMobile.jsx";
