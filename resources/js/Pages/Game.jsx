@@ -58,7 +58,7 @@ const Game = () => {
         fetchRandomExpressions();
     }, [isGameFinished]);
 
-    function resetGame() {
+    async function resetGame() {
         setLoading(true);
         setIsGameFinished(false);
         score.current = 0;
@@ -74,9 +74,17 @@ const Game = () => {
         return () => clearTimeout(timer);
     }, [activeExpressionIndex]);
 
-    function handleFinish() {
+    async function handleFinish() {
         if (numberOfExpressions === activeExpressionIndex) {
             setIsGameFinished(true);
+            // Send the score to update the user's experience
+            try {
+                await axios.post("/update-experience", {
+                    experienceToAdd: score.current,
+                });
+            } catch (error) {
+                console.error("Error updating experience:", error);
+            }
         }
     }
 
