@@ -78,6 +78,6 @@ class ExpressionController extends Controller
     public function destroy(Expression $expression)
     {
         $expression->delete();
-        return redirect()->route('admin.expressions')->with('message', 'Expression deleted successfully!');
+        return redirect()->route('admin.expressions.index')->with('message', 'Expression deleted successfully!');
     }
 }
