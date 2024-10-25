@@ -6,6 +6,8 @@ use App\Http\Controllers\ExpressionController;
 use App\Http\Controllers\GameController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ToplistController;
+use App\Http\Controllers\UserController;
 use App\Http\Middleware\InjectLocaleData;
 use Illuminate\Support\Facades\Route;
 
@@ -26,6 +28,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::patch('/', [ProfileController::class, 'update'])->name('update');
         Route::delete('/', [ProfileController::class, 'destroy'])->name('destroy');
     });
+
+    Route::post('/update-experience', [UserController::class, 'updateExperience']);
+
+    Route::get('/toplist', ToplistController::class)->name('toplist.index');
 
     Route::get('/request-new-expression', [ExpressionController::class, 'create'])->name('expressions.create');
     Route::post('/expressions', [ExpressionController::class, 'store'])->name('expressions.store');
