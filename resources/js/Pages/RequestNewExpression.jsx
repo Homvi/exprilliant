@@ -58,7 +58,13 @@ export default function RequestNewExpression() {
 
                 <form onSubmit={submit}>
                     <div>
-                        <InputLabel htmlFor="expression" value={request_new_expression_page.expression_label} />
+                        <InputLabel
+                            htmlFor="expression"
+                            value={
+                                request_new_expression_page.expression_label +
+                                "*"
+                            }
+                        />
 
                         <TextInput
                             id="expression"
@@ -80,7 +86,9 @@ export default function RequestNewExpression() {
                     <div className="mt-4">
                         <InputLabel
                             htmlFor="right_answer"
-                            value={request_new_expression_page.right_answer_label}
+                            value={
+                                request_new_expression_page.right_answer_label
+                            }
                         />
 
                         <TextInput
@@ -91,7 +99,6 @@ export default function RequestNewExpression() {
                             onChange={(e) =>
                                 setData("right_answer", e.target.value)
                             }
-                            required
                         />
 
                         <InputError
@@ -103,7 +110,9 @@ export default function RequestNewExpression() {
                     <div className="mt-4">
                         <InputLabel
                             htmlFor="false_answer_one"
-                            value={request_new_expression_page.false_answer_one_label}
+                            value={
+                                request_new_expression_page.false_answer_one_label
+                            }
                         />
 
                         <TextInput
@@ -114,7 +123,6 @@ export default function RequestNewExpression() {
                             onChange={(e) =>
                                 setData("false_answer_one", e.target.value)
                             }
-                            required
                         />
 
                         <InputError
@@ -126,7 +134,9 @@ export default function RequestNewExpression() {
                     <div className="mt-4">
                         <InputLabel
                             htmlFor="false_answer_two"
-                            value={request_new_expression_page.false_answer_two_label}
+                            value={
+                                request_new_expression_page.false_answer_two_label
+                            }
                         />
 
                         <TextInput
@@ -137,7 +147,6 @@ export default function RequestNewExpression() {
                             onChange={(e) =>
                                 setData("false_answer_two", e.target.value)
                             }
-                            required
                         />
 
                         <InputError
@@ -148,8 +157,33 @@ export default function RequestNewExpression() {
 
                     <div className="mt-4">
                         <InputLabel
+                            htmlFor="example_usage"
+                            value={
+                                request_new_expression_page.example_usage
+                            }
+                        />
+                        <textarea
+                            id="example_usage"
+                            name="example_usage"
+                            value={data.example_usage}
+                            className="mt-1 block w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm"
+                            onChange={(e) =>
+                                setData("example_usage", e.target.value)
+                            }
+                            rows="4"
+                        />
+                        <InputError
+                            message={errors.example_usage}
+                            className="mt-2"
+                        />
+                    </div>
+
+                    <div className="mt-4">
+                        <InputLabel
                             htmlFor="expression_language"
-                            value={request_new_expression_page.expression_language_label}
+                            value={
+                                request_new_expression_page.expression_language_label
+                            }
                         />
 
                         <select
@@ -176,7 +210,9 @@ export default function RequestNewExpression() {
                     <div className="mt-4">
                         <InputLabel
                             htmlFor="answer_language"
-                            value={request_new_expression_page.answer_language_label}
+                            value={
+                                request_new_expression_page.answer_language_label
+                            }
                         />
 
                         <select
