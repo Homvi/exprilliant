@@ -12,7 +12,7 @@ import ExpressionsContainer from "@/Components/ExpressionsContainer";
 import ActiveExpressionHeader from "@/Components/ActiveExpressionHeader";
 import { numberOfExpressions } from "@/config";
 
-const Game = () => {
+const Game = ({ users }) => {
     const [loading, setLoading] = useState(true);
     const [isGameFinished, setIsGameFinished] = useState(false);
     const [fadeIn, setFadeIn] = useState(false);
@@ -194,7 +194,11 @@ const Game = () => {
                     )}
                     {/* show score */}
                     {isGameFinished && (
-                        <Score score={score.current} resetGame={resetGame} />
+                        <Score
+                            score={score.current}
+                            users={users}
+                            resetGame={resetGame}
+                        />
                     )}
                 </div>
             </CustomGuestLayout>
