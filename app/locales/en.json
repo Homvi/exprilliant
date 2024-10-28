@@ -1,18 +1,18 @@
 {
-   "home_page": {
+    "home_page": {
         "title": "The free, fun, and effective way to learn expressions!",
         "get_started": "Get started",
         "login": "Login",
         "explanation": "* Logged in users can request new expressions.",
         "request_new_expression": "Request new expression"
     },
-    "choose_game_mode_page" : {
+    "choose_game_mode_page": {
         "choose_language_title": "I want to learn...",
         "spanish_to_english": "Spanish expressions",
         "english_to_spanish": "English expressions",
         "english_to_hungarian": "English expressions"
     },
-    "navbar" : {
+    "navbar": {
         "register": "Register",
         "login_nav": "Login",
         "logout": "Logout",
@@ -43,6 +43,7 @@
         "register_button": "Register"
     },
     "request_new_expression_page": {
+        "example_usage": "Example usage",
         "title": "Request New Expression",
         "expression_label": "Expression",
         "right_answer_label": "Right Answer",
