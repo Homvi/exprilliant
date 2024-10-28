@@ -4,8 +4,9 @@ import check from "../../assets/animations/check.json";
 import fireworks from "../../assets/animations/fireworks.json";
 import { Link, usePage } from "@inertiajs/react";
 import { numberOfExpressions } from "@/config";
+import ToplistCard from "@/Components/ToplistCard";
 
-const Score = ({ score, resetGame }) => {
+const Score = ({ score, resetGame, users }) => {
     const [animatedScore, setAnimatedScore] = useState(0);
 
     const { localeData } = usePage().props;
@@ -80,6 +81,9 @@ const Score = ({ score, resetGame }) => {
                 >
                     {score_page.give_me_more} ({numberOfExpressions})
                 </button>
+            </div>
+            <div className="flex justify-center mt-12">
+                <ToplistCard users={users} />
             </div>
         </div>
     );
