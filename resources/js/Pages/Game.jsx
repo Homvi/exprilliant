@@ -11,6 +11,7 @@ import { shuffle } from "lodash";
 import ExpressionsContainer from "@/Components/ExpressionsContainer";
 import ActiveExpressionHeader from "@/Components/ActiveExpressionHeader";
 import { numberOfExpressions } from "@/config";
+import ExampleUsage from "@/Components/ExampleUsage";
 
 const Game = ({ users }) => {
     const [loading, setLoading] = useState(true);
@@ -20,7 +21,7 @@ const Game = ({ users }) => {
     const [activeExpressionIndex, setActiveExpressionIndex] = useState(0);
     const [isClickable, setIsClickable] = useState(true);
     const [activeExpressionChoices, setActiveExpressionChoices] = useState([]);
-
+    const [isExampleUsageVisible, setIsExampleUsageVisible] = useState(false);
     const score = useRef(0);
     const { gameMode } = useGameMode();
 
@@ -97,11 +98,13 @@ const Game = ({ users }) => {
             answerChosen === activeExpressionWithAnswers?.right_answer;
         setIsClickable(false);
         highlightChoices(answerChosen);
+        setIsExampleUsageVisible(true);
         setTimeout(() => {
             if (isCorrect) score.current++;
             handleActiveExpressionIncrement();
             setIsClickable(true);
-        }, 1000);
+            setIsExampleUsageVisible(false);
+        }, 2000);
     }
 
     function getChoicesInShuffledOrder(activeExpressionWithAnswers) {
@@ -189,6 +192,14 @@ const Game = ({ users }) => {
                                         )
                                     )}
                                 </div>
+                                {activeExpressionWithAnswers?.example_usage &&
+                                    isExampleUsageVisible && (
+                                        <ExampleUsage
+                                            text={
+                                                activeExpressionWithAnswers?.example_usage
+                                            }
+                                        />
+                                    )}
                             </ExpressionsContainer>
                         </>
                     )}
