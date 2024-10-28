@@ -16,7 +16,7 @@ const Toplist = ({ users }) => {
   };
 
   return (
-    <div className="w-full max-w-md mx-auto bg-white rounded-xl shadow-lg p-6">
+    <div className="max-w-md mx-auto bg-white rounded-xl shadow-lg p-6">
       <div className="flex flex-col items-center text-center">
         <h1 className="text-3xl font-bold text-gray-800 mb-6">
           Top Players
