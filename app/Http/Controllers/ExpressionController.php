@@ -40,11 +40,12 @@ class ExpressionController extends Controller
     {
         $request->validate([
             'expression' => 'required|string|max:255',
-            'right_answer' => 'required|string|max:255',
-            'false_answer_one' => 'required|string|max:255',
-            'false_answer_two' => 'required|string|max:255',
+            'right_answer' => 'nullable|string|max:255', // Change to nullable
+            'false_answer_one' => 'nullable|string|max:255', // Change to nullable
+            'false_answer_two' => 'nullable|string|max:255', // Change to nullable
             'expression_language' => 'required|string|in:en,es,hu',
             'answer_language' => 'required|string|in:en,es,hu',
+            'example_usage' => 'nullable|string|max:255',
         ]);
 
         Expression::create([
@@ -54,6 +55,7 @@ class ExpressionController extends Controller
             'false_answer_two' => $request->false_answer_two,
             'expression_language' => $request->expression_language,
             'answer_language' => $request->answer_language,
+            'example_usage' => $request->example_usage,
             'user_id' => Auth::id(),
             'is_validated' => false,
         ]);
