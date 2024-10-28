@@ -13,6 +13,7 @@ export default function RequestNewExpression() {
     const { data, setData, post, processing, errors, reset } = useForm({
         expression: "",
         right_answer: "",
+        example_usage: "",
         false_answer_one: "",
         false_answer_two: "",
         expression_language: "en",
@@ -26,6 +27,7 @@ export default function RequestNewExpression() {
         return () => {
             reset(
                 "expression",
+                "example_usage",
                 "right_answer",
                 "false_answer_one",
                 "false_answer_two",
@@ -37,7 +39,7 @@ export default function RequestNewExpression() {
 
     const submit = (e) => {
         e.preventDefault();
-
+        console.log(data);
         post(route("expressions.store"), {
             onSuccess: () => {
                 toast.success(request_new_expression_page.success_message);
@@ -158,9 +160,7 @@ export default function RequestNewExpression() {
                     <div className="mt-4">
                         <InputLabel
                             htmlFor="example_usage"
-                            value={
-                                request_new_expression_page.example_usage
-                            }
+                            value={request_new_expression_page.example_usage}
                         />
                         <textarea
                             id="example_usage"
