@@ -18,6 +18,7 @@ class Expression extends Model
         'answer_language',
         'user_id',
         'is_validated',
+        'example_usage',
     ];
 
     public function user()
