@@ -1,29 +1,30 @@
-import defaultTheme from "tailwindcss/defaultTheme";
-import forms from "@tailwindcss/forms";
+import defaultTheme from 'tailwindcss/defaultTheme';
+import forms from '@tailwindcss/forms';
 
 /** @type {import('tailwindcss').Config} */
 export default {
-    content: [
-        "./vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php",
-        "./storage/framework/views/*.php",
-        "./resources/views/**/*.blade.php",
-        "./resources/js/**/*.jsx",
-    ],
+  content: [
+    './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
+    './storage/framework/views/*.php',
+    './resources/views/**/*.blade.php',
+    './resources/js/**/*.tsx',
+    './resources/js/**/*.jsx'
+  ],
 
-    theme: {
-        extend: {
-            fontFamily: {
-                sans: ["Figtree", ...defaultTheme.fontFamily.sans],
-            },
-            colors: {
-                midnight: "#052138",
-                "custom-teal": "#60AC90",
-            },
-        },
-    },
+  theme: {
+    extend: {
+      fontFamily: {
+        sans: ['Figtree', ...defaultTheme.fontFamily.sans]
+      },
+      colors: {
+        midnight: '#052138',
+        'custom-teal': '#60AC90'
+      }
+    }
+  },
 
-    plugins: [forms, require("daisyui")],
-    daisyui: {
-        themes: ["corporate"],
-    },
+  plugins: [forms, require('daisyui')],
+  daisyui: {
+    themes: ['corporate']
+  }
 };
