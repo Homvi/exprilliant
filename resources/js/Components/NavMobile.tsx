@@ -1,8 +1,9 @@
 import { Link, usePage } from '@inertiajs/react';
 import logo from '../../assets/exprilliant-with-text.webp';
+import axios from 'axios';
 
 const MobileNavbar = () => {
-  const { auth, localeData } = usePage().props;
+  const { localeData, auth } = usePage<{ localeData: { data: LocalizedText }; auth: any }>().props;
   const { navbar } = localeData.data;
 
   const handleLogout = async () => {

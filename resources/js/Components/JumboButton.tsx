@@ -1,6 +1,12 @@
 import { Link } from '@inertiajs/react';
 
-const JumboButton = ({ className = 'bg-custom-teal', content, ...props }) => {
+interface JumboButtonProps {
+  content: string;
+  className?: string;
+  href: string;
+}
+
+const JumboButton = ({ className = 'bg-custom-teal', content, ...props }: JumboButtonProps) => {
   return (
     <Link
       {...props}

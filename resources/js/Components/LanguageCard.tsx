@@ -1,11 +1,30 @@
 import { useGameMode } from '@/contexts/GameModeContext';
+import { GameMode } from '@/Types/GameMode';
 import { Link } from '@inertiajs/react';
 
-const LanguageCard = ({ questionFlag, answerFlag, text, gameMode, questionFlagAltText, answerFlagAltText, count }) => {
+interface LanguageCardProps {
+  questionFlag: string;
+  answerFlag: string;
+  text: string;
+  gameMode: GameMode;
+  questionFlagAltText: string;
+  answerFlagAltText: string;
+  count: number;
+}
+
+const LanguageCard: React.FC<LanguageCardProps> = ({
+  questionFlag,
+  answerFlag,
+  text,
+  gameMode,
+  questionFlagAltText,
+  answerFlagAltText,
+  count
+}) => {
   // allow to set game mode with useContext
   const { setGameMode } = useGameMode();
 
-  const handleGameModeSelection = (mode) => {
+  const handleGameModeSelection = (mode: GameMode) => {
     setGameMode(mode);
   };
 

@@ -1,4 +1,12 @@
-export default function PrimaryButton({ className = '', disabled, children, ...props }) {
+import { ReactNode } from 'react';
+
+interface PrimaryButtonProps {
+  children: ReactNode;
+  className?: string;
+  disabled: boolean;
+}
+
+export default function PrimaryButton({ className = '', disabled, children, ...props }: PrimaryButtonProps) {
   return (
     <button
       {...props}

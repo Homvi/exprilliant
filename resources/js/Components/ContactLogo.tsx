@@ -1,4 +1,11 @@
-const ContactLogo = ({ children, href }) => {
+import { ReactNode } from 'react';
+
+interface ContactLogoProps {
+  children: ReactNode;
+  href: string;
+}
+
+const ContactLogo = ({ children, href }: ContactLogoProps) => {
   return (
     <a
       href={href}

@@ -7,7 +7,14 @@ import LanguageCard from '@/Components/LanguageCard';
 
 const ChooseLanguage = () => {
   // get language content
-  const { localeData, expressionCounts } = usePage().props;
+  const { localeData, expressionCounts } = usePage<{
+    localeData: { data: LocalizedText };
+    expressionCounts: {
+      'es-en': number;
+      'en-es': number;
+      'en-hu': number;
+    };
+  }>().props;
   const { choose_game_mode_page } = localeData.data;
 
   // TODO: Add dynamic title according to language

@@ -1,6 +1,25 @@
+import { GameMode } from '@/Types/GameMode';
 import { useEffect, useState } from 'react';
 
-const Choice = ({ handleChoice, handleKeyPress, content, isClickable, isHighlighted, isCorrect, order }) => {
+interface ChoicePropType {
+  handleChoice: (answerChosen: string) => void;
+  handleKeyPress: (event: { key: string }, answerChosen: string) => void;
+  content: string;
+  isClickable: boolean;
+  isHighlighted: boolean;
+  isCorrect: boolean;
+  order: number;
+}
+
+const Choice = ({
+  handleChoice,
+  handleKeyPress,
+  content,
+  isClickable,
+  isHighlighted,
+  isCorrect,
+  order
+}: ChoicePropType) => {
   const isFontSizeLarge = false;
   const [isVisible, setIsVisible] = useState(false);
 
