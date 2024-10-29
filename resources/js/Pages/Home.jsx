@@ -1,6 +1,6 @@
 import mundo from "../../assets/animations/mundo.json";
 import { useLottie } from "lottie-react";
-import { Head, Link, usePage } from "@inertiajs/react";
+import { Head, usePage } from "@inertiajs/react";
 import CustomGuestLayout from "@/Layouts/CustomGuestLayout";
 import JumboButton from "@/Components/JumboButton";
 
