@@ -14,3 +14,10 @@ export interface Expression {
   user: User;
   updated_at: string;
 }
+
+export interface ActiveExpressionChoiceType {
+  answer: string;
+  correct: boolean;
+  highlight: boolean;
+  order: number;
+}
