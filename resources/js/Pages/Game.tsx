@@ -13,8 +13,8 @@ import ActiveExpressionHeader from '@/Components/ActiveExpressionHeader';
 import { numberOfExpressions } from '@/config';
 import ExampleUsage from '@/Components/ExampleUsage';
 import axios from 'axios';
-import { Expression } from '@/Types/Expressions';
-import { User } from '@/Types/User';
+import { Expression } from '@/types/Expressions';
+import { User } from '@/types';
 
 interface GamePropType {
   users: User[];
@@ -41,7 +41,7 @@ const Game = ({ users }: GamePropType) => {
 
   let activeExpressionWithAnswers: Expression = expressions[activeExpressionIndex];
   let activeExpression = activeExpressionWithAnswers?.expression;
-  
+
   // if no game mode choosen redirect user
   useEffect(() => {
     if (!gameMode) {

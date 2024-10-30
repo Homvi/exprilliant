@@ -1,5 +1,5 @@
 import { useGameMode } from '@/contexts/GameModeContext';
-import { GameMode } from '@/Types/GameMode';
+import { GameMode } from '@/types/GameMode';
 import { Link } from '@inertiajs/react';
 
 interface LanguageCardProps {

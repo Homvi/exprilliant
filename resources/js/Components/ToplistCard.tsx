@@ -1,4 +1,4 @@
-import { User } from '@/Types/User';
+import { User } from '@/types';
 import { Trophy, Medal } from 'lucide-react';
 
 const ToplistCard = ({ users }: { users: User[] }) => {

@@ -4,7 +4,7 @@ import hu from '../../assets/hu.svg';
 import { Head, usePage } from '@inertiajs/react';
 import CustomGuestLayout from '../Layouts/CustomGuestLayout';
 import LanguageCard from '@/Components/LanguageCard';
-import { LocalizedText } from '@/Types/locale';
+import { LocalizedText } from '@/types/locale';
 
 const ChooseLanguage = () => {
   // get language content

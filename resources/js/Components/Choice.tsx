@@ -1,4 +1,4 @@
-import { GameMode } from '@/Types/GameMode';
+import { GameMode } from '@/types/GameMode';
 import { useEffect, useState } from 'react';
 
 interface ChoicePropType {

@@ -5,8 +5,8 @@ import fireworks from '../../assets/animations/fireworks.json';
 import { Link, usePage } from '@inertiajs/react';
 import { numberOfExpressions } from '@/config';
 import ToplistCard from '@/Components/ToplistCard';
-import { User } from '@/Types/User';
-import { LocalizedText } from '@/Types/locale';
+import { LocalizedText } from '@/types/locale';
+import { User } from '@/types';
 
 interface ScorePropsType {
   score: number;

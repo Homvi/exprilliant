@@ -3,7 +3,7 @@ import { useLottie } from 'lottie-react';
 import { Head, usePage } from '@inertiajs/react';
 import CustomGuestLayout from '@/Layouts/CustomGuestLayout';
 import JumboButton from '@/Components/JumboButton';
-import { LocalizedText } from '@/Types/locale';
+import { LocalizedText } from '@/types/locale';
 
 const Home = () => {
   // lottie animation configuration
