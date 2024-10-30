@@ -62,10 +62,6 @@ const Game = ({ users }: GamePropType) => {
     }
   };
 
-  useEffect(() => {
-    fetchRandomExpressions();
-  }, [isGameFinished]);
-
   async function resetGame() {
     setLoading(true);
     setIsGameFinished(false);
