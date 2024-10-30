@@ -3,7 +3,7 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-const homePage: string = process.env.APP_URL || 'https://exprilliant.test/';
+const homePage: string = process.env.APP_URL as string;
 const chooseGameMode: string = process.env.APP_URL + 'choose-game-mode';
 
 test('has title', async ({ page }) => {
