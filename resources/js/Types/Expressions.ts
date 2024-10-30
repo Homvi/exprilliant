@@ -1,4 +1,4 @@
-import { User } from './User';
+import { User } from '.';
 
 export interface Expression {
   answer_language: string;
