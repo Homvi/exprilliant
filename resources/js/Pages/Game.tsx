@@ -13,8 +13,8 @@ import ActiveExpressionHeader from '@/Components/ActiveExpressionHeader';
 import { numberOfExpressions } from '@/config';
 import ExampleUsage from '@/Components/ExampleUsage';
 import axios from 'axios';
-import { Expression } from '@/types/Expressions';
 import { User } from '@/types';
+import { Expression } from '@/types/Expressions';
 
 interface GamePropType {
   users: User[];
