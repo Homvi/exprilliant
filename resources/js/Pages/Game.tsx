@@ -14,17 +14,10 @@ import { numberOfExpressions } from '@/config';
 import ExampleUsage from '@/Components/ExampleUsage';
 import axios from 'axios';
 import { User } from '@/types';
-import { Expression } from '@/types/Expressions';
+import { ActiveExpressionChoiceType, Expression } from '@/types/Expressions';
 
 interface GamePropType {
   users: User[];
-}
-
-interface ActiveExpressionChoiceType {
-  answer: string;
-  correct: boolean;
-  highlight: boolean;
-  order: number;
 }
 
 const Game = ({ users }: GamePropType) => {
