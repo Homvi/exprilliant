@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useLottie } from 'lottie-react';
 import check from '../../assets/animations/check.json';
 import fireworks from '../../assets/animations/fireworks.json';
@@ -6,6 +6,7 @@ import { Link, usePage } from '@inertiajs/react';
 import { numberOfExpressions } from '@/config';
 import ToplistCard from '@/Components/ToplistCard';
 import { User } from '@/Types/User';
+import { LocalizedText } from '@/Types/locale';
 
 interface ScorePropsType {
   score: number;
@@ -16,7 +17,7 @@ interface ScorePropsType {
 const Score = ({ score, resetGame, users }: ScorePropsType) => {
   const [animatedScore, setAnimatedScore] = useState(0);
 
-  const { localeData } = usePage<{ localeData: { data: LocalizedText } }>().props;
+  const { localeData } = usePage<{ localeData: { data: LocalizedText; auth: any } }>().props;
   const { score_page } = localeData.data;
 
   const animation = score == numberOfExpressions ? fireworks : check;

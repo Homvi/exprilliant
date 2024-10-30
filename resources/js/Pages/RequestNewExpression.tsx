@@ -8,6 +8,7 @@ import { Head, useForm, usePage } from '@inertiajs/react';
 import CustomGuestLayout from '../Layouts/CustomGuestLayout';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { LocalizedText } from '@/Types/locale';
 
 export default function RequestNewExpression() {
   const { data, setData, post, processing, errors, reset } = useForm({
@@ -20,7 +21,8 @@ export default function RequestNewExpression() {
     answer_language: 'en'
   });
 
-  const { localeData } = usePage<{ localeData: { data: LocalizedText } }>().props;
+  const { localeData } = usePage<{ localeData: { data: LocalizedText
+   } }>().props;
   const { request_new_expression_page } = localeData.data;
 
   useEffect(() => {

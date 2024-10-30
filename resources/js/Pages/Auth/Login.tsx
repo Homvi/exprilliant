@@ -7,6 +7,7 @@ import PrimaryButton from '@/Components/PrimaryButton';
 import TextInput from '@/Components/TextInput';
 import { Head, Link, useForm, usePage } from '@inertiajs/react';
 import CustomGuestLayout from '@/Layouts/CustomGuestLayout';
+import { LocalizedText } from '@/Types/locale';
 
 export default function Login({ status, canResetPassword }: { status?: string; canResetPassword: boolean }) {
   const { data, setData, post, processing, errors, reset } = useForm({
@@ -100,7 +101,4 @@ export default function Login({ status, canResetPassword }: { status?: string; c
       </GuestLayout>
     </CustomGuestLayout>
   );
-}
-function route(arg0: string): string {
-  throw new Error('Function not implemented.');
 }
