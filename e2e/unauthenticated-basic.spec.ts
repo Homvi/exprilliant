@@ -3,7 +3,7 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-const homePage: string = process.env.APP_URL as string;
+const homePage: string = process.env.APP_URL || 'https://www.exprilliant.com/';
 const chooseGameMode: string = process.env.APP_URL + 'choose-game-mode';
 
 // Define a timeout for navigation and expectations
