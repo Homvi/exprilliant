@@ -8,18 +8,25 @@ jobs:
   test:
     timeout-minutes: 60
     runs-on: ubuntu-latest
-    env: # Define environment variables for the job
-      APP_URL: ${{ secrets.APP_URL }} # Ensure APP_URL is set from the secret
+    env:
+      APP_URL: ${{ secrets.APP_URL }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: '21.7.3'
+      # Add this step to verify the environment variable
+      - name: Verify APP_URL is set
+        run: |
+          if [ -z "$APP_URL" ]; then
+            echo "APP_URL is not set. Please configure the secret in repository settings."
+            exit 1
+          fi
       - name: Install dependencies
         run: npm ci
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
-      - name: Run Playwright tests --timeout=60000
+      - name: Run Playwright tests
         run: npx playwright test
       - uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}
