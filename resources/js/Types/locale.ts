@@ -1,4 +1,4 @@
-interface LocalizedText {
+export interface LocalizedText {
   home_page: {
     title: string;
     get_started: string;
