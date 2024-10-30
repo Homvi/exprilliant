@@ -15,6 +15,7 @@ import ExampleUsage from '@/Components/ExampleUsage';
 import axios from 'axios';
 import { User } from '@/types';
 import { ActiveExpressionChoiceType, Expression } from '@/types/Expressions';
+import { getChoicesInShuffledOrder } from '@/functions';
 
 interface GamePropType {
   users: User[];
@@ -81,7 +82,6 @@ const Game = ({ users }: GamePropType) => {
   async function handleFinish() {
     if (numberOfExpressions === activeExpressionIndex) {
       setIsGameFinished(true);
-      // Send the score to update the user's experience
       try {
         await axios.post('/update-experience', {
           experienceToAdd: score.current
@@ -103,40 +103,10 @@ const Game = ({ users }: GamePropType) => {
     setIsExampleUsageVisible(true);
     setTimeout(() => {
       if (isCorrect) score.current++;
-      handleActiveExpressionIncrement();
+      setActiveExpressionIndex((curr) => curr + 1);
       setIsClickable(true);
       setIsExampleUsageVisible(false);
     }, 2000);
-  }
-
-  function getChoicesInShuffledOrder(activeExpressionWithAnswers: Expression) {
-    const shuffledOrders = shuffle([1, 2, 3]);
-
-    const activeExpressionChoices = [
-      {
-        answer: activeExpressionWithAnswers?.right_answer,
-        order: shuffledOrders[0],
-        correct: true,
-        highlight: false
-      },
-      {
-        answer: activeExpressionWithAnswers?.false_answer_one,
-        order: shuffledOrders[1],
-        correct: false,
-        highlight: false
-      },
-      {
-        answer: activeExpressionWithAnswers?.false_answer_two,
-        order: shuffledOrders[2],
-        correct: false,
-        highlight: false
-      }
-    ];
-
-    // sort activeExpressionChoices by order number
-    activeExpressionChoices.sort((a, b) => a.order - b.order);
-
-    return activeExpressionChoices;
   }
 
   function highlightChoices(answerChosen: string) {
@@ -153,10 +123,6 @@ const Game = ({ users }: GamePropType) => {
   }, [activeExpressionIndex, expressions]);
 
   const progress: number = (activeExpressionIndex / numberOfExpressions) * 100;
-
-  function handleActiveExpressionIncrement() {
-    setActiveExpressionIndex((curr) => curr + 1);
-  }
 
   return (
     <>
