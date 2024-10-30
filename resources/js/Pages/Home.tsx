@@ -28,7 +28,7 @@ const Home = () => {
           <div className="flex my-11 md:w-[40%] justify-center h-full">
             {/* lottie animation */}
             {View}
-            bela
+            bela!
           </div>
           <div className="flex flex-col items-center">
             <h2 className="text-center w-full max-w-md">{home_page.title}</h2>
