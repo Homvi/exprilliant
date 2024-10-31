@@ -7,7 +7,6 @@ import ProgressBar from '@/Components/ProgressBar';
 import Choice from '@/Components/Choice';
 import CustomGuestLayout from '../Layouts/CustomGuestLayout';
 import { useGameMode } from '@/contexts/GameModeContext';
-import { shuffle } from 'lodash';
 import ExpressionsContainer from '@/Components/ExpressionsContainer';
 import ActiveExpressionHeader from '@/Components/ActiveExpressionHeader';
 import { numberOfExpressions } from '@/config';
@@ -15,7 +14,7 @@ import ExampleUsage from '@/Components/ExampleUsage';
 import axios from 'axios';
 import { User } from '@/types';
 import { ActiveExpressionChoiceType, Expression } from '@/types/Expressions';
-import { getChoicesInShuffledOrder } from '@/functions';
+import { getChoicesInShuffledOrder } from '@/functions/gameHelpers';
 
 interface GamePropType {
   users: User[];
