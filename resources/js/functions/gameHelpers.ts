@@ -7,14 +7,6 @@ export async function fetchExpressions(gameMode: string, numberOfExpressions: nu
   return response.data;
 }
 
-export function calculateProgress(currentIndex: number, total: number): number {
-  return (currentIndex / total) * 100;
-}
-
-export function resetScore(scoreRef: React.MutableRefObject<number>) {
-  scoreRef.current = 0;
-}
-
 export async function updateExperience(experienceToAdd: number): Promise<void> {
   try {
     await axios.post('/update-experience', { experienceToAdd });

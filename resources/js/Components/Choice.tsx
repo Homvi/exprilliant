@@ -1,27 +1,18 @@
-import { GameMode } from '@/types/GameMode';
 import { useEffect, useState } from 'react';
 
 interface ChoicePropType {
-  handleChoice: (answerChosen: string) => void;
-  handleKeyPress: (event: { key: string }, answerChosen: string) => void;
+  handleSelect: (answerChosen: string) => void;
   content: string;
-  isClickable: boolean;
-  isHighlighted: boolean;
-  isCorrect: boolean;
   order: number;
+  isCorrect: boolean;
 }
 
-const Choice = ({
-  handleChoice,
-  handleKeyPress,
-  content,
-  isClickable,
-  isHighlighted,
-  isCorrect,
-  order
-}: ChoicePropType) => {
-  const isFontSizeLarge = false;
+const Choice = ({ handleSelect, content, order, isCorrect }: ChoicePropType) => {
   const [isVisible, setIsVisible] = useState(false);
+  const [isHighlighted, setIsHighlighted] = useState(false);
+  const [isClickable, setIsClickable] = useState(true);
+
+  const isFontSizeLarge = false;
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -31,13 +22,30 @@ const Choice = ({
     return () => clearTimeout(timer);
   }, [order]); // Adding 'order' to dependency array to make it clear it's used here
 
+  function handleKeyPress(event: { key: string }, choice: string) {
+    if (event.key === 'Enter') {
+      handleChoice(choice);
+    }
+  }
+
+  function handleClick() {
+    if (isClickable) {
+      handleChoice(content);
+    }
+  }
+
+  function handleChoice(content: string): void {
+    setIsHighlighted(true);
+    setIsClickable(false);
+    setTimeout(() => {
+      setIsClickable(true);
+      handleSelect(content);
+    }, 1000);
+  }
+
   return (
     <div
-      onClick={() => {
-        if (isClickable) {
-          handleChoice(content);
-        }
-      }}
+      onClick={handleClick}
       onKeyDown={(e) => handleKeyPress(e, content)}
       className={`
       ${isVisible ? 'opacity-100' : 'opacity-0'}

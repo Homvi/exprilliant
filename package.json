@@ -40,6 +40,7 @@
         "lodash": "^4.17.21",
         "lottie-react": "^2.4.0",
         "lucide-react": "^0.453.0",
-        "react-toastify": "^10.0.5"
+        "react-toastify": "^10.0.5",
+        "zustand": "^5.0.1"
     }
 }

@@ -7,18 +7,20 @@ import { numberOfExpressions } from '@/config';
 import ToplistCard from '@/Components/ToplistCard';
 import { LocalizedText } from '@/types/locale';
 import { User } from '@/types';
+import { useGameStore } from '@/store/gameStore';
+// import { updateExperience } from '@/functions/gameHelpers';
 
 interface ScorePropsType {
-  score: number;
-  resetGame: () => void;
   users: User[];
 }
 
-const Score = ({ score, resetGame, users }: ScorePropsType) => {
+const Score = ({ users }: ScorePropsType) => {
   const [animatedScore, setAnimatedScore] = useState(0);
 
-  const { localeData } = usePage<{ localeData: { data: LocalizedText; auth: any } }>().props;
+  const { localeData, auth } = usePage<{ localeData: { data: LocalizedText; auth: any } }>().props;
   const { score_page } = localeData.data;
+
+  const { resetGame, score } = useGameStore();
 
   const animation = score == numberOfExpressions ? fireworks : check;
   const hasToLoop = score == numberOfExpressions ? true : false;
@@ -51,6 +53,8 @@ const Score = ({ score, resetGame, users }: ScorePropsType) => {
     return () => clearInterval(interval); // Clear interval on component unmount
   }, [score]);
 
+  // TODO:Update experience when the score is final
+
   return (
     <div className="flex justify- md:justify-center flex-col items-center gap-6 w-full my-5 md:min-h-[500px]">
       <div className="w-56 sm:max-w-2xl">{View}</div>
@@ -68,6 +72,7 @@ const Score = ({ score, resetGame, users }: ScorePropsType) => {
       {score > 4 && <h3 className="text-[#a39301] text-xl tracking-widest">{score_page.excellent_job}</h3>}
       <div className="flex gap-6 justify-center items-center flex-col md:flex-row w-full text-center ">
         <Link
+          onClick={resetGame}
           className="bg-[#052138] w-full whitespace-nowrap shadow-md text-white py-2 transition-all duration-300 hover:scale-105 md:w-[40%] rounded-lg px-1 max-w-[200px]"
           href="/"
         >

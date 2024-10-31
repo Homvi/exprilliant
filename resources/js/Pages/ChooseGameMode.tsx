@@ -50,6 +50,7 @@ const ChooseLanguage = () => {
             questionFlagAltText="English flag"
             answerFlagAltText="Spanish flag"
             count={expressionCounts['en-es']}
+            delay={100}
           />
           {/* English to Hungarian card */}
           <LanguageCard
@@ -60,6 +61,7 @@ const ChooseLanguage = () => {
             questionFlagAltText="English flag"
             answerFlagAltText="Hungarian flag"
             count={expressionCounts['en-hu']}
+            delay={200}
           />
         </div>
       </div>

@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from 'react';
 import { useGameMode } from '@/contexts/GameModeContext';
 import { GameMode } from '@/types/GameMode';
 import { Link } from '@inertiajs/react';
@@ -10,6 +11,7 @@ interface LanguageCardProps {
   questionFlagAltText: string;
   answerFlagAltText: string;
   count: number;
+  delay?: number; // Optional delay prop for staggered animations
 }
 
 const LanguageCard: React.FC<LanguageCardProps> = ({
@@ -19,10 +21,20 @@ const LanguageCard: React.FC<LanguageCardProps> = ({
   gameMode,
   questionFlagAltText,
   answerFlagAltText,
-  count
+  count,
+  delay = 0 // Default delay of 0
 }) => {
-  // allow to set game mode with useContext
+  const [isVisible, setIsVisible] = useState(false);
   const { setGameMode } = useGameMode();
+
+  useEffect(() => {
+    // Create a timeout to trigger the fade-in after the specified delay
+    const timer = setTimeout(() => {
+      setIsVisible(true);
+    }, delay);
+
+    return () => clearTimeout(timer);
+  }, [delay]);
 
   const handleGameModeSelection = (mode: GameMode) => {
     setGameMode(mode);
@@ -30,7 +42,20 @@ const LanguageCard: React.FC<LanguageCardProps> = ({
 
   return (
     <Link href="/game" onClick={() => handleGameModeSelection(gameMode)} className="w-full px-5 md:px-0 md:w-fit">
-      <div className="border-[1px] border-white/10 flex w-full p-5 bg-white/5 text-center cursor-pointer rounded-xl flex-col hover:border-white/40 transition-all duration-100 hover:bg-white/10 items-center">
+      <div
+        className={`
+          border-[1px] border-white/10
+          flex w-full p-5
+          bg-white/5 text-center
+          cursor-pointer rounded-xl
+          flex-col
+          hover:border-white/40
+          transition-all duration-300
+          hover:bg-white/10
+          items-center
+          ${!isVisible ? 'opacity-0 translate-x-28' : 'opacity-100 transition-all duration-300 translate-y-0'}
+        `}
+      >
         <img src={questionFlag} alt={questionFlagAltText} className="w-full max-w-44 mb-2" />
         <div className="flex justify-center space-x-1">
           <img src={answerFlag} alt={answerFlagAltText} className="w-12 h-12 md:w-10 md:h-10" />
@@ -38,7 +63,6 @@ const LanguageCard: React.FC<LanguageCardProps> = ({
           <img src={answerFlag} alt={answerFlagAltText} className="w-12 h-12 md:w-10 md:h-10" />
         </div>
 
-        {/* text content eg.: "Spanish expressions" */}
         <h3 className="mt-3 text-xl">
           {text} <span className="opacity-30">({count})</span>{' '}
         </h3>
