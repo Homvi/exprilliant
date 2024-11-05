@@ -4,7 +4,7 @@ import axios from 'axios';
 import { useGameStore } from '@/store/gameStore';
 import { Expression } from '@/types/Expressions';
 
-export const useFetchExpressions = (gameMode: string, numberOfExpressions: number) => {
+export const useExpressions = (gameMode: string, numberOfExpressions: number) => {
   const setExpressions = useGameStore((state) => state.setExpressions);
 
   useEffect(() => {
