@@ -8,16 +8,25 @@ use Inertia\Inertia;
 
 class ToplistController extends Controller
 {
-
-    public function __invoke(Request $request)
+    // Render the toplist view at /toplist
+    public function index(Request $request)
     {
-        // Get users with experience > 0, sorted by experience in descending order
         $users = User::where('experience', '>', 0)
             ->orderBy('experience', 'desc')
-            ->get(['name', 'experience']); // Fetch only the name and experience fields
+            ->get(['name', 'experience', 'id']); // Fetch only the necessary fields
 
         return Inertia::render('Toplist', [
-            'users' => $users, // Pass the users to the Toplist component
+            'users' => $users,
         ]);
+    }
+
+    // Provide the toplist data as JSON
+    public function getToplistData(Request $request)
+    {
+        $users = User::where('experience', '>', 0)
+            ->orderBy('experience', 'desc')
+            ->get(['name', 'experience', 'id']);
+
+        return response()->json($users);
     }
 }
