@@ -8,6 +8,7 @@ import { LocalizedText } from '@/types/locale';
 
 const ChooseLanguage = () => {
   // get language content
+  // TODO:make the diferent language modes dynamic
   const { localeData, expressionCounts } = usePage<{
     localeData: { data: LocalizedText };
     expressionCounts: {
