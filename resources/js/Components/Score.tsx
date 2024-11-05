@@ -10,11 +10,7 @@ import { User } from '@/types';
 import { useGameStore } from '@/store/gameStore';
 // import { updateExperience } from '@/functions/gameHelpers';
 
-interface ScorePropsType {
-  users: User[];
-}
-
-const Score = ({ users }: ScorePropsType) => {
+const Score = () => {
   const [animatedScore, setAnimatedScore] = useState(0);
 
   const { localeData } = usePage<{ localeData: { data: LocalizedText; auth: any } }>().props;
@@ -53,8 +49,6 @@ const Score = ({ users }: ScorePropsType) => {
     return () => clearInterval(interval); // Clear interval on component unmount
   }, [score]);
 
-  // TODO:Update experience when the score is final
-
   return (
     <div className="flex justify- md:justify-center flex-col items-center gap-6 w-full my-5 md:min-h-[500px]">
       <div className="w-56 sm:max-w-2xl">{View}</div>
@@ -86,7 +80,7 @@ const Score = ({ users }: ScorePropsType) => {
         </button>
       </div>
       <div className="flex justify-center mt-12">
-        <ToplistCard users={users} />
+        <ToplistCard />
       </div>
     </div>
   );
