@@ -1,4 +1,4 @@
-import { User } from '.';
+import { User } from './index';
 
 export interface Expression {
   answer_language: string;
