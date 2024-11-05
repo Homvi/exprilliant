@@ -17,7 +17,7 @@ interface ScorePropsType {
 const Score = ({ users }: ScorePropsType) => {
   const [animatedScore, setAnimatedScore] = useState(0);
 
-  const { localeData, auth } = usePage<{ localeData: { data: LocalizedText; auth: any } }>().props;
+  const { localeData } = usePage<{ localeData: { data: LocalizedText; auth: any } }>().props;
   const { score_page } = localeData.data;
 
   const { resetGame, score } = useGameStore();
