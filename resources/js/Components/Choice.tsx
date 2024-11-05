@@ -5,42 +5,37 @@ interface ChoicePropType {
   content: string;
   order: number;
   isCorrect: boolean;
+  isHighlighted: boolean;
+  isBlocked: boolean;
 }
 
-const Choice = ({ handleSelect, content, order, isCorrect }: ChoicePropType) => {
+const Choice = ({ handleSelect, content, isBlocked, order, isCorrect, isHighlighted }: ChoicePropType) => {
   const [isVisible, setIsVisible] = useState(false);
-  const [isHighlighted, setIsHighlighted] = useState(false);
-  const [isClickable, setIsClickable] = useState(true);
 
   const isFontSizeLarge = false;
 
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsVisible(true);
-    }, order * 700); // Increasing the delay to make it more noticeable
+    }, order * 700);
 
     return () => clearTimeout(timer);
-  }, [order]); // Adding 'order' to dependency array to make it clear it's used here
+  }, [order]);
 
   function handleKeyPress(event: { key: string }, choice: string) {
     if (event.key === 'Enter') {
-      handleChoice(choice);
+      if (!isBlocked) {
+        handleSelect(choice);
+      }
     }
   }
 
   function handleClick() {
-    if (isClickable) {
-      handleChoice(content);
-    }
-  }
-
-  function handleChoice(content: string): void {
-    setIsHighlighted(true);
-    setIsClickable(false);
-    setTimeout(() => {
-      setIsClickable(true);
+    if (!isBlocked) {
       handleSelect(content);
-    }, 1000);
+    } else {
+      console.log('This button is diasbled due to it is highlighted state');
+    }
   }
 
   return (
