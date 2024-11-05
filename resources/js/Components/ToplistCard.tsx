@@ -1,7 +1,9 @@
-import { User } from '@/types';
+import { useToplistStore } from '@/store/toplistStore';
 import { Trophy, Medal } from 'lucide-react';
 
-const ToplistCard = ({ users }: { users: User[] }) => {
+const ToplistCard = () => {
+  const { toplistData } = useToplistStore();
+
   const getMedalIcon = (position: number) => {
     switch (position) {
       case 0:
@@ -21,7 +23,7 @@ const ToplistCard = ({ users }: { users: User[] }) => {
         <h1 className="text-3xl text-gray-600 mb-6">Top Players</h1>
 
         <ol className="w-full space-y-3">
-          {users.map((user, id) => (
+          {toplistData.map((user, id) => (
             <li
               key={user.id}
               className="flex items-center p-3 rounded-lg transition-all duration-200 hover:bg-gray-50 hover:scale-102 animate-fadeIn"
