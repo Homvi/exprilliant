@@ -5,10 +5,14 @@ import { Head, usePage } from '@inertiajs/react';
 import CustomGuestLayout from '../Layouts/CustomGuestLayout';
 import LanguageCard from '@/Components/LanguageCard';
 import { LocalizedText } from '@/types/locale';
+import { useEffect } from 'react';
+import { useGameStore } from '@/store/gameStore';
 
 const ChooseLanguage = () => {
   // get language content
-  // TODO:make the diferent language modes dynamic
+  const { resetGame } = useGameStore();
+
+  // TODO:make the different language modes dynamic
   const { localeData, expressionCounts } = usePage<{
     localeData: { data: LocalizedText };
     expressionCounts: {
@@ -18,6 +22,11 @@ const ChooseLanguage = () => {
     };
   }>().props;
   const { choose_game_mode_page } = localeData.data;
+
+  // make sure the game have a fresh state
+  useEffect(() => {
+    resetGame();
+  }, []);
 
   // TODO: Add dynamic title according to language
 
