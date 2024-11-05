@@ -31,7 +31,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::post('/update-experience', [UserController::class, 'updateExperience']);
 
-    Route::get('/toplist', ToplistController::class)->name('toplist.index');
+    Route::get('/toplist', [ToplistController::class, 'index'])->name('toplist');
 
     Route::get('/request-new-expression', [ExpressionController::class, 'create'])->name('expressions.create');
     Route::post('/expressions', [ExpressionController::class, 'store'])->name('expressions.store');
