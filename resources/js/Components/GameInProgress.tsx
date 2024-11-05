@@ -69,7 +69,7 @@ const GameInProgress: React.FC = () => {
             />
           ))}
         </div>
-        {isBlocked && activeExpression.example_usage && <ExampleUsage text={activeExpression.example_usage} />}
+        {activeExpression.example_usage && <ExampleUsage text={activeExpression.example_usage} />}
       </ExpressionsContainer>
     </>
   );
