@@ -34,7 +34,7 @@ const Choice = ({ handleSelect, content, isBlocked, order, isCorrect, isHighligh
     if (!isBlocked) {
       handleSelect(content);
     } else {
-      console.log('This button is diasbled due to it is highlighted state');
+      console.error('This button is diasbled due to it is highlighted state');
     }
   }
 
