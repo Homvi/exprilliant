@@ -16,11 +16,17 @@ const BurgerMenu = () => {
 
   return (
     <Menubar className="border-none shadow-none">
-      <MenubarMenu >
+      <MenubarMenu>
         <MenubarTrigger>
           <Menu size={32} className="rotate-90" />
         </MenubarTrigger>
-        <MenubarContent className='mr-3' >
+        <MenubarContent className="mr-3">
+          {/* available to all users */}
+          {/* disable for now */}
+          {/* <Link href="/expressions">
+            <MenubarItem>{navbar.see_all_expressions}</MenubarItem>
+          </Link> */}
+
           {/* unauthenticated */}
           {!auth.user && (
             <>
