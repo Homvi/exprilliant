@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 // Public Routes
 Route::middleware([InjectLocaleData::class])->group(function () {
     Route::get('/', HomeController::class)->name('home');
+    Route::get('/expressions', [ExpressionController::class, 'index'])->name('expressions.index');
     Route::get('/game', GameController::class)->name('game');
     Route::get('/choose-game-mode', ChooseGameModeController::class)->name('choose-game-mode');
     Route::get('/random-expressions', [ExpressionController::class, 'getRandomExpressions'])->name('expressions.random');
