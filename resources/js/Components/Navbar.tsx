@@ -14,14 +14,13 @@ const Navbar = () => {
     window.location.reload();
   };
 
-  const isFontSizeLarge = false;
-
   return (
     <div className="navbar bg-base-100 font-nova border-b-[1px] py-4 border-[#05213819] relative top-0 z-40 hidden md:flex">
       <div className="flex-1">
-        <Link href="/" className={`btn btn-ghost ${isFontSizeLarge ? 'text-3xl' : 'text-xl'}`}>
+        <Link href="/" className='btn btn-ghost text-xl'>
           <img src={logo} alt="Exprilliant" className="h-12" />
         </Link>
+
       </div>
       <div className="flex-none">
         <BurgerMenu />
