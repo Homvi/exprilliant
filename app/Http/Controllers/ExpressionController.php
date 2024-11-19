@@ -9,6 +9,12 @@ use Illuminate\Support\Facades\Validator;
 
 class ExpressionController extends Controller
 {
+    public function index()
+    {
+        $expressions = Expression::all();
+        return inertia('Expressions', ['expressions' => $expressions]);
+    }
+
     public function getRandomExpressions(Request $request)
     {
         $mode = $request->query('mode');
