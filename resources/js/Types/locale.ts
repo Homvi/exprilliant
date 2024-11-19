@@ -13,6 +13,7 @@ export interface LocalizedText {
     english_to_hungarian: string;
   };
   navbar: {
+    see_all_expressions: string;
     register: string;
     login_nav: string;
     logout: string;
