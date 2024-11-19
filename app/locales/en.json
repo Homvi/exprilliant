@@ -16,7 +16,8 @@
         "register": "Register",
         "login_nav": "Login",
         "logout": "Logout",
-        "request_new_expression": "Request new expression"
+        "request_new_expression": "Request new expression",
+        "see_all_expressions": "See all expressions"
     },
     "score_page": {
         "your_score": "Your score",
