@@ -1,4 +1,4 @@
-import { Expression } from '@/types/Expressions';
+import { Expression } from '@/Types/Expressions';
 import React from 'react';
 
 const Expressions = ({ expressions }: { expressions: Expression[] }) => {

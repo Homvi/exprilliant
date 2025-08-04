@@ -1,5 +1,5 @@
 // store/gameStore.ts
-import { Expression } from '@/types/Expressions';
+import { Expression } from '@/Types/Expressions';
 import { create } from 'zustand'
 
 interface GameState {

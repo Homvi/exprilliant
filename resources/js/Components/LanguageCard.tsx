@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useGameMode } from '@/contexts/GameModeContext';
-import { GameMode } from '@/types/GameMode';
+import { GameMode } from '@/Types/GameMode';
 import { Link } from '@inertiajs/react';
 
 interface LanguageCardProps {

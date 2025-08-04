@@ -5,8 +5,8 @@ import fireworks from '../../assets/animations/fireworks.json';
 import { Link, usePage } from '@inertiajs/react';
 import { numberOfExpressions } from '@/config';
 import ToplistCard from '@/Components/ToplistCard';
-import { LocalizedText } from '@/types/locale';
-import { User } from '@/types';
+import { LocalizedText } from '@/Types/locale';
+import { User } from '@/Types';
 import { useGameStore } from '@/store/gameStore';
 // import { updateExperience } from '@/functions/gameHelpers';
 

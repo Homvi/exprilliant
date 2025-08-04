@@ -8,7 +8,7 @@ import { Head, useForm, usePage } from '@inertiajs/react';
 import CustomGuestLayout from '../Layouts/CustomGuestLayout';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { LocalizedText } from '@/types/locale';
+import { LocalizedText } from '@/Types/locale';
 
 export default function RequestNewExpression() {
   const { data, setData, post, processing, errors, reset } = useForm({

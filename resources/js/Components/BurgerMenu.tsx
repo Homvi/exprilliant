@@ -1,5 +1,5 @@
 import { Menubar, MenubarContent, MenubarItem, MenubarMenu, MenubarTrigger } from '@/Components/ui/menubar';
-import { LocalizedText } from '@/types/locale';
+import { LocalizedText } from '@/Types/locale';
 import { Link, usePage } from '@inertiajs/react';
 import axios from 'axios';
 import { Menu } from 'lucide-react';

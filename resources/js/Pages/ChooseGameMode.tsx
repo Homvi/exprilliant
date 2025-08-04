@@ -4,7 +4,7 @@ import hu from '../../assets/hu.svg';
 import { Head, usePage } from '@inertiajs/react';
 import CustomGuestLayout from '../Layouts/CustomGuestLayout';
 import LanguageCard from '@/Components/LanguageCard';
-import { LocalizedText } from '@/types/locale';
+import { LocalizedText } from '@/Types/locale';
 import { useEffect } from 'react';
 import { useGameStore } from '@/store/gameStore';
 

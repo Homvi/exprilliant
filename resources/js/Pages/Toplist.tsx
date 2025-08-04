@@ -1,4 +1,4 @@
-import { User } from '@/types';
+import { User } from '@/Types';
 import { Trophy, Medal } from 'lucide-react';
 
 interface ToplistPropTypes {

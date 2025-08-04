@@ -5,7 +5,7 @@ import Modal from '@/Components/Modal';
 import DangerButton from '@/Components/DangerButton';
 import SecondaryButton from '@/Components/SecondaryButton';
 import PrimaryButton from '@/Components/PrimaryButton';
-import { Expression } from '@/types/Expressions';
+import { Expression } from '@/Types/Expressions';
 
 interface UnvalidatedExpressionsPropType {
   expressions: Expression[];

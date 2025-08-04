@@ -7,7 +7,7 @@ import PrimaryButton from '@/Components/PrimaryButton';
 import TextInput from '@/Components/TextInput';
 import { Head, Link, useForm, usePage } from '@inertiajs/react';
 import CustomGuestLayout from '@/Layouts/CustomGuestLayout';
-import { LocalizedText } from '@/types/locale';
+import { LocalizedText } from '@/Types/locale';
 
 export default function Login({ status, canResetPassword }: { status?: string; canResetPassword: boolean }) {
   const { data, setData, post, processing, errors, reset } = useForm({

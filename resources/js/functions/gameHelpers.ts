@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { Expression } from '@/types/Expressions';
+import { Expression } from '@/Types/Expressions';
 import { shuffle } from 'lodash';
 
 export async function fetchExpressions(gameMode: string, numberOfExpressions: number): Promise<Expression[]> {

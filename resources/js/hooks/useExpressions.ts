@@ -2,7 +2,7 @@
 import { useEffect } from 'react';
 import axios from 'axios';
 import { useGameStore } from '@/store/gameStore';
-import { Expression } from '@/types/Expressions';
+import { Expression } from '@/Types/Expressions';
 
 export const useExpressions = (gameMode: string, numberOfExpressions: number) => {
   const setExpressions = useGameStore((state) => state.setExpressions);

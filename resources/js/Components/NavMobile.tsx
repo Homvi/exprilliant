@@ -1,7 +1,7 @@
 import { Link, usePage } from '@inertiajs/react';
 import logo from '../../assets/exprilliant-with-text.webp';
 import axios from 'axios';
-import { LocalizedText } from '@/types/locale';
+import { LocalizedText } from '@/Types/locale';
 
 const MobileNavbar = () => {
   const { localeData, auth } = usePage<{ localeData: { data: LocalizedText }; auth: any }>().props;

@@ -5,7 +5,7 @@ import Choice from '@/Components/Choice';
 import ExampleUsage from '@/Components/ExampleUsage';
 import { useGameStore } from '@/store/gameStore';
 import { useGameProgress } from '@/hooks/useGameProgress';
-import { ActiveExpressionChoiceType } from '@/types/Expressions';
+import { ActiveExpressionChoiceType } from '@/Types/Expressions';
 import { getChoicesInShuffledOrder } from '@/functions/gameHelpers';
 import { useEffect, useState } from 'react';
 
