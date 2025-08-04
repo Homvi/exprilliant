@@ -50,6 +50,6 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function isAdmin()
     {
-        return $this->email === 'adam.honvedo@gmail.com'; // Replace with your admin email
+        return $this->email === config('auth.admin_email');
     }
 }
