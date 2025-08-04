@@ -20,6 +20,7 @@ yarn-error.log
 todo.md
 .flydb.txt
 todo.md
+REFACTOR_SUMMARY.md
 node_modules/
 /test-results/
 /playwright-report/
