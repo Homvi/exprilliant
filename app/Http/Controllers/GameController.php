@@ -8,7 +8,6 @@ use Inertia\Inertia;
 
 class GameController extends Controller
 {
-
     /**
      * Handle the incoming request.
      */
@@ -18,7 +17,6 @@ class GameController extends Controller
         $users = User::where('experience', '>', 0)
             ->orderBy('experience', 'desc')
             ->get(['name', 'experience', 'id']);  // Fetch only the name and experience fields
-
 
         return Inertia::render('Game', [
             'users' => $users, // Pass the users to the Toplist component

@@ -13,7 +13,7 @@ class UserAdminTest extends TestCase
         config(['auth.admin_email' => 'admin@example.com']);
 
         // Create a user instance without saving to database
-        $adminUser = new User();
+        $adminUser = new User;
         $adminUser->email = 'admin@example.com';
 
         // Assert that the user is recognized as admin
@@ -26,7 +26,7 @@ class UserAdminTest extends TestCase
         config(['auth.admin_email' => 'admin@example.com']);
 
         // Create a user instance without saving to database
-        $regularUser = new User();
+        $regularUser = new User;
         $regularUser->email = 'user@example.com';
 
         // Assert that the user is not recognized as admin
@@ -39,7 +39,7 @@ class UserAdminTest extends TestCase
         config(['auth.admin_email' => env('ADMIN_EMAIL', 'admin@example.com')]);
 
         // Create a user instance without saving to database
-        $adminUser = new User();
+        $adminUser = new User;
         $adminUser->email = 'admin@example.com';
 
         // Assert that the user is recognized as admin
@@ -52,10 +52,10 @@ class UserAdminTest extends TestCase
         $expectedEmail = 'secure-admin@example.com';
         config(['auth.admin_email' => $expectedEmail]);
 
-        $adminUser = new User();
+        $adminUser = new User;
         $adminUser->email = $expectedEmail;
 
         $this->assertTrue($adminUser->isAdmin());
         $this->assertEquals($expectedEmail, config('auth.admin_email'));
     }
-} 
+}

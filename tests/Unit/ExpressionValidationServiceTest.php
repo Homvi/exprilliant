@@ -2,10 +2,10 @@
 
 namespace Tests\Unit;
 
-use Tests\TestCase;
 use App\Services\ExpressionValidationService;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
+use Tests\TestCase;
 
 class ExpressionValidationServiceTest extends TestCase
 {
@@ -14,7 +14,7 @@ class ExpressionValidationServiceTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
-        $this->service = new ExpressionValidationService();
+        $this->service = new ExpressionValidationService;
     }
 
     public function test_validates_valid_expression_data()
@@ -81,4 +81,4 @@ class ExpressionValidationServiceTest extends TestCase
         $this->assertEquals(123, $result['user_id']);
         $this->assertFalse($result['is_validated']);
     }
-} 
+}

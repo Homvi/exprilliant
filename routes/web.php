@@ -48,4 +48,4 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
 });
 
 // Authentication Routes
-require __DIR__ . '/auth.php';
+require __DIR__.'/auth.php';

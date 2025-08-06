@@ -3,7 +3,6 @@
 namespace App\Services;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\ValidationException;
 
 class ExpressionValidationService
@@ -11,8 +10,6 @@ class ExpressionValidationService
     /**
      * Validate expression data from request
      *
-     * @param Request $request
-     * @return array
      * @throws ValidationException
      */
     public function validateExpressionData(Request $request): array
@@ -30,18 +27,14 @@ class ExpressionValidationService
 
     /**
      * Get validated expression data for creation
-     *
-     * @param Request $request
-     * @param int $userId
-     * @return array
      */
     public function getValidatedExpressionData(Request $request, int $userId): array
     {
         $validatedData = $this->validateExpressionData($request);
-        
+
         return array_merge($validatedData, [
             'user_id' => $userId,
             'is_validated' => false,
         ]);
     }
-} 
+}

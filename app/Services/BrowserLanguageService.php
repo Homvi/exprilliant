@@ -1,4 +1,5 @@
 <?php
+
 // app/Services/BrowserLanguageService.php
 
 namespace App\Services;

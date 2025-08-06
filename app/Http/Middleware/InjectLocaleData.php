@@ -2,16 +2,16 @@
 
 namespace App\Http\Middleware;
 
+use App\Services\BrowserLanguageService;
 use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
-use App\Services\BrowserLanguageService;
 
 class InjectLocaleData
 {
     public function handle(Request $request, Closure $next): Response
     {
-        $browserLanguageService = new BrowserLanguageService();
+        $browserLanguageService = new BrowserLanguageService;
         $languageCode = $browserLanguageService->detectLanguage($request);
 
         // Specify the path to the language JSON files

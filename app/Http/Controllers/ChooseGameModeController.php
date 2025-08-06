@@ -20,7 +20,7 @@ class ChooseGameModeController extends Controller
 
         // Pass the counts to the frontend
         return Inertia::render('ChooseGameMode', [
-            'expressionCounts' => $expressionCounts
+            'expressionCounts' => $expressionCounts,
         ]);
     }
 }

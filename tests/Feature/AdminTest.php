@@ -91,4 +91,4 @@ class AdminTest extends TestCase
         // Should not be redirected (is admin)
         $response->assertStatus(200);
     }
-} 
+}

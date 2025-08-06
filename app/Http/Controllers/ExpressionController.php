@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Expression;
-use Illuminate\Support\Facades\Auth;
 use App\Services\ExpressionValidationService;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ExpressionController extends Controller
 {
@@ -19,6 +19,7 @@ class ExpressionController extends Controller
     public function index()
     {
         $expressions = Expression::all();
+
         return inertia('Expressions', ['expressions' => $expressions]);
     }
 
@@ -27,7 +28,7 @@ class ExpressionController extends Controller
         $mode = $request->query('mode');
         $numberOfRequestedExpressions = $request->query('numberOfExpressions');
 
-        if (!$mode || !str_contains($mode, '-')) {
+        if (! $mode || ! str_contains($mode, '-')) {
             return response()->json(['error' => 'Invalid mode'], 400);
         }
 
@@ -52,15 +53,17 @@ class ExpressionController extends Controller
     public function store(Request $request)
     {
         $expressionData = $this->validationService->getValidatedExpressionData($request, Auth::id());
-        
+
         Expression::create($expressionData);
 
         return redirect()->back()->with('message', 'Expression submitted successfully!');
     }
+
     // Display unvalidated expressions
     public function adminIndex()
     {
         $expressions = Expression::with('user')->where('is_validated', false)->get();
+
         return inertia('Admin/UnvalidatedExpressions', ['expressions' => $expressions]);
     }
 
@@ -68,6 +71,7 @@ class ExpressionController extends Controller
     public function validateExpression(Expression $expression)
     {
         $expression->update(['is_validated' => true]);
+
         return redirect()->route('admin.expressions.index')->with('message', 'Expression validated successfully!');
     }
 
@@ -75,6 +79,7 @@ class ExpressionController extends Controller
     public function destroy(Expression $expression)
     {
         $expression->delete();
+
         return redirect()->route('admin.expressions.index')->with('message', 'Expression deleted successfully!');
     }
 }

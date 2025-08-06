@@ -19,8 +19,8 @@ class ExpressionSeeder extends Seeder
 
         // Fetch the first user or create one if none exists
         $user = User::first();
-        
-        if (!$user) {
+
+        if (! $user) {
             $user = User::create([
                 'name' => 'Admin User',
                 'email' => config('auth.admin_email', 'admin@example.com'),
@@ -39,12 +39,13 @@ class ExpressionSeeder extends Seeder
             $expression['user_id'] = $user->id;
             $expression['created_at'] = now();
             $expression['updated_at'] = $expression['updated_at'] ?? null; // Set to null if not present
+
             return $expression;
         }, $expressions);
 
         // Insert the expressions into the database
         DB::table('expressions')->insert($expressions);
-        
+
         $this->command->info('Expressions seeded successfully!');
     }
 }
