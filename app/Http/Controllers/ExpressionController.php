@@ -5,10 +5,17 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Expression;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Validator;
+use App\Services\ExpressionValidationService;
 
 class ExpressionController extends Controller
 {
+    protected $validationService;
+
+    public function __construct(ExpressionValidationService $validationService)
+    {
+        $this->validationService = $validationService;
+    }
+
     public function index()
     {
         $expressions = Expression::all();
@@ -44,27 +51,9 @@ class ExpressionController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
-            'expression' => 'required|string|max:255',
-            'right_answer' => 'nullable|string|max:255', // Change to nullable
-            'false_answer_one' => 'nullable|string|max:255', // Change to nullable
-            'false_answer_two' => 'nullable|string|max:255', // Change to nullable
-            'expression_language' => 'required|string|in:en,es,hu',
-            'answer_language' => 'required|string|in:en,es,hu',
-            'example_usage' => 'nullable|string|max:255',
-        ]);
-
-        Expression::create([
-            'expression' => $request->expression,
-            'right_answer' => $request->right_answer,
-            'false_answer_one' => $request->false_answer_one,
-            'false_answer_two' => $request->false_answer_two,
-            'expression_language' => $request->expression_language,
-            'answer_language' => $request->answer_language,
-            'example_usage' => $request->example_usage,
-            'user_id' => Auth::id(),
-            'is_validated' => false,
-        ]);
+        $expressionData = $this->validationService->getValidatedExpressionData($request, Auth::id());
+        
+        Expression::create($expressionData);
 
         return redirect()->back()->with('message', 'Expression submitted successfully!');
     }
