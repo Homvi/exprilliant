@@ -22,10 +22,11 @@ class ExpressionSeeder extends Seeder
 
         if (! $user) {
             $this->command->error('No users found in the database. Please ensure you exist in the database.');
+
             return;
         }
 
-        $this->command->info('Using existing user: ' . $user->name . ' (ID: ' . $user->id . ')');
+        $this->command->info('Using existing user: '.$user->name.' (ID: '.$user->id.')');
 
         // Load and decode the JSON file
         $jsonFilePath = database_path('data/expressions.json');

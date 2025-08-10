@@ -60,11 +60,45 @@ class ExpressionController extends Controller
     }
 
     // Display unvalidated expressions
-    public function adminIndex()
+    public function adminIndex(Request $request)
     {
-        $expressions = Expression::with('user')->where('is_validated', false)->get();
+        $expressionLanguage = $request->query('exp');
+        $answerLanguage = $request->query('ans');
 
-        return inertia('Admin/UnvalidatedExpressions', ['expressions' => $expressions]);
+        $query = Expression::with('user')->where('is_validated', false);
+
+        if (! empty($expressionLanguage)) {
+            $query->where('expression_language', $expressionLanguage);
+        }
+
+        if (! empty($answerLanguage)) {
+            $query->where('answer_language', $answerLanguage);
+        }
+
+        $expressions = $query->orderByDesc('created_at')->get();
+
+        // Collect available languages and language pairs among unvalidated expressions
+        $unvalidated = Expression::where('is_validated', false);
+        $expLangs = (clone $unvalidated)->distinct()->pluck('expression_language')->filter();
+        $ansLangs = (clone $unvalidated)->distinct()->pluck('answer_language')->filter();
+        $languages = $expLangs->merge($ansLangs)->unique()->values();
+
+        $pairs = (clone $unvalidated)
+            ->select('expression_language', 'answer_language')
+            ->distinct()
+            ->get()
+            ->map(fn ($e) => $e->expression_language.'-'.$e->answer_language)
+            ->values();
+
+        return inertia('Admin/UnvalidatedExpressions', [
+            'expressions' => $expressions,
+            'filters' => [
+                'exp' => $expressionLanguage,
+                'ans' => $answerLanguage,
+            ],
+            'languages' => $languages,
+            'pairs' => $pairs,
+        ]);
     }
 
     // Validate expression

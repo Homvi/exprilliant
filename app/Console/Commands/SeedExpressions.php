@@ -2,8 +2,8 @@
 
 namespace App\Console\Commands;
 
-use Illuminate\Console\Command;
 use Database\Seeders\ProductionExpressionSeeder;
+use Illuminate\Console\Command;
 
 class SeedExpressions extends Command
 {
@@ -26,22 +26,25 @@ class SeedExpressions extends Command
      */
     public function handle()
     {
-        if (app()->environment('production') && !$this->option('force')) {
+        if (app()->environment('production') && ! $this->option('force')) {
             $this->error('This command cannot be run in production without the --force flag.');
+
             return 1;
         }
 
         $this->info('🌱 Starting safe expression seeding...');
 
         try {
-            $seeder = new ProductionExpressionSeeder();
+            $seeder = new ProductionExpressionSeeder;
             $seeder->setCommand($this);
             $seeder->run();
 
             $this->info('✅ Expression seeding completed successfully!');
+
             return 0;
         } catch (\Exception $e) {
-            $this->error('❌ Error during seeding: ' . $e->getMessage());
+            $this->error('❌ Error during seeding: '.$e->getMessage());
+
             return 1;
         }
     }

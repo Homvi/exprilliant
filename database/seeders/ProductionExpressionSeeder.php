@@ -6,7 +6,6 @@ use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
-use Illuminate\Support\Str;
 
 class ProductionExpressionSeeder extends Seeder
 {
@@ -20,10 +19,11 @@ class ProductionExpressionSeeder extends Seeder
 
         if (! $user) {
             $this->command->error('No users found in the database. Please ensure you exist in the database.');
+
             return;
         }
 
-        $this->command->info('Using existing user: ' . $user->name . ' (ID: ' . $user->id . ')');
+        $this->command->info('Using existing user: '.$user->name.' (ID: '.$user->id.')');
 
         // Load and decode the JSON file
         $jsonFilePath = database_path('data/expressions.json');
@@ -39,7 +39,7 @@ class ProductionExpressionSeeder extends Seeder
                 ->where('expression_language', $expressionData['expression_language'])
                 ->exists();
 
-            if (!$exists) {
+            if (! $exists) {
                 // Prepare the expression data
                 $expressionData['user_id'] = $user->id;
                 $expressionData['created_at'] = now();
@@ -53,7 +53,7 @@ class ProductionExpressionSeeder extends Seeder
             }
         }
 
-        $this->command->info("Production seeding completed:");
+        $this->command->info('Production seeding completed:');
         $this->command->info("- {$inserted} new expressions inserted");
         $this->command->info("- {$skipped} existing expressions skipped");
     }
