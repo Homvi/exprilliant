@@ -23,17 +23,17 @@ const UnvalidatedExpressions = ({ expressions, filters, languages = [], pairs = 
 
   const { delete: destroy, post, processing, reset } = useForm();
 
+  const applyFilters = (nextExp?: string, nextAns?: string) => {
+    const query: Record<string, string> = {};
+    if (nextExp) query.exp = nextExp;
+    if (nextAns) query.ans = nextAns;
+    router.get(route('admin.expressions.index'), query, { preserveScroll: true, preserveState: true, replace: true });
+  };
+
   const clearFilters = () => {
     setExp(undefined);
     setAns(undefined);
-    router.get(route('admin.expressions.index'), {}, { preserveScroll: true, preserveState: true });
-  };
-
-  const applyFilters = () => {
-    const query: Record<string, string> = {};
-    if (exp) query.exp = exp;
-    if (ans) query.ans = ans;
-    router.get(route('admin.expressions.index'), query, { preserveScroll: true, preserveState: true });
+    applyFilters();
   };
 
   const handleValidate = (id: number) => {
@@ -49,7 +49,11 @@ const UnvalidatedExpressions = ({ expressions, filters, languages = [], pairs = 
   const validateExpression = (e: { preventDefault: () => void }) => {
     e.preventDefault();
 
-    post(route('admin.expressions.validate', selectedExpression), {
+    const query: Record<string, string> = {};
+    if (exp) query.exp = exp;
+    if (ans) query.ans = ans;
+
+    post(route('admin.expressions.validate', { expression: selectedExpression, ...query }), {
       preserveScroll: true,
       onSuccess: () => closeModal()
     });
@@ -58,7 +62,11 @@ const UnvalidatedExpressions = ({ expressions, filters, languages = [], pairs = 
   const deleteExpression = (e: { preventDefault: () => void }) => {
     e.preventDefault();
 
-    destroy(route('admin.expressions.destroy', selectedExpression), {
+    const query: Record<string, string> = {};
+    if (exp) query.exp = exp;
+    if (ans) query.ans = ans;
+
+    destroy(route('admin.expressions.destroy', { expression: selectedExpression, ...query }), {
       preserveScroll: true,
       onSuccess: () => closeModal()
     });
@@ -73,10 +81,13 @@ const UnvalidatedExpressions = ({ expressions, filters, languages = [], pairs = 
 
   return (
     <CustomGuestLayout>
-      <div className="p-3 bg-[#eff0f7] text-[#171923] min-h-screen">
+      <div className="min-h-screen bg-neutral-50 text-neutral-900">
+        <div className="mx-auto max-w-7xl px-3 sm:px-6 py-6">
         <Head title="Unvalidated Expressions" />
 
-        <h1 className="text-2xl font-bold mb-4">Unvalidated Expressions</h1>
+        <div className="flex items-center justify-between mb-4">
+          <h1 className="text-xl sm:text-2xl font-semibold tracking-tight">Unvalidated Expressions</h1>
+        </div>
 
         {/* Filters */}
         <div className="mb-4 flex flex-col gap-2">
@@ -86,7 +97,11 @@ const UnvalidatedExpressions = ({ expressions, filters, languages = [], pairs = 
               {['en', 'es', 'hu'].map((lang) => (
                 <button
                   key={lang}
-                  onClick={() => setExp(exp === lang ? undefined : lang)}
+                  onClick={() => {
+                    const next = exp === lang ? undefined : lang;
+                    setExp(next);
+                    applyFilters(next, ans);
+                  }}
                   className={`px-3 py-1 rounded-full text-sm border transition-colors ${
                     exp === lang ? 'bg-neutral-900 text-white border-neutral-900' : 'bg-white text-neutral-800 border-neutral-300 hover:border-neutral-500'
                   }`}
@@ -103,7 +118,11 @@ const UnvalidatedExpressions = ({ expressions, filters, languages = [], pairs = 
               {['en', 'es', 'hu'].map((lang) => (
                 <button
                   key={lang}
-                  onClick={() => setAns(ans === lang ? undefined : lang)}
+                  onClick={() => {
+                    const next = ans === lang ? undefined : lang;
+                    setAns(next);
+                    applyFilters(exp, next);
+                  }}
                   className={`px-3 py-1 rounded-full text-sm border transition-colors ${
                     ans === lang ? 'bg-neutral-900 text-white border-neutral-900' : 'bg-white text-neutral-800 border-neutral-300 hover:border-neutral-500'
                   }`}
@@ -125,6 +144,7 @@ const UnvalidatedExpressions = ({ expressions, filters, languages = [], pairs = 
                     const [e, a] = pair.split('-');
                     setExp(e);
                     setAns(a);
+                    applyFilters(e, a);
                   }}
                   className="px-3 py-1 rounded-full text-sm border bg-white text-neutral-800 border-neutral-300 hover:border-neutral-500"
                 >
@@ -135,69 +155,84 @@ const UnvalidatedExpressions = ({ expressions, filters, languages = [], pairs = 
           ) : null}
 
           <div className="flex gap-2">
-            <button onClick={applyFilters} className="px-3 py-1 rounded-md bg-neutral-900 text-white text-sm">
-              Apply
-            </button>
             <button onClick={clearFilters} className="px-3 py-1 rounded-md bg-white border border-neutral-300 text-neutral-800 text-sm">
               Clear
             </button>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {expressions.length === 0 && <p className="text-neutral-600">No unvalidated expressions found.</p>}
+        <div className="grid grid-cols-1 gap-4">
+          {expressions.length === 0 && (
+            <div className="col-span-full">
+              <div className="rounded-xl border border-dashed border-neutral-300 bg-white p-8 text-center text-neutral-600">
+                No unvalidated expressions found.
+              </div>
+            </div>
+          )}
+
           {expressions.map((expression) => (
-            <div key={expression.id} className={`border-t-4 rounded-lg shadow-lg p-6 bg-white text-neutral-800`}>
-              <div className="flex justify-between items-center">
-                <div>
-                  <div>
-                    {expression.expression_language}-{expression.answer_language}
+            <div
+              key={expression.id}
+              className="group rounded-xl border border-neutral-200 bg-white p-4 shadow-sm transition hover:shadow-md"
+            >
+              <div className="flex items-start justify-between gap-3">
+                <div className="min-w-0">
+                  <div className="mb-2 flex items-center gap-2">
+                    <span className="inline-flex items-center rounded-full border border-neutral-300 bg-neutral-50 px-2 py-0.5 text-[11px] font-medium uppercase tracking-wide text-neutral-700">
+                      {expression.expression_language}-{expression.answer_language}
+                    </span>
                   </div>
-                  <h2 className="text-2xl font-semibold">{expression.expression}</h2>
+                  <h2 className="text-lg font-semibold leading-snug text-neutral-900 break-words whitespace-normal">
+                    {expression.expression}
+                  </h2>
+                </div>
+                <div className="flex shrink-0 gap-2">
+                  <button
+                    onClick={() => handleValidate(expression.id)}
+                    disabled={processing}
+                    className="inline-flex items-center rounded-md border border-green-600 px-2.5 py-1.5 text-xs font-medium text-green-700 hover:bg-green-50 disabled:opacity-50"
+                    aria-label="Validate"
+                  >
+                    Validate
+                  </button>
+                  <button
+                    onClick={() => handleDelete(expression.id)}
+                    disabled={processing}
+                    className="inline-flex items-center rounded-md border border-red-600 px-2.5 py-1.5 text-xs font-medium text-red-700 hover:bg-red-50 disabled:opacity-50"
+                    aria-label="Delete"
+                  >
+                    Delete
+                  </button>
                 </div>
               </div>
-              <div className="mt-4">
-                <p className="bg-green-200 mb-3 p-1">
-                  <strong>Right Answer:</strong> <br />
-                  {expression.right_answer}
-                </p>
-                <p className="bg-red-200 mb-3 p-1">
-                  <strong>False Answer 1:</strong> <br />
-                  {expression.false_answer_one}
-                </p>
-                <p className="bg-red-200 mb-3 p-1">
-                  <strong>False Answer 2:</strong> <br />
-                  {expression.false_answer_two}
-                </p>
-                <p>
-                  Expression Language: <strong> {expression.expression_language}</strong>
-                </p>
-                <p>
-                  Answer Language: <strong>{expression.answer_language}</strong>
-                </p>
-                <p>
-                  <strong>Submitted by:</strong> {expression.user ? expression.user.name : 'Unknown'}
-                </p>
-                <p>{expression.user ? expression.user.email : 'Unknown'}</p>
+
+              <div className="mt-4 space-y-2">
+                <div className="rounded-lg border border-green-200 bg-green-50 px-3 py-2">
+                  <div className="text-[11px] font-medium uppercase tracking-wide text-green-700">Right answer</div>
+                  <div className="text-sm text-neutral-900">{expression.right_answer}</div>
+                </div>
+                <div className="rounded-lg border border-red-200 bg-red-50 px-3 py-2">
+                  <div className="text-[11px] font-medium uppercase tracking-wide text-red-700">False answer 1</div>
+                  <div className="text-sm text-neutral-900">{expression.false_answer_one}</div>
+                </div>
+                <div className="rounded-lg border border-red-200 bg-red-50 px-3 py-2">
+                  <div className="text-[11px] font-medium uppercase tracking-wide text-red-700">False answer 2</div>
+                  <div className="text-sm text-neutral-900">{expression.false_answer_two}</div>
+                </div>
               </div>
-              <div className="mt-5">
-                <button
-                  className="bg-green-600 text-white py-1 px-4 rounded mr-2"
-                  onClick={() => handleValidate(expression.id)}
-                  disabled={processing}
-                >
-                  Validate
-                </button>
-                <button
-                  className="bg-red-600 text-white py-1 px-4 rounded"
-                  onClick={() => handleDelete(expression.id)}
-                  disabled={processing}
-                >
-                  Delete
-                </button>
+
+              <div className="mt-4 flex items-center justify-between text-xs text-neutral-600">
+                <div className="truncate">
+                  <span className="font-medium text-neutral-700">Submitted by:</span>{' '}
+                  <span className="truncate">
+                    {expression.user ? expression.user.name : 'Unknown'}
+                    {expression.user?.email ? ` · ${expression.user.email}` : ''}
+                  </span>
+                </div>
               </div>
             </div>
           ))}
+        </div>
         </div>
 
         <Modal show={confirmingDeletion} onClose={closeModal}>

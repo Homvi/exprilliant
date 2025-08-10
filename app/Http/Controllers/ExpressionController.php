@@ -102,18 +102,22 @@ class ExpressionController extends Controller
     }
 
     // Validate expression
-    public function validateExpression(Expression $expression)
+    public function validateExpression(Request $request, Expression $expression)
     {
         $expression->update(['is_validated' => true]);
 
-        return redirect()->route('admin.expressions.index')->with('message', 'Expression validated successfully!');
+        return redirect()
+            ->route('admin.expressions.index', $request->query())
+            ->with('message', 'Expression validated successfully!');
     }
 
     // Delete expression
-    public function destroy(Expression $expression)
+    public function destroy(Request $request, Expression $expression)
     {
         $expression->delete();
 
-        return redirect()->route('admin.expressions.index')->with('message', 'Expression deleted successfully!');
+        return redirect()
+            ->route('admin.expressions.index', $request->query())
+            ->with('message', 'Expression deleted successfully!');
     }
 }
