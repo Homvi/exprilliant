@@ -118,6 +118,10 @@ return [
     |
     */
 
+    // Single admin email (legacy). Prefer using ADMIN_EMAILS for multiple admins.
     'admin_email' => env('ADMIN_EMAIL', 'admin@example.com'),
+
+    // Multiple admin emails, comma-separated. Example: "admin@example.com,manager@example.com"
+    'admin_emails' => array_filter(array_map('trim', explode(',', env('ADMIN_EMAILS', env('ADMIN_EMAIL', 'admin@example.com'))))),
 
 ];
