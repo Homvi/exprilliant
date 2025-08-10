@@ -17,18 +17,15 @@ class ExpressionSeeder extends Seeder
         // Truncate the expressions table to avoid duplicates
         DB::table('expressions')->truncate();
 
-        // Fetch the first user or create one if none exists
+        // Use the first registered user (you)
         $user = User::first();
 
         if (! $user) {
-            $user = User::create([
-                'name' => 'Admin User',
-                'email' => config('auth.admin_email', 'admin@example.com'),
-                'password' => bcrypt('password'),
-                'email_verified_at' => now(),
-                'experience' => 0,
-            ]);
+            $this->command->error('No users found in the database. Please ensure you exist in the database.');
+            return;
         }
+
+        $this->command->info('Using existing user: ' . $user->name . ' (ID: ' . $user->id . ')');
 
         // Load and decode the JSON file
         $jsonFilePath = database_path('data/expressions.json');
