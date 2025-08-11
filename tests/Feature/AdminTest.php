@@ -12,12 +12,10 @@ class AdminTest extends TestCase
 
     public function test_user_is_admin_when_email_matches_config()
     {
-        // Set the admin email in config
-        config(['auth.admin_email' => 'admin@example.com']);
-
-        // Create a user with the admin email
+        // Create a user with admin flag
         $adminUser = User::factory()->create([
             'email' => 'admin@example.com',
+            'is_admin' => true,
         ]);
 
         // Assert that the user is recognized as admin
@@ -26,26 +24,22 @@ class AdminTest extends TestCase
 
     public function test_user_is_not_admin_when_email_does_not_match_config()
     {
-        // Set the admin email in config
-        config(['auth.admin_email' => 'admin@example.com']);
-
-        // Create a user with a different email
+        // Create a user without admin flag
         $regularUser = User::factory()->create([
             'email' => 'user@example.com',
+            'is_admin' => false,
         ]);
 
         // Assert that the user is not recognized as admin
         $this->assertFalse($regularUser->isAdmin());
     }
 
-    public function test_admin_functionality_works_with_environment_variable()
+    public function test_admin_functionality_works_with_runtime_config()
     {
-        // Set the admin email via environment variable
-        config(['auth.admin_email' => env('ADMIN_EMAIL', 'admin@example.com')]);
-
-        // Create a user with the admin email
+        // Create a user with admin flag
         $adminUser = User::factory()->create([
             'email' => 'admin@example.com',
+            'is_admin' => true,
         ]);
 
         // Assert that the user is recognized as admin
@@ -54,12 +48,10 @@ class AdminTest extends TestCase
 
     public function test_admin_middleware_blocks_non_admin_users()
     {
-        // Set the admin email in config
-        config(['auth.admin_email' => 'admin@example.com']);
-
         // Create a regular user
         $regularUser = User::factory()->create([
             'email' => 'user@example.com',
+            'is_admin' => false,
         ]);
 
         // Act as the regular user
@@ -74,12 +66,10 @@ class AdminTest extends TestCase
 
     public function test_admin_middleware_allows_admin_users()
     {
-        // Set the admin email in config
-        config(['auth.admin_email' => 'admin@example.com']);
-
         // Create an admin user
         $adminUser = User::factory()->create([
             'email' => 'admin@example.com',
+            'is_admin' => true,
         ]);
 
         // Act as the admin user
