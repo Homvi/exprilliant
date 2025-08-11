@@ -16,7 +16,7 @@ const Score = () => {
   const { localeData } = usePage<{ localeData: { data: LocalizedText; auth: any } }>().props;
   const { score_page } = localeData.data;
 
-  const { resetGame, score } = useGameStore();
+  const { resetGame, score, triggerRefresh } = useGameStore();
 
   const animation = score == numberOfExpressions ? fireworks : check;
   const hasToLoop = score == numberOfExpressions ? true : false;
@@ -73,7 +73,10 @@ const Score = () => {
           {score_page.go_to_main_page}
         </Link>
         <button
-          onClick={resetGame}
+          onClick={() => {
+            triggerRefresh();
+            resetGame();
+          }}
           className="bg-[#60AC90] w-full whitespace-nowrap shadow-md text-white py-2 transition-all duration-300 hover:scale-105 md:w-[40%] rounded-lg px-1 max-w-[200px]"
         >
           {score_page.give_me_more} ({numberOfExpressions})

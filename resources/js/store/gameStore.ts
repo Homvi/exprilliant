@@ -11,6 +11,8 @@ interface GameState {
   incrementScore: () => void;
   nextExpression: () => void;
   resetGame: () => void;
+  refreshCounter: number;
+  triggerRefresh: () => void;
 }
 
 export const useGameStore = create<GameState>((set) => ({
@@ -25,5 +27,7 @@ export const useGameStore = create<GameState>((set) => ({
       activeExpressionIndex: state.activeExpressionIndex + 1,
       isGameFinished: state.activeExpressionIndex + 1 >= state.expressions.length
     })),
-  resetGame: () => set({ activeExpressionIndex: 0, score: 0, isGameFinished: false })
+  resetGame: () => set({ activeExpressionIndex: 0, score: 0, isGameFinished: false }),
+  refreshCounter: 0,
+  triggerRefresh: () => set((state) => ({ refreshCounter: state.refreshCounter + 1 }))
 }));

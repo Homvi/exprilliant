@@ -6,6 +6,7 @@ import { Expression } from '@/Types/Expressions';
 
 export const useExpressions = (gameMode: string, numberOfExpressions: number) => {
   const setExpressions = useGameStore((state) => state.setExpressions);
+  const refreshCounter = useGameStore((state) => state.refreshCounter);
 
   useEffect(() => {
     const fetchExpressions = async () => {
@@ -19,5 +20,5 @@ export const useExpressions = (gameMode: string, numberOfExpressions: number) =>
       }
     };
     fetchExpressions();
-  }, [gameMode, numberOfExpressions, setExpressions]);
+  }, [gameMode, numberOfExpressions, refreshCounter, setExpressions]);
 };
