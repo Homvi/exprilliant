@@ -24,6 +24,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'email',
         'password',
         'experience',
+        'is_admin',
     ];
 
     /**
@@ -44,11 +45,19 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $casts = [
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
+        'is_admin' => 'boolean',
     ];
+
+    /**
+     * Normalize email to lowercase and trim spaces on assignment.
+     */
+    public function setEmailAttribute($value): void
+    {
+        $this->attributes['email'] = strtolower(trim((string) $value));
+    }
 
     public function isAdmin()
     {
-        $emails = config('auth.admin_emails', []);
-        return in_array($this->email, $emails, true);
+        return (bool) $this->is_admin;
     }
 }
