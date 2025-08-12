@@ -88,7 +88,7 @@ To get a local copy of the project up and running, follow these steps:
     php artisan migrate
     ```
 
-7. **Run the `ExpressionSeeder`:**
+7. **Run the `ExpressionSeeder` (populates the database with initial expressions and idioms):**
 
     ```bash
     php artisan db:seed --class=ExpressionSeeder
