@@ -10,6 +10,7 @@ const ContactLogo = ({ children, href }: ContactLogoProps) => {
     <a
       href={href}
       target="_blank"
+      rel="noreferrer"
       className="opacity-30 hover:opacity-80 cursor-pointer transition-opacity duration-300 fill-midnight rounded-full border-[1px] border-midnight py-3 px-3"
     >
       {children}

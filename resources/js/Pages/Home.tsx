@@ -4,6 +4,7 @@ import { Head, usePage } from '@inertiajs/react';
 import CustomGuestLayout from '@/Layouts/CustomGuestLayout';
 import JumboButton from '@/Components/JumboButton';
 import { LocalizedText } from '@/Types/locale';
+import { User } from '@/Types';
 
 const Home = () => {
   // lottie animation configuration
@@ -13,7 +14,7 @@ const Home = () => {
   };
 
   // language content
-  const { localeData, auth } = usePage<{ localeData: { data: LocalizedText }; auth: any }>().props;
+  const { localeData, auth } = usePage<{ localeData: { data: LocalizedText }; auth: { user: User | null } }>().props;
   const { home_page } = localeData.data;
   const { user } = auth;
 

@@ -5,6 +5,7 @@ import TextInput from '@/Components/TextInput';
 import { Transition } from '@headlessui/react';
 import { Link, useForm, usePage } from '@inertiajs/react';
 import { FormEventHandler } from 'react';
+import { User } from '@/Types';
 
 export default function UpdateProfileInformation({
   mustVerifyEmail,
@@ -15,8 +16,12 @@ export default function UpdateProfileInformation({
   status?: string;
   className?: string;
 }) {
-  const { auth } = usePage<{ auth: any }>().props;
+  const { auth } = usePage<{ auth: { user: User | null } }>().props;
   const user = auth.user;
+
+  if (!user) {
+    return null; // or redirect to login
+  }
 
   const { data, setData, patch, errors, processing, recentlySuccessful } = useForm({
     name: user.name,

@@ -1,11 +1,12 @@
 import { Menubar, MenubarContent, MenubarItem, MenubarMenu, MenubarTrigger } from '@/Components/ui/menubar';
 import { LocalizedText } from '@/Types/locale';
+import { User } from '@/Types';
 import { Link, usePage } from '@inertiajs/react';
 import axios from 'axios';
 import { Menu } from 'lucide-react';
 
 const BurgerMenu = () => {
-  const { localeData, auth } = usePage<{ localeData: { data: LocalizedText }; auth: any }>().props;
+  const { localeData, auth } = usePage<{ localeData: { data: LocalizedText }; auth: { user: User | null } }>().props;
 
   const { navbar } = localeData.data;
 

@@ -4,10 +4,15 @@ import NavLink from '@/Components/NavLink';
 import ResponsiveNavLink from '@/Components/ResponsiveNavLink';
 import { Link, usePage } from '@inertiajs/react';
 import { PropsWithChildren, ReactNode, useState } from 'react';
+import { User } from '@/Types';
 
 export default function Authenticated({ header, children }: PropsWithChildren<{ header?: ReactNode }>) {
-  const { auth } = usePage<{ auth: any }>().props;
+  const { auth } = usePage<{ auth: { user: User | null } }>().props;
   const user = auth.user;
+
+  if (!user) {
+    return null; // or redirect to login
+  }
 
   const [showingNavigationDropdown, setShowingNavigationDropdown] = useState(false);
 

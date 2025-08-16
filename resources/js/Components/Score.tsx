@@ -13,7 +13,7 @@ import { useGameStore } from '@/store/gameStore';
 const Score = () => {
   const [animatedScore, setAnimatedScore] = useState(0);
 
-  const { localeData } = usePage<{ localeData: { data: LocalizedText; auth: any } }>().props;
+  const { localeData } = usePage<{ localeData: { data: LocalizedText }; auth: { user: User | null } }>().props;
   const { score_page } = localeData.data;
 
   const { resetGame, score, triggerRefresh } = useGameStore();
