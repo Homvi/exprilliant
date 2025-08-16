@@ -59,3 +59,69 @@ parameters:
 			identifier: missingType.iterableValue
 			count: 1
 			path: app/Http/Requests/ProfileUpdateRequest.php
+
+		-
+			message: '#^Call to an undefined static method App\\Models\\Expression\:\:where\(\)\.$#'
+			identifier: staticMethod.notFound
+			count: 4
+			path: app/Http/Controllers/ChooseGameModeController.php
+
+		-
+			message: '#^Call to an undefined static method App\\Models\\Expression\:\:create\(\)\.$#'
+			identifier: staticMethod.notFound
+			count: 1
+			path: app/Http/Controllers/ExpressionController.php
+
+		-
+			message: '#^Call to an undefined static method App\\Models\\User\:\:where\(\)\.$#'
+			identifier: staticMethod.notFound
+			count: 3
+			path: app/Http/Controllers/GameController.php
+
+		-
+			message: '#^Call to an undefined static method App\\Models\\User\:\:where\(\)\.$#'
+			identifier: staticMethod.notFound
+			count: 2
+			path: app/Http/Controllers/ToplistController.php
+
+		-
+			message: '#^Call to an undefined method Illuminate\\Contracts\\Auth\\Authenticatable\:\:isAdmin\(\)\.$#'
+			identifier: method.notFound
+			count: 1
+			path: app/Http/Middleware/AdminMiddleware.php
+
+		-
+			message: '#^Class App\\Models\\Expression uses generic trait Illuminate\\Database\\Eloquent\\Factories\\HasFactory but does not specify its types\: TFactory$#'
+			identifier: missingType.generics
+			count: 1
+			path: app/Models/Expression.php
+
+		-
+			message: '#^Method App\\Models\\Expression\:\:user\(\) return type with generic class Illuminate\\Database\\Eloquent\\Relations\\BelongsTo does not specify its types\: TRelatedModel, TDeclaringModel$#'
+			identifier: missingType.generics
+			count: 1
+			path: app/Models/Expression.php
+
+		-
+			message: '#^Class App\\Models\\User uses generic trait Illuminate\\Database\\Eloquent\\Factories\\HasFactory but does not specify its types\: TFactory$#'
+			identifier: missingType.generics
+			count: 1
+			path: app/Models/User.php
+
+		-
+			message: '#^Cannot cast non-empty-array\|non-falsy-string to string\.$#'
+			identifier: cast.string
+			count: 2
+			path: app/Http/Controllers/ExpressionController.php
+
+		-
+			message: '#^Call to an undefined static method App\\Models\\Expression\:\:where\(\)\.$#'
+			identifier: staticMethod.notFound
+			count: 2
+			path: app/Http/Controllers/ExpressionController.php
+
+		-
+			message: '#^Parameter #2 \$userId of method App\\Services\\ExpressionValidationService\:\:getValidatedExpressionData\(\) expects int, int\|string given\.$#'
+			identifier: argument.type
+			count: 1
+			path: app/Http/Controllers/ExpressionController.php
