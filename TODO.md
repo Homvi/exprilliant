@@ -79,6 +79,7 @@ Exprilliant is a well-structured Laravel + React application for learning expres
 
 #### 10. **Code Quality Tools**
 - [ ] **PHPStan**: Add static analysis with PHPStan
+- [ ] **PHPStan Errors**: Resolve current PHPStan errors across the app and progressively reduce/remove the baseline (add return types, fix undefined properties/methods, correct static calls)
 - [ ] **Pre-commit Hooks**: Implement pre-commit hooks for code quality
 - [ ] **CI/CD Pipeline**: Set up automated testing and deployment
 - [ ] **Code Coverage**: Add code coverage reporting
