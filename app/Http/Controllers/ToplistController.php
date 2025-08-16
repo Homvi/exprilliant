@@ -3,13 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
+use Inertia\Response;
 
 class ToplistController extends Controller
 {
     // Render the toplist view at /toplist
-    public function index(Request $request)
+    public function index(Request $request): Response
     {
         $users = User::where('experience', '>', 0)
             ->orderBy('experience', 'desc')
@@ -21,7 +23,7 @@ class ToplistController extends Controller
     }
 
     // Provide the toplist data as JSON
-    public function getToplistData(Request $request)
+    public function getToplistData(Request $request): JsonResponse
     {
         $users = User::where('experience', '>', 0)
             ->orderBy('experience', 'desc')

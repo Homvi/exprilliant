@@ -3,14 +3,13 @@
 namespace App\Services;
 
 use Illuminate\Http\Request;
-use Illuminate\Validation\ValidationException;
 
 class ExpressionValidationService
 {
     /**
      * Validate expression data from request
      *
-     * @throws ValidationException
+     * @return array<string, mixed>
      */
     public function validateExpressionData(Request $request): array
     {
@@ -27,6 +26,8 @@ class ExpressionValidationService
 
     /**
      * Get validated expression data for creation
+     *
+     * @return array<string, mixed>
      */
     public function getValidatedExpressionData(Request $request, int $userId): array
     {

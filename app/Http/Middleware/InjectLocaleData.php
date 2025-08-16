@@ -19,11 +19,13 @@ class InjectLocaleData
         $languageFilePath = "{$localesPath}/{$languageCode}.json";
 
         if (file_exists($languageFilePath)) {
-            $data = json_decode(file_get_contents($languageFilePath), true);
+            $fileContents = file_get_contents($languageFilePath);
+            $data = $fileContents !== false ? json_decode($fileContents, true) : [];
         } else {
             // Fallback to English if the language file does not exist
             $englishFilePath = "{$localesPath}/en.json";
-            $data = json_decode(file_get_contents($englishFilePath), true);
+            $fileContents = file_get_contents($englishFilePath);
+            $data = $fileContents !== false ? json_decode($fileContents, true) : [];
             $languageCode = 'en';
         }
 

@@ -4,55 +4,65 @@ namespace App\Http\Controllers;
 
 use App\Models\Expression;
 use App\Services\ExpressionValidationService;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Inertia\Inertia;
+use Inertia\Response;
 
 class ExpressionController extends Controller
 {
-    protected $validationService;
+    protected ExpressionValidationService $validationService;
 
     public function __construct(ExpressionValidationService $validationService)
     {
         $this->validationService = $validationService;
     }
 
-    public function index()
+    public function index(): Response
     {
         $expressions = Expression::all();
 
-        return inertia('Expressions', ['expressions' => $expressions]);
+        return Inertia::render('Expressions', ['expressions' => $expressions]);
     }
 
-    public function getRandomExpressions(Request $request)
+    public function getRandomExpressions(Request $request): JsonResponse
     {
         $mode = $request->query('mode');
         $numberOfRequestedExpressions = $request->query('numberOfExpressions');
 
-        if (! $mode || ! str_contains($mode, '-')) {
+        if (! $mode || ! str_contains((string) $mode, '-')) {
             return response()->json(['error' => 'Invalid mode'], 400);
         }
 
-        [$expressionLanguage, $answerLanguage] = explode('-', $mode);
+        $modeString = (string) $mode;
+        [$expressionLanguage, $answerLanguage] = explode('-', $modeString);
 
         $expressions = Expression::where('expression_language', $expressionLanguage)
             ->where('answer_language', $answerLanguage)
             ->where('is_validated', true)
             ->inRandomOrder()
-            ->limit($numberOfRequestedExpressions)
+            ->limit((int) $numberOfRequestedExpressions)
             ->get();
 
         return response()->json($expressions);
     }
 
     // Display the form
-    public function create()
+    public function create(): Response
     {
-        return inertia('RequestNewExpression');
+        return Inertia::render('RequestNewExpression');
     }
 
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
-        $expressionData = $this->validationService->getValidatedExpressionData($request, Auth::id());
+        $userId = Auth::id();
+        if ($userId === null) {
+            return redirect()->back()->with('error', 'User not authenticated');
+        }
+
+        $expressionData = $this->validationService->getValidatedExpressionData($request, (int) $userId);
 
         Expression::create($expressionData);
 
@@ -60,7 +70,7 @@ class ExpressionController extends Controller
     }
 
     // Display unvalidated expressions
-    public function adminIndex(Request $request)
+    public function adminIndex(Request $request): Response
     {
         $expressionLanguage = $request->query('exp');
         $answerLanguage = $request->query('ans');
@@ -90,7 +100,7 @@ class ExpressionController extends Controller
             ->map(fn ($e) => $e->expression_language.'-'.$e->answer_language)
             ->values();
 
-        return inertia('Admin/UnvalidatedExpressions', [
+        return Inertia::render('Admin/UnvalidatedExpressions', [
             'expressions' => $expressions,
             'filters' => [
                 'exp' => $expressionLanguage,
@@ -102,7 +112,7 @@ class ExpressionController extends Controller
     }
 
     // Validate expression
-    public function validateExpression(Request $request, Expression $expression)
+    public function validateExpression(Request $request, Expression $expression): RedirectResponse
     {
         $expression->update(['is_validated' => true]);
 
@@ -112,7 +122,7 @@ class ExpressionController extends Controller
     }
 
     // Delete expression
-    public function destroy(Request $request, Expression $expression)
+    public function destroy(Request $request, Expression $expression): RedirectResponse
     {
         $expression->delete();
 

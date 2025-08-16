@@ -10,6 +10,16 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
+/**
+ * @property int $id
+ * @property string $name
+ * @property string $email
+ * @property int $experience
+ * @property bool $is_admin
+ * @property \Carbon\Carbon|null $email_verified_at
+ * @property \Carbon\Carbon $created_at
+ * @property \Carbon\Carbon $updated_at
+ */
 class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens, HasFactory, Notifiable;
@@ -51,12 +61,12 @@ class User extends Authenticatable implements MustVerifyEmail
     /**
      * Normalize email to lowercase and trim spaces on assignment.
      */
-    public function setEmailAttribute($value): void
+    public function setEmailAttribute(string $value): void
     {
-        $this->attributes['email'] = strtolower(trim((string) $value));
+        $this->attributes['email'] = strtolower(trim($value));
     }
 
-    public function isAdmin()
+    public function isAdmin(): bool
     {
         return (bool) $this->is_admin;
     }
