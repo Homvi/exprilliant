@@ -6,7 +6,8 @@
     },
     "scripts": {
         "build": "tsc && vite build",
-        "dev": "vite"
+        "dev": "vite",
+        "lint": "eslint --no-ignore \"resources/js/**/*.{ts,tsx}\""
     },
     "devDependencies": {
         "@eslint/js": "^9.13.0",
