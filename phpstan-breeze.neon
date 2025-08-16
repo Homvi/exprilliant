@@ -1,0 +1,12 @@
+parameters:
+  level: 7
+  tmpDir: build/phpstan
+  inferPrivatePropertyTypeFromConstructor: true
+  treatPhpDocTypesAsCertain: false
+  reportUnmatchedIgnoredErrors: false
+  paths:
+    - app/Http/Controllers/Auth
+    - app/Http/Requests/Auth
+    - app/Http/Requests/ProfileUpdateRequest.php
+
+

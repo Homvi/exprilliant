@@ -1,0 +1,14 @@
+parameters:
+  level: 7
+  paths:
+    - app
+  tmpDir: build/phpstan
+  inferPrivatePropertyTypeFromConstructor: true
+  treatPhpDocTypesAsCertain: false
+  reportUnmatchedIgnoredErrors: false
+
+includes:
+  - phpstan-baseline-breeze.neon
+
+
+
