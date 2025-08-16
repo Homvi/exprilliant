@@ -49,6 +49,7 @@ Exprilliant is a well-structured Laravel + React application for learning expres
 - [ ] **Type Definitions**: Create comprehensive type definitions for all data structures
 - [ ] **API Types**: Generate TypeScript types from API responses
 - [ ] **Component Props**: Add proper prop types for all React components
+- [ ] **Typed Routes with Ziggy**: Integrate Ziggy to generate typed `route()` helpers for React / Inertia links
 
 #### 6. **State Management**
 - [ ] **Store Organization**: Better organize Zustand stores with proper typing

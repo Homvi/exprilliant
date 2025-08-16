@@ -2,7 +2,10 @@
     "name": "laravel/laravel",
     "type": "project",
     "description": "The skeleton application for the Laravel framework.",
-    "keywords": ["laravel", "framework"],
+    "keywords": [
+        "laravel",
+        "framework"
+    ],
     "license": "MIT",
     "require": {
         "php": "^8.2",
@@ -51,6 +54,54 @@
         ],
         "post-create-project-cmd": [
             "@php artisan key:generate --ansi"
+        ],
+        "dev": "npx concurrently -c \"#93c5fd,#c4b5fd,#fb7185,#fdba74,#10b981\" \"php artisan serve\" \"php artisan queue:listen --tries=1\" \"php artisan pail --timeout=0\" \"npm run dev\"",
+        "test": [
+            "@php artisan config:clear --ansi",
+            "@php artisan test"
+        ],
+        "test:pest": [
+            "@php artisan config:clear --ansi",
+            "./vendor/bin/pest"
+        ],
+        "test:pest:coverage": [
+            "@php artisan config:clear --ansi",
+            "php -d xdebug.mode=coverage ./vendor/bin/pest --coverage"
+        ],
+        "analyse": [
+            "Composer\\Config::disableProcessTimeout",
+            "php -d memory_limit=1G vendor/bin/phpstan analyse --ansi --configuration=phpstan.neon.dist"
+        ],
+        "format": [
+            "./vendor/bin/pint --test"
+        ],
+        "format:fix": [
+            "./vendor/bin/pint"
+        ],
+        "generate:routes": [
+            "@php artisan ziggy:generate --types"
+        ],
+        "routes:check": [
+            "@php artisan ziggy:generate --types",
+            "npx tsc --noEmit"
+        ],
+        "routes:watch": [
+            "npx concurrently \"@php artisan ziggy:generate --types\" \"npx chokidar 'routes/**/*.php' -c 'php artisan ziggy:generate --types'\""
+        ],
+        "prepare": [
+            "echo '🛣️  Generating typed routes...'",
+            "@composer generate:routes",
+            "echo '🔧 Fixing code formatting...'",
+            "@composer format:fix",
+            "echo '🔍 Running PHPStan analysis...'",
+            "@composer analyse",
+            "echo '🧪 Running PHP tests...'",
+            "@composer test",
+            "echo '📝 Running ESLint...'",
+            "npm run lint",
+            "echo '🔍 Running TypeScript check...'",
+            "npx tsc --noEmit",
+            "echo '✅ All checks completed successfully! Ready for pull request.'"
         ]
     },
     "extra": {
