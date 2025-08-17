@@ -7,7 +7,9 @@
     "scripts": {
         "build": "tsc && vite build",
         "dev": "vite",
-        "lint": "eslint --no-ignore \"resources/js/**/*.{ts,tsx}\""
+        "lint": "eslint --no-ignore \"resources/js/**/*.{ts,tsx}\"",
+        "e2e": "php artisan migrate:fresh --seed --no-interaction && npx playwright test --reporter=list --project=chromium --workers=8",
+        "e2e:all": "php artisan migrate:fresh --seed --no-interaction && npx playwright test --reporter=list"
     },
     "devDependencies": {
         "@eslint/js": "^9.13.0",
