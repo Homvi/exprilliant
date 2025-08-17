@@ -4,6 +4,7 @@ export interface User {
   experience: number;
   email: string;
   email_verified_at?: string;
+  is_admin: boolean;
   created_at: string;
   updated_at: string;
 }
