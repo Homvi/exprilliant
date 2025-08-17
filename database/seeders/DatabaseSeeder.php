@@ -19,8 +19,9 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
-        // Seed expressions from JSON file
+        // Seed test users first, then expressions
         $this->call([
+            TestUserSeeder::class,
             ExpressionSeeder::class,
         ]);
     }
