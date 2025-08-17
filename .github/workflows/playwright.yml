@@ -8,8 +8,6 @@ jobs:
   test:
     timeout-minutes: 60
     runs-on: ubuntu-latest
-    env:
-      APP_URL: ${{ secrets.APP_URL }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -21,13 +19,6 @@ jobs:
           php-version: '8.3'
           extensions: mbstring, dom, fileinfo, sqlite3, pdo_sqlite
           coverage: none
-      # Add this step to verify the environment variable
-      - name: Verify APP_URL is set
-        run: |
-          if [ -z "$APP_URL" ]; then
-            echo "APP_URL is not set. Please configure the secret in repository settings."
-            exit 1
-          fi
       - name: Install dependencies
         run: npm ci
       - name: Install Composer dependencies
@@ -39,6 +30,7 @@ jobs:
         run: |
           cp .env.example .env
           php -r "file_exists('database/database.sqlite') || touch('database/database.sqlite');"
+          sed -i "s#^APP_URL=.*#APP_URL=http://127.0.0.1:8000#" .env
           sed -i "s/^DB_CONNECTION=.*/DB_CONNECTION=sqlite/" .env
           sed -i "s#^DB_DATABASE=.*#DB_DATABASE=${DB_DATABASE}#" .env
           php artisan key:generate
