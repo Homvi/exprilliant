@@ -49,11 +49,15 @@ const UnvalidatedExpressions = ({ expressions, filters, languages = [], pairs = 
   const validateExpression = (e: { preventDefault: () => void }) => {
     e.preventDefault();
 
-    const query: Record<string, string> = {};
-    if (exp) query.exp = exp;
-    if (ans) query.ans = ans;
+    if (selectedExpression == null) return;
 
-    post(route('admin.expressions.validate', { expression: selectedExpression, ...query }), {
+    const baseUrl = route('admin.expressions.validate', { expression: selectedExpression });
+    const queryParts: Record<string, string> = {};
+    if (exp) queryParts.exp = exp;
+    if (ans) queryParts.ans = ans;
+    const url = Object.keys(queryParts).length ? `${baseUrl}?${new URLSearchParams(queryParts).toString()}` : baseUrl;
+
+    post(url, {
       preserveScroll: true,
       onSuccess: () => closeModal()
     });
@@ -62,11 +66,15 @@ const UnvalidatedExpressions = ({ expressions, filters, languages = [], pairs = 
   const deleteExpression = (e: { preventDefault: () => void }) => {
     e.preventDefault();
 
-    const query: Record<string, string> = {};
-    if (exp) query.exp = exp;
-    if (ans) query.ans = ans;
+    if (selectedExpression == null) return;
 
-    destroy(route('admin.expressions.destroy', { expression: selectedExpression, ...query }), {
+    const baseUrl = route('admin.expressions.destroy', { expression: selectedExpression });
+    const queryParts: Record<string, string> = {};
+    if (exp) queryParts.exp = exp;
+    if (ans) queryParts.ans = ans;
+    const url = Object.keys(queryParts).length ? `${baseUrl}?${new URLSearchParams(queryParts).toString()}` : baseUrl;
+
+    destroy(url, {
       preserveScroll: true,
       onSuccess: () => closeModal()
     });
