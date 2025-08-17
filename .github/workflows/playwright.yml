@@ -15,6 +15,12 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '21.7.3'
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          extensions: mbstring, dom, fileinfo, sqlite3, pdo_sqlite
+          coverage: none
       # Add this step to verify the environment variable
       - name: Verify APP_URL is set
         run: |
@@ -24,6 +30,23 @@ jobs:
           fi
       - name: Install dependencies
         run: npm ci
+      - name: Install Composer dependencies
+        run: composer install --no-interaction --prefer-dist --no-progress
+      - name: Prepare environment
+        env:
+          DB_CONNECTION: sqlite
+          DB_DATABASE: database/database.sqlite
+        run: |
+          cp .env.example .env
+          php -r "file_exists('database/database.sqlite') || touch('database/database.sqlite');"
+          sed -i "s/^DB_CONNECTION=.*/DB_CONNECTION=sqlite/" .env
+          sed -i "s#^DB_DATABASE=.*#DB_DATABASE=${DB_DATABASE}#" .env
+          php artisan key:generate
+      - name: Run database migrations and seeders
+        env:
+          DB_CONNECTION: sqlite
+          DB_DATABASE: database/database.sqlite
+        run: php artisan migrate:fresh --seed --no-interaction
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
       - name: Run Playwright tests
