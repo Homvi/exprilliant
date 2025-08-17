@@ -19,6 +19,21 @@ declare module 'ziggy-js' {
     "expressions.create": [],
     "expressions.store": [],
     "dashboard": [],
+    "admin.expressions.index": [],
+    "admin.expressions.validate": [
+        {
+            "name": "expression",
+            "required": true,
+            "binding": "id"
+        }
+    ],
+    "admin.expressions.destroy": [
+        {
+            "name": "expression",
+            "required": true,
+            "binding": "id"
+        }
+    ],
     "register": [],
     "login": [],
     "password.request": [],
