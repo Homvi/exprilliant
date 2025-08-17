@@ -3,15 +3,8 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-const baseUrl = process.env.APP_URL;
-
-// Guard: only run if APP_URL is configured to a safe environment
-const run = !!baseUrl && /localhost|127\.0\.0\.1|\.local/.test(baseUrl);
-
-(run ? test : test.skip)("Clicking 'Give me more (5)' loads a new set of expressions", async ({ page }) => {
-  const chooseGameMode = baseUrl!.replace(/\/$/, '') + '/choose-game-mode';
-
-  await page.goto(chooseGameMode);
+test("Clicking 'Give me more (5)' loads a new set of expressions", async ({ page }) => {
+  await page.goto('/choose-game-mode');
 
   // Start game (assumes LanguageCard link to /game)
   await page.click('a[href="/game"]');

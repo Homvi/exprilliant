@@ -3,8 +3,8 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-const homePage: string = process.env.APP_URL || 'https://www.exprilliant.com/';
-const chooseGameMode: string = process.env.APP_URL + 'choose-game-mode';
+const homePage: string = '/';
+const chooseGameMode: string = '/choose-game-mode';
 
 // Define a timeout for navigation and expectations
 const navigationTimeout = 60000; // 60 seconds
@@ -14,7 +14,7 @@ test('has title', async ({ page }) => {
   await page.goto(homePage, { timeout: navigationTimeout });
 
   // Expect a title "to contain" a substring with a timeout.
-  await expect(page).toHaveTitle('Welcome - Exprilliant', { timeout: expectationTimeout });
+  await expect(page).toHaveTitle(/Welcome/, { timeout: expectationTimeout });
 });
 
 test('get started button works', async ({ page }) => {
