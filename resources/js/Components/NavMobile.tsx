@@ -49,7 +49,7 @@ const MobileNavbar = () => {
                 <Link href="/request-new-expression">{navbar.request_new_expression}</Link>
               </li>
             )}
-            {auth.user?.email === 'adam.honvedo@gmail.com' && (
+            {auth.user?.is_admin && (
               <li>
                 <Link href="/admin/unvalidated-expressions">Validate expressions</Link>
               </li>

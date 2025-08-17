@@ -47,7 +47,7 @@ const BurgerMenu = () => {
               <MenubarItem>{navbar.request_new_expression}</MenubarItem>
             </Link>
           )}
-          {auth.user?.email === 'adam.honvedo@gmail.com' && (
+          {auth.user?.is_admin && (
             <Link href="/admin/unvalidated-expressions">
               <MenubarItem>Validate expressions</MenubarItem>
             </Link>
