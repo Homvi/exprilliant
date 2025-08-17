@@ -2,7 +2,6 @@
 
 return [
     'except' => [
-        'admin.*',
         '_debugbar.*',
     ],
 ];
