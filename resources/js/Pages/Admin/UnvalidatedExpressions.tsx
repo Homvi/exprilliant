@@ -94,7 +94,7 @@ const UnvalidatedExpressions = ({ expressions, filters, languages = [], pairs = 
           <div className="flex flex-wrap items-center gap-2">
             <span className="text-sm text-neutral-600">Expression language:</span>
             <div className="flex gap-2">
-              {['en', 'es', 'hu'].map((lang) => (
+              {languages.map((lang) => (
                 <button
                   key={lang}
                   onClick={() => {
@@ -115,7 +115,7 @@ const UnvalidatedExpressions = ({ expressions, filters, languages = [], pairs = 
           <div className="flex flex-wrap items-center gap-2">
             <span className="text-sm text-neutral-600">Answer language:</span>
             <div className="flex gap-2">
-              {['en', 'es', 'hu'].map((lang) => (
+              {languages.map((lang) => (
                 <button
                   key={lang}
                   onClick={() => {
